@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D9E75">
+<title>なぎろぐはこうして生まれた｜Xでヒアリング、AIと対話、主治医に確認</title>
+<meta name="description" content="なぎろぐの開発秘話。睡眠状態の選択肢やアイコンデザインをX（旧Twitter）でヒアリングし、記録項目は主治医にも確認してもらいながら形にしていった過程を紹介します。">
+<link rel="canonical" href="https://nagilog.net/articles/making.html">
+<meta property="og:title" content="なぎろぐはこうして生まれた｜Xでヒアリング、AIと対話、主治医に確認">
+<meta property="og:description" content="なぎろぐの開発秘話。Xでのヒアリングや主治医への確認を経て形になった過程を紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nagilog.net/articles/making.html">
+<meta property="og:image" content="https://nagilog.net/icons/icon-512.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6019865973723882" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJRJFQ84RC"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+// 本番ドメインのときだけ計測。広告向けの機能（Googleシグナル・広告パーソナライズ）は使わない。
+if(location.hostname==='nagilog.net'){gtag('js',new Date());gtag('config','G-VJRJFQ84RC',{allow_google_signals:false,allow_ad_personalization_signals:false});}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F5F3;--bg2:#EBEBEA;--txt:#2C2C2A;--txt2:#6E6E6C;--txt3:#AAAAAA;
+  --accent:#1D9E75;--bdr:rgba(0,0,0,0.08);--r-md:12px;--r-lg:18px;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#1C1C1E;--bg2:#2C2C2E;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);}
+}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.85;padding-bottom:40px;}
+.header{background:var(--bg);border-bottom:.5px solid var(--bdr);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 16px;position:sticky;top:0;z-index:10;}
+.header a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--txt);font-size:15px;font-weight:300;letter-spacing:.08em;}
+.header a span{color:var(--accent);font-size:13px;}
+.container{max-width:680px;margin:0 auto;padding:32px 20px;}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--accent);color:#fff;letter-spacing:.04em;margin-bottom:12px;}
+h1{font-size:24px;font-weight:600;margin-bottom:24px;color:var(--txt);line-height:1.5;}
+article h2{font-size:17px;font-weight:700;color:var(--accent);margin:28px 0 10px;padding-bottom:6px;border-bottom:1.5px solid var(--accent);}
+article h3{font-size:15px;font-weight:700;color:var(--txt);margin:18px 0 8px;}
+article p{font-size:15px;color:var(--txt2);margin-bottom:14px;}
+article strong{color:var(--txt);font-weight:600;}
+.note{font-size:13px;color:var(--txt3);border-left:2px solid var(--bdr);padding:8px 12px;margin:16px 0;background:var(--bg2);border-radius:0 var(--r-md) var(--r-md) 0;}
+.related{margin-top:40px;padding-top:24px;border-top:.5px solid var(--bdr);}
+.related h2{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:12px;}
+.related-list{list-style:none;}
+.related-list li{margin-bottom:8px;}
+.related-list a{display:block;font-size:14px;color:var(--accent);text-decoration:none;padding:12px 14px;background:var(--bg2);border-radius:var(--r-md);border:.5px solid var(--bdr);}
+footer{text-align:center;padding:24px 20px 0;font-size:12px;color:var(--txt3);}
+footer a{color:var(--txt3);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="../index.html#articles">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <span>&#9664;</span>なぎろぐ に戻る
+  </a>
+</div>
+
+<div class="container">
+  <span class="tag">制作秘話</span>
+  <h1>なぎろぐはこうして生まれた――Xでヒアリング、AIと対話、主治医に確認</h1>
+
+  <article>
+    <p>なぎろぐは、「自分が使いたいアプリをつくる」という動機から生まれました。でも、自分一人の感覚だけでつくったわけではありません。Xのフォロワーのみなさん、主治医の先生、そしてAIとの対話――たくさんの力を借りながら少しずつ形になっていきました。その過程を少しだけ紹介させてください。</p>
+
+    <h2>睡眠状態の選択肢はXでヒアリングして決めた</h2>
+    <p>「睡眠の状態」に何を入れるかは、自分だけでは決められませんでした。すっきり・寝不足・中途覚醒・悪夢……どんな言葉が実際に使われているのか、当事者の方の声を聞きたくてXでヒアリングしました。</p>
+    <p>返ってきた言葉を見て、「早朝覚醒」「入眠困難」「寝落ち」など、自分では思いつかなかった項目がいくつもありました。現在の選択肢はそのやりとりがベースになっています。</p>
+
+    <h2>データの見せ方もXで試した</h2>
+    <p>グラフの表示方法や、エクスポートしたデータの見た目についても、実際に画面のスクリーンショットをXに投稿して意見をもらいました。「この項目が見たい」「このレイアウトは読みにくい」といったフィードバックが、今の形に繋がっています。</p>
+
+    <h2>アイコンは8案つくってX投票で決めた</h2>
+    <p>アプリのアイコンは最終的に今の「N」のロゴになりましたが、実はその前に8つのデザイン案をつくりました。Xで投票を実施して、フォロワーのみなさんに選んでもらいました。投票に参加してくださった方、本当にありがとうございました。</p>
+
+    <h2>主治医にも確認してもらった</h2>
+    <p>記録する項目については、主治医にも確認してもらいました。気分・活動量・睡眠・服薬……医療の観点から見て「これは記録しておくといい」という項目を一緒に検討しました。</p>
+    <p>その雑談の中で、「うつ病やADHDの方にも使えそうだね」という言葉をもらいました。双極症だけでなく、さまざまなメンタルヘルスの課題を抱える方にも使っていただけるよう意識するきっかけになりました。</p>
+
+    <h2>これからも育てていきたい</h2>
+    <p>なぎろぐはまだ発展途上です。「こんな機能があったらいい」「ここが使いにくい」という声があれば、ぜひXで教えてください。みなさんの声がそのまま次のアップデートに繋がります。</p>
+
+    <div class="note">本アプリは医療行為・診断・治療の代替を目的とするものではありません。体調に不安がある場合は、必ず医療専門家にご相談ください。</div>
+  </article>
+
+  <div class="related">
+    <h2>関連記事</h2>
+    <ul class="related-list">
+      <li><a href="about.html">なぎろぐとは――体調を、穏やかな凪に。</a></li>
+      <li><a href="howto.html">なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</a></li>
+      <li><a href="story.html">なぎろぐをつくった理由――双極症と、働き続けること</a></li>
+      <li><a href="pwa.html">ホーム画面に追加する方法</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 なぎろぐ　<a href="https://nagilog.net">nagilog.net</a>　<a href="../privacy.html">プライバシーポリシー</a>　<a href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">お問い合わせ</a></p>
+</footer>
+
+</body>
+</html>

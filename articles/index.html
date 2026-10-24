@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D9E75">
+<title>記事一覧｜なぎろぐ</title>
+<meta name="description" content="双極症・メンタルヘルスのための体調管理アプリ「なぎろぐ」の紹介、使い方、開発秘話をまとめた記事一覧です。">
+<link rel="canonical" href="https://nagilog.net/articles/">
+<meta property="og:title" content="記事一覧｜なぎろぐ">
+<meta property="og:description" content="なぎろぐの紹介・使い方・開発秘話をまとめた記事一覧です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nagilog.net/articles/">
+<meta property="og:image" content="https://nagilog.net/icons/icon-512.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6019865973723882" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJRJFQ84RC"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+// 本番ドメインのときだけ計測。広告向けの機能（Googleシグナル・広告パーソナライズ）は使わない。
+if(location.hostname==='nagilog.net'){gtag('js',new Date());gtag('config','G-VJRJFQ84RC',{allow_google_signals:false,allow_ad_personalization_signals:false});}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F5F3;--bg2:#EBEBEA;--txt:#2C2C2A;--txt2:#6E6E6C;--txt3:#AAAAAA;
+  --accent:#1D9E75;--bdr:rgba(0,0,0,0.08);--r-md:12px;--r-lg:18px;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#1C1C1E;--bg2:#2C2C2E;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);}
+}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.85;padding-bottom:40px;}
+.header{background:var(--bg);border-bottom:.5px solid var(--bdr);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 16px;position:sticky;top:0;z-index:10;}
+.header a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--txt);font-size:15px;font-weight:300;letter-spacing:.08em;}
+.header a span{color:var(--accent);font-size:13px;}
+.container{max-width:680px;margin:0 auto;padding:32px 20px;}
+h1{font-size:24px;font-weight:600;margin-bottom:8px;color:var(--txt);}
+.lead{font-size:14px;color:var(--txt3);margin-bottom:28px;}
+.card-list{list-style:none;}
+.card-list li{margin-bottom:12px;}
+.card{display:block;background:var(--bg2);border-radius:var(--r-lg);padding:18px 20px;border:.5px solid var(--bdr);text-decoration:none;transition:background .15s;}
+.card:hover{background:var(--bg3,var(--bg2));}
+.card-tag{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--accent);color:#fff;letter-spacing:.04em;margin-bottom:8px;}
+.card-title{display:block;font-size:16px;font-weight:600;color:var(--txt);line-height:1.5;}
+footer{text-align:center;padding:24px 20px 0;font-size:12px;color:var(--txt3);}
+footer a{color:var(--txt3);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="../index.html#articles">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <span>&#9664;</span>なぎろぐ に戻る
+  </a>
+</div>
+
+<div class="container">
+  <h1>記事一覧</h1>
+  <p class="lead">なぎろぐの紹介・使い方・開発の背景をまとめました</p>
+
+  <ul class="card-list">
+    <li>
+      <a class="card" href="bipolar-basics.html">
+        <span class="card-tag">基礎知識</span>
+        <span class="card-title">双極症（双極性障害）とは――症状・タイプ・治療の基礎知識</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="mood-tracking.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">気分の記録が役立つ理由――セルフモニタリングの意義</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="doctor-talk.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">通院時に体調をうまく伝えるコツ</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="medication-adherence.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">服薬を継続するための工夫――服薬アドヒアランスとは</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="weather-mood.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">気圧・気温と気分の関係――気象病・天気痛について</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="exercise-bipolar.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">運動と双極症――歩くことが気分に与える影響を研究から見る</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="gut-health-bipolar.html">
+        <span class="card-tag">コラム</span>
+        <span class="card-title">腸内環境と双極症――食生活でできることを研究から見る</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="about.html">
+        <span class="card-tag">紹介</span>
+        <span class="card-title">なぎろぐとは――体調を、穏やかな凪に。</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="howto.html">
+        <span class="card-tag">使い方</span>
+        <span class="card-title">なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="pwa.html">
+        <span class="card-tag">使い方</span>
+        <span class="card-title">ホーム画面に追加する方法――iPhone・Android対応</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="backup.html">
+        <span class="card-tag">使い方</span>
+        <span class="card-title">機種変更時のデータの引き継ぎ方――バックアップ・復元機能の使い方</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="ai-comment.html">
+        <span class="card-tag">使い方</span>
+        <span class="card-title">「一言コメント」機能について――仕組みとプライバシーの考え方</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="story.html">
+        <span class="card-tag">制作者より</span>
+        <span class="card-title">なぎろぐをつくった理由――双極症と、働き続けること</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="making.html">
+        <span class="card-tag">制作秘話</span>
+        <span class="card-title">なぎろぐはこうして生まれた――Xでヒアリング、AIと対話、主治医に確認</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<footer>
+  <p>&copy; 2026 なぎろぐ　<a href="https://nagilog.net">nagilog.net</a>　<a href="../privacy.html">プライバシーポリシー</a>　<a href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">お問い合わせ</a></p>
+</footer>
+
+</body>
+</html>

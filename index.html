@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1D9E75">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="なぎろぐ">
+<title>なぎろぐ｜双極症の方のための体調管理アプリ</title>
+<meta name="description" content="なぎろぐは双極症（双極性障害）の方が毎日の気分・睡眠・服薬・体調を記録できる無料の体調管理アプリです。グラフで振り返り、医師への報告にも活用できます。">
+<meta name="keywords" content="双極症,双極性障害,体調管理,気分記録,服薬管理,睡眠記録,メンタルヘルス,なぎろぐ">
+<meta name="author" content="なぎろぐ">
+<meta property="og:title" content="なぎろぐ｜双極症の方のための体調管理アプリ">
+<meta property="og:description" content="気分・睡眠・服薬・体重を毎日記録。グラフで振り返り、医師への報告にも活用できる双極症向け体調管理アプリです。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nagilog.net">
+<meta property="og:image" content="https://nagilog.net/icons/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="なぎろぐ｜体調管理アプリ">
+<meta name="twitter:description" content="気分・睡眠・服薬を毎日記録。メンタルヘルスの課題を抱える方のための無料体調管理アプリ。">
+<meta name="twitter:image" content="https://nagilog.net/icons/icon-512.png">
+<link rel="canonical" href="https://nagilog.net"><link rel="manifest" href="./manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- フォントを非同期読み込みにして起動を速くする -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6019865973723882" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJRJFQ84RC"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+// 本番ドメインのときだけ計測。広告向けの機能（Googleシグナル・広告パーソナライズ）は使わない。
+if(location.hostname==='nagilog.net'){gtag('js',new Date());gtag('config','G-VJRJFQ84RC',{allow_google_signals:false,allow_ad_personalization_signals:false});}
+</script>
+<style>
+:root{--bg:#F5F5F3;--bg2:#EBEBEA;--bg3:#E0E0DE;--txt:#2C2C2A;--txt2:#6E6E6C;--txt3:#AAAAAA;--bdr:rgba(0,0,0,0.08);--bdr2:rgba(0,0,0,0.15);--accent:#1D9E75;--r-md:12px;--r-lg:18px;--fs-xs:13px;--fs-sm:14px;--fs-base:15px;--fs-lg:20px;--fs-xl:26px;--nav-h:60px;--safe-bottom:env(safe-area-inset-bottom,0px);}
+/* ダークモード：手動切替 or システム設定 */
+body.dark-mode{--bg:#1C1C1E;--bg2:#2C2C2E;--bg3:#3A3A3C;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);--bdr2:rgba(255,255,255,0.15);}
+@media(prefers-color-scheme:dark){body:not(.light-mode){--bg:#1C1C1E;--bg2:#2C2C2E;--bg3:#3A3A3C;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);--bdr2:rgba(255,255,255,0.15);}}
+body.fs-small{--fs-xs:11px;--fs-sm:12px;--fs-base:13px;--fs-lg:17px;--fs-xl:22px;}
+body.fs-large{--fs-xs:15px;--fs-sm:17px;--fs-base:18px;--fs-lg:24px;--fs-xl:30px;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{overflow-x:hidden;touch-action:pan-y;}
+body{font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic UI',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;}
+
+/* ===== PC レイアウト（768px以上） ===== */
+@media(min-width:768px){
+  body{padding-bottom:0;}
+  /* PCサイトヘッダー */
+  .pc-site-header{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:var(--bg);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;}
+  .pc-site-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);}
+  .pc-site-logo-text{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:20px;letter-spacing:.1em;}
+  .pc-site-logo-sub{font-size:11px;color:var(--txt3);font-weight:300;}
+  .pc-header-right{display:flex;align-items:center;gap:8px;}
+  .pc-nav-link{font-size:13px;color:var(--txt2);padding:6px 10px;border-radius:8px;transition:all .15s;cursor:pointer;border:none;background:transparent;}
+  .pc-nav-link:hover,.pc-nav-link.active{background:var(--bg2);color:var(--txt);}
+  /* ダーク/ライトトグル */
+  .theme-toggle{display:flex;background:var(--bg2);border:.5px solid var(--bdr);border-radius:20px;padding:3px;}
+  .theme-toggle-opt{font-size:12px;padding:4px 12px;border-radius:16px;cursor:pointer;color:var(--txt2);transition:all .15s;background:transparent;border:none;}
+  .theme-toggle-opt.active{background:var(--accent);color:#fff;}
+  /* PC メインコンテンツ：左サイドバー＋右コンテンツ */
+  .pc-wrapper{max-width:1200px;margin:0 auto;padding:32px 32px 80px;display:grid;grid-template-columns:200px 1fr 300px;gap:24px;align-items:start;}
+  /* 左サイドナビ */
+  .pc-sidenav{position:sticky;top:76px;}
+  .pc-sidenav-title{font-size:11px;font-weight:700;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;padding:0 8px;}
+  .pc-sidenav-btn{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border-radius:10px;border:none;background:transparent;font-size:14px;color:var(--txt2);cursor:pointer;text-align:left;transition:all .15s;margin-bottom:2px;}
+  .pc-sidenav-btn svg{width:18px;height:18px;flex-shrink:0;}
+  .pc-sidenav-btn:hover{background:var(--bg2);color:var(--txt);}
+  .pc-sidenav-btn.active{background:var(--accent);color:#fff;}
+  .pc-sidenav-divider{height:.5px;background:var(--bdr);margin:10px 0;}
+  /* 中央コンテンツエリア */
+  .pc-content{min-width:0;background:var(--bg);border-radius:20px;border:1px solid var(--bdr);overflow-y:auto;min-height:600px;max-height:calc(100vh - 100px);}
+  /* pc-content内のアプリヘッダーは非表示・余白ゼロ */
+  .pc-content .header{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;}
+  .pc-content .app{max-width:100%;}
+  /* PC版ではアプリのheaderがないのでsectionのpaddingで調整 */
+  .pc-content .section.active{padding-top:16px;}
+  /* アプリのタブコンテンツをPC右側に表示 */
+  .app{display:block;max-width:100%;}
+  .app .header{padding:20px 20px 12px;}
+  /* スマホ用の固定ナビ・フッターを非表示 */
+  .nav{display:none !important;}
+  .nav-footer{display:none !important;}
+  .cal-btn{display:none !important;}
+  /* 右：記事サイドバー */
+  .pc-article-sidebar{position:sticky;top:76px;min-width:0;max-height:calc(100vh - 100px);overflow-y:auto;}
+  .pc-article-sidebar-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+  .pc-article-sidebar-card{background:var(--bg2);border-radius:12px;padding:14px 16px;margin-bottom:8px;cursor:pointer;border:.5px solid var(--bdr);transition:background .15s;}
+  .pc-article-sidebar-card:hover{background:var(--bg3);}
+  .pc-article-sidebar-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;background:var(--accent);color:#fff;display:inline-block;margin-bottom:6px;}
+  .pc-article-sidebar-name{font-size:13px;font-weight:500;color:var(--txt);line-height:1.5;}
+  /* 記事本文パネル */
+  .pc-article-panel{background:var(--bg2);border-radius:12px;padding:18px;border:.5px solid var(--bdr);}
+  .pc-article-panel-back{font-size:12px;color:var(--accent);background:transparent;border:none;cursor:pointer;padding:0 0 12px;font-weight:600;display:flex;align-items:center;gap:4px;}
+  .pc-article-panel .article-body{padding:0;font-size:13px;}
+  .pc-article-panel .article-body h2{font-size:14px;}
+  .pc-article-panel .article-body h3{font-size:13px;}
+}
+/* スマホ時のPC要素を隠す */
+@media(max-width:767px){
+  .pc-site-header{display:none;}
+  .pc-wrapper{display:none;}
+  body{padding-bottom:calc(var(--nav-h) + var(--safe-bottom) + 74px);}
+  .theme-toggle{display:flex;align-items:center;gap:4px;background:var(--bg2);border:.5px solid var(--bdr);border-radius:20px;padding:3px 5px;}
+  .theme-toggle-opt{font-size:11px;padding:2px 7px;border-radius:14px;cursor:pointer;color:var(--txt2);transition:all .15s;background:transparent;border:none;}
+  .theme-toggle-opt.active{background:var(--accent);color:#fff;}
+}
+/* ロゴ専用フォント（細め） */
+.logo-font{font-family:'Noto Sans JP',sans-serif;font-weight:300;letter-spacing:.06em;}
+.app{max-width:520px;margin:0 auto;}
+.header{padding:calc(env(safe-area-inset-top, 0px) + 24px) 14px 8px;display:flex;flex-direction:column;gap:8px;}
+.header-row1{display:flex;align-items:center;justify-content:space-between;}
+.header-left h1{font-size:var(--fs-xl);font-weight:700;letter-spacing:-.03em;}
+#today-str{font-size:var(--fs-sm);color:var(--txt2);margin-top:2px;}
+.fs-picker{display:flex;align-items:center;gap:5px;background:var(--bg2);border-radius:var(--r-md);padding:5px 9px;border:.5px solid var(--bdr);align-self:flex-start;}
+.fs-picker-label{font-size:10px;color:var(--txt3);white-space:nowrap;}
+.fs-btns{display:flex;gap:2px;}
+.fs-btn{border:none;background:transparent;cursor:pointer;padding:3px 7px;border-radius:8px;font-weight:600;color:var(--txt2);transition:all .15s;}
+.fs-btn.active{background:var(--accent);color:#fff;}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:var(--bg);border-top:.5px solid var(--bdr);display:flex;padding-bottom:var(--safe-bottom);}
+.nav button{flex:1;border:none;background:transparent;color:var(--txt2);font-size:var(--fs-xs);padding:8px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color .2s;}
+.nav button.active{color:var(--accent);}
+.nav button svg{width:24px;height:24px;}
+.nav-footer{position:fixed;bottom:calc(var(--nav-h) + var(--safe-bottom));left:0;right:0;z-index:49;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;row-gap:4px;column-gap:10px;padding:4px 10px;background:var(--bg);border-top:.5px solid var(--bdr);}
+.footer-link-btn{background:transparent;border:none;font-size:11px;color:var(--txt3);cursor:pointer;text-decoration:underline;padding:2px 4px;white-space:nowrap;flex-shrink:0;}
+.section{display:none;padding:4px 12px 12px;}
+.section.active{display:block;}
+.card{background:var(--bg2);border-radius:var(--r-lg);padding:16px;margin-bottom:12px;border:.5px solid var(--bdr);}
+.card-label{font-size:var(--fs-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);margin-bottom:12px;}
+/* 日付バー：4ボタンを横並びで全て表示 */
+.date-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding-bottom:2px;margin-bottom:12px;}
+.date-bar-btn{padding:7px 4px;border-radius:20px;border:.5px solid var(--bdr2);background:var(--bg3);font-size:var(--fs-xs);color:var(--txt2);cursor:pointer;white-space:nowrap;text-align:center;}
+.date-bar-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.state-banner{border-radius:var(--r-md);padding:10px 14px;font-size:var(--fs-sm);font-weight:600;margin-bottom:12px;text-align:center;letter-spacing:.03em;}
+.ai-reshow-btn{display:none;align-items:center;gap:9px;width:100%;background:var(--bg2);border:.5px dashed var(--bdr2);border-radius:var(--r-md);padding:9px 14px;margin-bottom:12px;cursor:pointer;color:var(--txt2);font-size:var(--fs-xs);font-weight:500;transition:background .15s,border-color .15s;text-align:left;}
+.ai-reshow-btn:hover,.ai-reshow-btn:active{background:var(--bg3);border-color:var(--accent);}
+.ai-reshow-btn .ai-reshow-icon{font-size:15px;opacity:.6;flex-shrink:0;}
+.ai-reshow-btn .ai-reshow-arw{margin-left:auto;color:var(--txt3);font-size:12px;flex-shrink:0;}
+.slider-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.slider-label-btn{font-size:calc(var(--fs-sm) + 2px);font-weight:600;color:var(--txt);width:96px;flex-shrink:0;display:flex;align-items:center;gap:4px;background:transparent;border:none;cursor:pointer;padding:0;text-align:left;}
+.slider-label-btn .caret{font-size:var(--fs-xs);color:var(--txt3);transition:transform .2s;}
+.custom-lbl-btn{font-size:var(--fs-sm);font-weight:600;color:var(--accent);width:82px;flex-shrink:0;display:flex;align-items:center;gap:3px;background:transparent;border:none;cursor:pointer;padding:0;text-align:left;}
+input[type=range]{flex:1;accent-color:var(--accent);height:22px;}
+.slider-val{font-size:22px;font-weight:700;min-width:32px;text-align:right;color:var(--txt);}
+.scale-label{font-size:var(--fs-xs);color:var(--txt3);}
+.mood-panel{display:none;background:var(--bg3);border-radius:var(--r-md);padding:10px 12px;border:.5px solid var(--bdr);margin-bottom:6px;}
+.mood-opts{display:flex;flex-wrap:wrap;gap:6px;}
+.mood-opt{font-size:var(--fs-xs);padding:5px 12px;border-radius:20px;border:.5px solid var(--bdr2);background:var(--bg2);color:var(--txt2);cursor:pointer;}
+.mood-opt.selected{background:var(--accent);color:#fff;border-color:var(--accent);}
+.custom-del-btn{font-size:var(--fs-xs);color:var(--txt3);background:transparent;border:none;cursor:pointer;padding:2px 6px;flex-shrink:0;}
+.sleep-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.sleep-label{font-size:var(--fs-sm);color:var(--txt);flex:1;}
+.sleep-ctrl{display:flex;gap:6px;}
+.sleep-ctrl button{width:34px;height:34px;border-radius:50%;border:.5px solid var(--bdr2);background:var(--bg3);font-size:18px;cursor:pointer;color:var(--txt);display:flex;align-items:center;justify-content:center;}
+.sleep-val{font-size:var(--fs-lg);font-weight:600;min-width:52px;text-align:right;}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:var(--fs-xs);padding:5px 10px;border-radius:20px;border:.5px solid var(--bdr2);background:var(--bg3);color:var(--txt2);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tag.selected{background:var(--txt);color:var(--bg);border-color:var(--txt);}
+#sleep-tags{display:grid;grid-template-columns:repeat(5,auto);justify-content:start;gap:6px;}
+.input-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.input-label{font-size:var(--fs-sm);color:var(--txt);width:72px;flex-shrink:0;}
+.num-input{flex:1;font-size:var(--fs-base);border:.5px solid var(--bdr2);border-radius:var(--r-md);padding:8px 10px;background:transparent;color:var(--txt);text-align:right;}
+.unit{font-size:var(--fs-xs);color:var(--txt2);width:28px;}
+textarea{width:100%;min-height:100px;font-size:var(--fs-sm);border:.5px solid var(--bdr2);border-radius:var(--r-md);padding:10px;background:transparent;color:var(--txt);resize:vertical;font-family:inherit;line-height:1.6;}
+.save-btn{width:100%;padding:15px;border:none;border-radius:var(--r-lg);background:var(--txt);color:var(--bg);font-size:var(--fs-base);font-weight:700;cursor:pointer;margin-top:4px;letter-spacing:.04em;transition:all .3s;}
+.save-btn.saved{background:#fff;color:#000;border:1.5px solid #ccc;}
+.med-use-row{display:flex;gap:8px;margin-bottom:14px;}
+.med-use-btn{flex:1;padding:9px;border-radius:var(--r-md);border:.5px solid var(--bdr2);background:var(--bg3);color:var(--txt2);font-size:var(--fs-sm);font-weight:500;cursor:pointer;transition:all .2s;}
+.med-use-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.meal-title{font-size:11px;font-weight:600;color:var(--txt2);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 6px;list-style:none;}
+.med-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:.5px solid var(--bdr);}
+.med-item:last-child{border-bottom:none;}
+.med-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--bdr2);cursor:pointer;flex-shrink:0;transition:all .2s;}
+.med-check.done{background:var(--accent);border-color:var(--accent);}
+.med-check.done::after{content:'✓';display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;height:100%;}
+.med-nm{font-size:var(--fs-sm);font-weight:500;}
+.med-sub{font-size:var(--fs-xs);color:var(--txt2);}
+.med-del{font-size:var(--fs-base);color:var(--txt3);cursor:pointer;padding:4px 8px;}
+select{font-size:var(--fs-sm);padding:7px 10px;border-radius:var(--r-md);border:.5px solid var(--bdr2);background:var(--bg3);color:var(--txt);margin-bottom:10px;}
+.med-add-block label{font-size:var(--fs-xs);color:var(--txt2);display:block;margin-bottom:4px;margin-top:8px;}
+.med-add-block input{width:100%;font-size:var(--fs-sm);border:.5px solid var(--bdr2);border-radius:var(--r-md);padding:8px 10px;background:var(--bg3);color:var(--txt);}
+.med-add-btn{width:100%;margin-top:12px;padding:10px;border:none;border-radius:var(--r-md);background:var(--accent);color:#fff;font-size:var(--fs-sm);font-weight:600;cursor:pointer;}
+.adh-bar-bg{height:10px;background:var(--bg3);border-radius:5px;overflow:hidden;margin:6px 0 4px;}
+.adh-bar-fill{height:100%;background:var(--accent);border-radius:5px;transition:width .4s;}
+.adh-label{display:flex;justify-content:space-between;font-size:10px;color:var(--txt3);}
+.period-select{width:100%;font-size:var(--fs-sm);padding:9px 12px;border-radius:var(--r-md);border:.5px solid var(--bdr2);background:var(--bg3);color:var(--txt);margin-bottom:12px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.sample-note{font-size:11px;color:var(--txt3);margin-bottom:10px;display:none;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px;}
+.stat-card{background:var(--bg3);border-radius:var(--r-md);padding:10px;text-align:center;}
+.stat-lbl{font-size:10px;color:var(--txt2);margin-bottom:4px;}
+.stat-val{font-size:var(--fs-lg);font-weight:700;}
+.stat-sub{font-size:10px;color:var(--txt3);}
+.check-grid{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:12px;}
+.check-item{display:flex;align-items:center;gap:6px;font-size:var(--fs-xs);color:var(--txt);cursor:pointer;}
+.check-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;}
+.legend span{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--txt2);}
+.legend .ld{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.chart-wrap{position:relative;}
+.import-area{border:1.5px dashed var(--bdr2);border-radius:var(--r-md);padding:20px;text-align:center;cursor:pointer;color:var(--txt2);font-size:var(--fs-xs);}
+.import-btn{margin-top:8px;padding:7px 18px;border:none;border-radius:var(--r-md);background:var(--bg3);color:var(--txt);font-size:var(--fs-xs);cursor:pointer;}
+.export-row{display:flex;gap:10px;}
+.export-btn{flex:1;padding:9px;border:.5px solid var(--bdr2);border-radius:var(--r-md);background:var(--bg3);color:var(--txt);font-size:var(--fs-sm);font-weight:500;cursor:pointer;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;display:none;align-items:flex-end;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal-box{background:var(--bg);border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;max-width:520px;max-height:80vh;overflow-y:auto;padding-bottom:var(--safe-bottom);}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:.5px solid var(--bdr);}
+.modal-title{font-size:var(--fs-base);font-weight:700;}
+.modal-close{background:transparent;border:none;font-size:20px;color:var(--txt2);cursor:pointer;padding:4px 8px;}
+.modal-body{padding:16px 18px;font-size:var(--fs-sm);color:var(--txt2);line-height:1.7;}
+.modal-body p{margin-bottom:12px;}
+.modal-body h3{font-size:var(--fs-sm);font-weight:600;color:var(--txt);margin:14px 0 6px;}
+.cal-btn{position:fixed;top:calc(env(safe-area-inset-top, 0px) + 28px);right:16px;z-index:60;width:40px;height:40px;border-radius:50%;background:var(--bg2);border:.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--txt);}
+.cal-modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;display:none;align-items:flex-end;justify-content:center;}
+.cal-modal.show{display:flex;}
+.cal-box{background:var(--bg);border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;padding-bottom:calc(var(--safe-bottom)+16px);}
+.cal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:.5px solid var(--bdr);}
+.cal-title{font-size:var(--fs-base);font-weight:700;}
+.cal-close{background:transparent;border:none;font-size:20px;color:var(--txt2);cursor:pointer;padding:4px 8px;}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;}
+.cal-nav-btn{background:transparent;border:.5px solid var(--bdr2);border-radius:8px;width:32px;height:32px;font-size:18px;cursor:pointer;color:var(--txt);display:flex;align-items:center;justify-content:center;}
+.cal-year-month{display:flex;align-items:center;gap:6px;}
+.cal-ym-btn{background:var(--bg2);border:.5px solid var(--bdr2);border-radius:var(--r-md);padding:6px 14px;font-size:var(--fs-sm);font-weight:600;cursor:pointer;color:var(--txt);transition:all .15s;}
+.cal-ym-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.cal-picker{padding:10px 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.cal-picker.year-picker{grid-template-columns:repeat(3,1fr);}
+.cal-pick-item{padding:9px 4px;text-align:center;border-radius:var(--r-md);cursor:pointer;font-size:var(--fs-sm);color:var(--txt2);background:var(--bg3);}
+.cal-pick-item.selected{background:var(--accent);color:#fff;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:0 10px 8px;}
+.cal-day-name{text-align:center;font-size:10px;color:var(--txt3);padding:4px 0;font-weight:500;}
+.cal-day{text-align:center;padding:8px 0;font-size:var(--fs-sm);border-radius:8px;cursor:pointer;position:relative;}
+.cal-day.empty{pointer-events:none;}
+.cal-day.has-data::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--accent);}
+.cal-day.today{font-weight:700;color:var(--accent);}
+.cal-day.selected{background:var(--accent);color:#fff;}
+.cal-day.selected::after{background:#fff;}
+.cal-detail{padding:12px 18px;}
+.cal-detail-date{font-size:var(--fs-base);font-weight:700;color:var(--txt);margin-bottom:12px;}
+.cal-detail-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:.5px solid var(--bdr);}
+.cal-detail-row:last-child{border-bottom:none;}
+.cal-detail-key{font-size:var(--fs-xs);color:var(--txt2);}
+.cal-detail-val{font-size:var(--fs-sm);font-weight:500;text-align:right;}
+.cal-detail-note{margin-top:10px;font-size:var(--fs-sm);color:var(--txt2);line-height:1.6;padding:10px;background:var(--bg2);border-radius:var(--r-md);}
+.cal-no-data{color:var(--txt3);font-size:var(--fs-sm);text-align:center;padding:20px 0;}
+.pref-btn{padding:8px 4px;text-align:center;border-radius:var(--r-md);cursor:pointer;font-size:var(--fs-xs);color:var(--txt2);background:var(--bg3);border:.5px solid var(--bdr);transition:all .15s;}
+.pref-btn.selected{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+/* フォントサイズ変数に乗らない固定値を変数化 */
+.cal-day-name{text-align:center;font-size:var(--fs-xs);color:var(--txt3);padding:4px 0;font-weight:500;}
+.pref-btn{padding:8px 4px;text-align:center;border-radius:var(--r-md);cursor:pointer;font-size:var(--fs-xs);color:var(--txt2);background:var(--bg3);border:.5px solid var(--bdr);transition:all .15s;}
+.pref-btn.selected{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+.toast{position:fixed;bottom:calc(var(--nav-h) + var(--safe-bottom) + 64px);left:50%;transform:translateX(-50%);background:rgba(0,0,0,.82);color:#fff;padding:9px 20px;border-radius:20px;font-size:var(--fs-xs);opacity:0;transition:opacity .3s;pointer-events:none;z-index:300;white-space:nowrap;}
+/* 記録保存直後だけ出す一言コメントのポップアップ。背景はブロックしない（下のナビ等は押せる） */
+.ai-comment-popup{position:fixed;left:16px;right:16px;bottom:calc(var(--nav-h) + var(--safe-bottom) + 14px);max-width:480px;margin:0 auto;z-index:400;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s,transform .25s;}
+.ai-comment-popup.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+.ai-comment-popup-inner{display:flex;gap:10px;align-items:flex-start;background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--r-lg);box-shadow:0 12px 32px rgba(0,0,0,.2);padding:14px 16px;}
+.ai-comment-popup-ic{font-size:19px;line-height:1;flex-shrink:0}
+.ai-comment-popup-text{flex:1;min-width:0;font-size:var(--fs-sm);color:var(--txt2);line-height:1.7;white-space:pre-line;margin:0}
+.legend span{display:flex;align-items:center;gap:4px;font-size:var(--fs-xs);color:var(--txt2);}
+.stat-lbl{font-size:var(--fs-xs);color:var(--txt2);margin-bottom:4px;}
+.stat-sub{font-size:var(--fs-xs);color:var(--txt3);}
+.adh-label{display:flex;justify-content:space-between;font-size:var(--fs-xs);color:var(--txt3);}
+.sample-note{font-size:var(--fs-xs);color:var(--txt3);margin-bottom:10px;display:none;}
+.meal-title{font-size:var(--fs-xs);font-weight:600;color:var(--txt2);letter-spacing:.06em;text-transform:uppercase;margin:10px 0 6px;list-style:none;}
+.med-check-label-text{font-size:var(--fs-base);font-weight:700;}
+.custom-wrap{margin-bottom:12px;}
+
+/* 記事タブ：コンパクト・1ページ5件表示 */
+.article-card{background:var(--bg2);border-radius:var(--r-md);padding:12px 14px;margin-bottom:8px;border:.5px solid var(--bdr);display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .15s;}
+.article-card:active{background:var(--bg3);}
+.article-tag{flex-shrink:0;font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;background:var(--accent);color:#fff;letter-spacing:.04em;}
+.article-title{font-size:var(--fs-sm);font-weight:600;line-height:1.4;color:var(--txt);flex:1;}
+.article-arrow{flex-shrink:0;color:var(--txt3);font-size:var(--fs-sm);}
+.article-desc{display:none;}/* 説明文は非表示 */
+.article-btn{width:100%;padding:10px;border:none;border-radius:var(--r-md);background:var(--txt);color:var(--bg);font-size:var(--fs-sm);font-weight:600;cursor:pointer;}
+/* 記事本文モーダル */
+.article-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;display:none;align-items:flex-end;justify-content:center;}
+.article-modal-overlay.show{display:flex;}
+.article-modal-box{background:var(--bg);border-radius:var(--r-lg) var(--r-lg) 0 0;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;padding-bottom:calc(var(--safe-bottom)+20px);}
+.article-modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:.5px solid var(--bdr);position:sticky;top:0;background:var(--bg);z-index:1;}
+.article-modal-close{background:transparent;border:none;font-size:20px;color:var(--txt2);cursor:pointer;padding:4px 8px;}
+.article-body{padding:20px 18px;font-size:var(--fs-sm);color:var(--txt2);line-height:1.85;}
+.article-body h2{font-size:var(--fs-base);font-weight:700;color:var(--accent);margin:22px 0 8px;padding-bottom:5px;border-bottom:1.5px solid var(--accent);}
+.article-body h3{font-size:var(--fs-sm);font-weight:700;color:var(--txt);margin:16px 0 6px;}
+.article-body p{margin-bottom:12px;}
+.article-body ul,.article-body ol{padding-left:20px;margin-bottom:12px;}
+.article-body li{margin-bottom:5px;}
+.article-body strong{color:var(--txt);font-weight:600;}
+.article-body .note{font-size:var(--fs-xs);color:var(--txt3);border-left:2px solid var(--bdr2);padding:6px 10px;margin:12px 0;background:var(--bg2);border-radius:0 var(--r-md) var(--r-md) 0;}
+.slot-tab-btn{flex:1;padding:9px 4px;border-radius:var(--r-md);border:.5px solid var(--bdr2);background:var(--bg3);color:var(--txt2);font-size:var(--fs-sm);font-weight:500;cursor:pointer;transition:all .2s;position:relative;}
+.slot-tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.slot-tab-btn .slot-skip{position:absolute;top:2px;right:4px;font-size:8px;color:var(--txt3);}
+.slot-tab-btn.active .slot-skip{color:rgba(255,255,255,0.7);}
+.slot-tab-btn.skipped{background:var(--bg2);color:var(--txt3);border-style:dashed;}
+</style>
+</head>
+<body>
+<!-- PC サイトヘッダー -->
+<header class="pc-site-header">
+  <a class="pc-site-logo" href="/">
+    <svg width="28" height="28" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="256" cy="205" r="155" fill="none" stroke="currentColor" stroke-width="24"/>
+      <rect x="207" y="42" width="24" height="22" fill="var(--bg)"/>
+      <rect x="281" y="42" width="24" height="22" fill="var(--bg)"/>
+      <line x1="218" y1="52" x2="218" y2="362" stroke="currentColor" stroke-width="24" stroke-linecap="square"/>
+      <line x1="294" y1="52" x2="294" y2="362" stroke="currentColor" stroke-width="24" stroke-linecap="square"/>
+      <line x1="218" y1="52" x2="294" y2="298" stroke="currentColor" stroke-width="24" stroke-linecap="square"/>
+    </svg>
+    <div>
+      <div class="pc-site-logo-text">なぎろぐ</div>
+      <div class="pc-site-logo-sub">体調を、穏やかな凪に。</div>
+    </div>
+  </a>
+  <div class="pc-header-right">
+    <div class="theme-toggle" id="theme-toggle-pc">
+      <button class="theme-toggle-opt active" id="tt-light-pc" onclick="setTheme('light')">☀ ライト</button>
+      <button class="theme-toggle-opt" id="tt-dark-pc" onclick="setTheme('dark')">🌙 ダーク</button>
+    </div>
+  </div>
+</header>
+
+<!-- PC 2カラムレイアウト（左サイドナビ＋右コンテンツ） -->
+<div class="pc-wrapper">
+  <!-- 左：サイドナビ -->
+  <div class="pc-sidenav">
+    <div class="pc-sidenav-title">メニュー</div>
+    <button class="pc-sidenav-btn active" id="pcnav-record" onclick="switchTab('record');pcNavActivate('record')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="6" x2="8" y2="3"/><line x1="16" y1="6" x2="16" y2="3"/><line x1="7" y1="14" x2="10" y2="14"/><line x1="7" y1="17.5" x2="14" y2="17.5"/></svg>
+      今日の記録
+    </button>
+    <button class="pc-sidenav-btn" id="pcnav-meds" onclick="switchTab('meds');pcNavActivate('meds')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="3" rx="1"/><rect x="5" y="5" width="14" height="16" rx="2"/><line x1="12" y1="10" x2="12" y2="16"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+      服薬管理
+    </button>
+    <button class="pc-sidenav-btn" id="pcnav-history" onclick="switchTab('history');pcNavActivate('history')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 8,11 13,14 21,6"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+      履歴・グラフ
+    </button>
+    <button class="pc-sidenav-btn" id="pcnav-articles" onclick="switchTab('articles');pcNavActivate('articles')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+      記事
+    </button>
+    <div class="pc-sidenav-divider"></div>
+    <div class="pc-sidenav-title" style="margin-top:4px">設定</div>
+    <div style="padding:4px 8px">
+      <div style="font-size:11px;color:var(--txt3);margin-bottom:6px">フォントサイズ</div>
+      <div style="display:flex;gap:4px">
+        <button class="fs-btn" id="fs-s" onclick="setFontSize('small')" style="font-size:11px;flex:1;background:var(--bg3);border-radius:8px;padding:5px 0;border:.5px solid var(--bdr)">小</button>
+        <button class="fs-btn active" id="fs-m" onclick="setFontSize('medium')" style="font-size:13px;flex:1;background:var(--bg3);border-radius:8px;padding:5px 0;border:.5px solid var(--bdr)">中</button>
+        <button class="fs-btn" id="fs-l" onclick="setFontSize('large')" style="font-size:15px;flex:1;background:var(--bg3);border-radius:8px;padding:5px 0;border:.5px solid var(--bdr)">大</button>
+      </div>
+    </div>
+    <div class="pc-sidenav-divider"></div>
+    <button class="pc-sidenav-btn" style="font-size:12px;color:var(--txt3)" onclick="openModal('privacy')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      プライバシーポリシー
+    </button>
+    <button class="pc-sidenav-btn" style="font-size:12px;color:var(--txt3)" onclick="openModal('disclaimer')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      免責事項
+    </button>
+    <a class="pc-sidenav-btn" style="font-size:12px;color:var(--txt3)" href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+      お問い合わせ
+    </a>
+    <p style="font-size:10px;color:var(--txt3);padding:12px 8px 0">&copy; 2026 なぎろぐ</p>
+  </div>
+  <!-- 中央：コンテンツ（.appを内包） -->
+  <div class="pc-content" id="pc-content">
+    <!-- .app がここに入る（JS で移動） -->
+  </div>
+
+  <!-- 右：記事サイドバー -->
+  <div class="pc-article-sidebar" id="pc-article-sidebar">
+    <!-- 記事一覧 -->
+    <div id="pc-article-list">
+      <div class="pc-article-sidebar-title">記事</div>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/bipolar-basics.html">
+        <span class="pc-article-sidebar-tag">基礎知識</span>
+        <div class="pc-article-sidebar-name">双極症（双極性障害）とは</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/mood-tracking.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">気分の記録が役立つ理由――セルフモニタリングの意義</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/doctor-talk.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">通院時に体調をうまく伝えるコツ</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/medication-adherence.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">服薬を継続するための工夫――服薬アドヒアランスとは</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/weather-mood.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">気圧・気温と気分の関係――気象病・天気痛について</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/exercise-bipolar.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">運動と双極症――歩くことが気分に与える影響を研究から見る</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/gut-health-bipolar.html">
+        <span class="pc-article-sidebar-tag">コラム</span>
+        <div class="pc-article-sidebar-name">腸内環境と双極症――食生活でできることを研究から見る</div>
+      </a>
+      <div class="pc-article-sidebar-card" onclick="openPcArticle('about')">
+        <span class="pc-article-sidebar-tag">紹介</span>
+        <div class="pc-article-sidebar-name">なぎろぐとは――体調を、穏やかな凪に。</div>
+      </div>
+      <div class="pc-article-sidebar-card" onclick="openPcArticle('howto')">
+        <span class="pc-article-sidebar-tag">使い方</span>
+        <div class="pc-article-sidebar-name">なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</div>
+      </div>
+      <div class="pc-article-sidebar-card" onclick="openPcArticle('pwa')">
+        <span class="pc-article-sidebar-tag">使い方</span>
+        <div class="pc-article-sidebar-name">ホーム画面に追加する方法</div>
+      </div>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/backup.html">
+        <span class="pc-article-sidebar-tag">使い方</span>
+        <div class="pc-article-sidebar-name">機種変更時のデータの引き継ぎ方</div>
+      </a>
+      <a class="pc-article-sidebar-card" style="display:block;text-decoration:none" href="articles/ai-comment.html">
+        <span class="pc-article-sidebar-tag">使い方</span>
+        <div class="pc-article-sidebar-name">「一言コメント」機能について</div>
+      </a>
+      <div class="pc-article-sidebar-card" onclick="openPcArticle('story')">
+        <span class="pc-article-sidebar-tag">制作者より</span>
+        <div class="pc-article-sidebar-name">なぎろぐをつくった理由――双極症と、働き続けること</div>
+      </div>
+      <div class="pc-article-sidebar-card" onclick="openPcArticle('making')">
+        <span class="pc-article-sidebar-tag">制作秘話</span>
+        <div class="pc-article-sidebar-name">なぎろぐはこうして生まれた</div>
+      </div>
+    </div>
+    <!-- 記事本文パネル（クリック時に切替） -->
+    <div id="pc-article-panel" class="pc-article-panel" style="display:none;position:relative">
+      <button onclick="closePcArticle()" style="position:sticky;top:0;float:right;z-index:10;background:var(--bg3);border:.5px solid var(--bdr2);border-radius:50%;width:30px;height:30px;font-size:16px;cursor:pointer;color:var(--txt2);display:flex;align-items:center;justify-content:center;margin-bottom:4px">×</button>
+      <button class="pc-article-panel-back" onclick="closePcArticle()" style="margin-bottom:12px;display:block">‹ 記事一覧</button>
+      <div id="pc-article-panel-body" class="article-body" style="padding:0;font-size:13px"></div>
+    </div>
+  </div>
+</div><!-- /pc-wrapper -->
+
+<div class="app">
+  <div class="header">
+    <div class="header-row1">
+      <div class="header-left">
+        <div style="display:flex;align-items:center;gap:6px">
+          <h1 class="logo-font" style="font-size:var(--fs-xl);font-weight:300;letter-spacing:.1em;line-height:1">なぎろぐ</h1>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 8 9 5 5 5c0 4 3 7 7 7z"/><path d="M12 12C12 8 15 5 19 5c0 4-3 7-7 7z"/></svg>
+        </div>
+        <p class="logo-font" style="font-size:var(--fs-sm);color:var(--accent);font-weight:400;letter-spacing:.04em;margin-top:4px">体調を、穏やかな凪に。</p>
+        <p id="today-str" style="margin-top:4px"></p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="fs-picker">
+        <span class="fs-picker-label">フォント</span>
+        <div class="fs-btns">
+          <button class="fs-btn" id="fs-s" onclick="setFontSize('small')" style="font-size:11px">小</button>
+          <button class="fs-btn active" id="fs-m" onclick="setFontSize('medium')" style="font-size:13px">中</button>
+          <button class="fs-btn" id="fs-l" onclick="setFontSize('large')" style="font-size:15px">大</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- クローラー向けコンテンツ：記事タブに移動 -->
+
+<div class="nav">
+    <button class="active" onclick="switchTab('record')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="6" x2="8" y2="3"/><line x1="16" y1="6" x2="16" y2="3"/><line x1="7" y1="14" x2="10" y2="14"/><line x1="7" y1="17.5" x2="14" y2="17.5"/></svg>
+      今日</button>
+    <button onclick="switchTab('meds')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="3" rx="1"/><rect x="5" y="5" width="14" height="16" rx="2"/><line x1="12" y1="10" x2="12" y2="16"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+      服薬</button>
+    <button onclick="switchTab('history')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 8,11 13,14 21,6"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+      履歴</button>
+    <button onclick="switchTab('articles')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="8" y1="4" x2="8" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+      記事</button>
+  </div>
+  <div class="nav-footer">
+    <button class="footer-link-btn" onclick="openModal('disclaimer')">免責事項</button>
+    <button class="footer-link-btn" onclick="openModal('privacy')">プライバシーポリシー</button>
+    <a class="footer-link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">お問い合わせ</a>
+    <div class="theme-toggle" id="theme-toggle-sp" style="border:none;padding:2px 4px">
+      <button class="theme-toggle-opt active" id="tt-light-sp" onclick="setTheme('light')">☀</button>
+      <button class="theme-toggle-opt" id="tt-dark-sp" onclick="setTheme('dark')">🌙</button>
+    </div>
+  </div>
+
+  <!-- 今日 -->
+  <div id="tab-record" class="section active">
+    <div class="card" id="intro-card" style="background:var(--bg2)">
+      <div class="card-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>なぎろぐへようこそ</span>
+        <button onclick="dismissIntro()" aria-label="閉じる" style="background:transparent;border:none;color:var(--txt3);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px">×</button>
+      </div>
+      <p style="font-size:var(--fs-sm);color:var(--txt2);line-height:1.7;margin-top:2px">
+        <strong style="color:var(--txt)">なぎろぐ</strong>は、双極症（双極性障害）をはじめメンタルヘルスの課題を抱える方のための、無料の体調管理アプリです。気分・睡眠・服薬・体調を毎日記録し、グラフで振り返ることができます。記録データはすべてお使いの端末内に保存され、外部に送信されることはありません。
+      </p>
+      <p style="font-size:var(--fs-xs);color:var(--txt3);margin-top:8px">
+        詳しくは「<a href="articles/about.html" style="color:var(--accent)">なぎろぐとは</a>」「<a href="articles/howto.html" style="color:var(--accent)">使い方</a>」をご覧ください。さっそく下から今日の記録を始めてみましょう。
+      </p>
+    </div>
+    <script>
+    (function(){
+      try{
+        var dismissed=localStorage.getItem('tn_intro_dismissed')==='1';
+        var recs=JSON.parse(localStorage.getItem('tn_records')||'[]');
+        var hasData=Array.isArray(recs)&&recs.length>0;
+        if(dismissed||hasData){var el=document.getElementById('intro-card');if(el)el.style.display='none';}
+      }catch(e){}
+    })();
+    function dismissIntro(){
+      var el=document.getElementById('intro-card');if(el)el.style.display='none';
+      try{localStorage.setItem('tn_intro_dismissed','1');}catch(e){}
+    }
+    </script>
+    <div class="date-bar" id="date-bar"></div>
+    <div class="card" id="ai-comment-card" style="display:none">
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="font-size:20px;line-height:1;flex-shrink:0">🌱</div>
+        <div style="flex:1;min-width:0">
+          <p id="ai-comment-text" style="font-size:var(--fs-sm);color:var(--txt2);line-height:1.7;white-space:pre-line"></p>
+        </div>
+        <button onclick="hideAiComment()" aria-label="非表示にする" style="background:transparent;border:none;color:var(--txt3);font-size:16px;line-height:1;cursor:pointer;padding:2px 4px;flex-shrink:0">×</button>
+      </div>
+    </div>
+    <button id="ai-comment-reshow" class="ai-reshow-btn" onclick="showAiComment()">
+      <span class="ai-reshow-icon">🌱</span>
+      <span>一言コメントを表示する</span>
+      <span class="ai-reshow-arw">›</span>
+    </button>
+    <div id="state-banner" class="state-banner" style="background:#EAF3DE;color:#27500A">現在の状態：安定</div>
+    <div class="card">
+      <div class="card-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>今日の天気・気圧</span>
+        <button onclick="openPrefModal()" style="font-size:11px;color:var(--accent);background:transparent;border:.5px solid var(--accent);border-radius:8px;padding:3px 10px;cursor:pointer;" id="pref-change-btn">都道府県を設定</button>
+      </div>
+      <div id="weather-auto" style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:8px">都道府県を設定してください</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <div id="wx-temp" style="font-size:var(--fs-lg);font-weight:600"></div>
+        <div id="wx-pressure" style="font-size:var(--fs-xs);color:var(--txt2)"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">気分・状態 <span style="font-size:10px;color:var(--txt3);font-weight:400;letter-spacing:0;text-transform:none;margin-left:4px">▼タップで項目変更</span></div>
+      <div class="slider-row">
+        <button class="slider-label-btn" onclick="toggleMoodPanel('mood')"><span id="lbl-mood">気分</span><span class="caret" id="caret-mood">▼</span></button>
+        <span class="scale-label">低</span><input type="range" id="sl-mood" min="0" max="10" step="1" value="5" oninput="document.getElementById('v-mood').textContent=this.value;updateMood()"><span class="scale-label">高</span><span class="slider-val" id="v-mood">5</span>
+      </div>
+      <div class="mood-panel" id="panel-mood"><div class="mood-opts">
+        <button class="mood-opt selected" onclick="selectMoodOpt('mood','気分',this)">気分</button>
+        <button class="mood-opt" onclick="selectMoodOpt('mood','やる気',this)">やる気</button>
+        <button class="mood-opt" onclick="selectMoodOpt('mood','ごきげん',this)">ごきげん</button>
+        <button class="mood-opt" onclick="selectMoodOpt('mood','ポジティブ',this)">ポジティブ</button>
+        <button class="mood-opt" onclick="selectMoodOpt('mood','イライラ',this)">イライラ</button>
+        <button class="mood-opt" style="border-style:dashed;color:var(--txt3)" onclick="customMoodOpt('mood')">その他…</button>
+      </div></div>
+      <div class="slider-row">
+        <button class="slider-label-btn" onclick="toggleMoodPanel('energy')"><span id="lbl-energy">活動量</span><span class="caret" id="caret-energy">▼</span></button>
+        <span class="scale-label">低</span><input type="range" id="sl-energy" min="0" max="10" step="1" value="5" oninput="document.getElementById('v-energy').textContent=this.value;updateMood()"><span class="scale-label">高</span><span class="slider-val" id="v-energy">5</span>
+      </div>
+      <div class="mood-panel" id="panel-energy"><div class="mood-opts">
+        <button class="mood-opt selected" onclick="selectMoodOpt('energy','活動量',this)">活動量</button>
+        <button class="mood-opt" onclick="selectMoodOpt('energy','元気',this)">元気</button>
+        <button class="mood-opt" onclick="selectMoodOpt('energy','パフォーマンス',this)">パフォーマンス</button>
+        <button class="mood-opt" onclick="selectMoodOpt('energy','アクティブ',this)">アクティブ</button>
+        <button class="mood-opt" style="border-style:dashed;color:var(--txt3)" onclick="customMoodOpt('energy')">その他…</button>
+      </div></div>
+      <div class="slider-row">
+        <button class="slider-label-btn" onclick="toggleMoodPanel('recovery')"><span id="lbl-recovery">リカバリー</span><span class="caret" id="caret-recovery">▼</span></button>
+        <span class="scale-label">低</span><input type="range" id="sl-recovery" min="0" max="10" step="1" value="5" oninput="document.getElementById('v-recovery').textContent=this.value"><span class="scale-label">高</span><span class="slider-val" id="v-recovery">5</span>
+      </div>
+      <div class="mood-panel" id="panel-recovery"><div class="mood-opts">
+        <button class="mood-opt" onclick="selectMoodOpt('recovery','スッキリ',this)">スッキリ</button>
+        <button class="mood-opt selected" onclick="selectMoodOpt('recovery','リカバリー',this)">リカバリー</button>
+        <button class="mood-opt" onclick="selectMoodOpt('recovery','疲労',this)">疲労</button>
+        <button class="mood-opt" onclick="selectMoodOpt('recovery','リフレッシュ',this)">リフレッシュ</button>
+        <button class="mood-opt" style="border-style:dashed;color:var(--txt3)" onclick="customMoodOpt('recovery')">その他…</button>
+      </div></div>
+      <div id="custom1-wrap" class="custom-wrap" style="display:none">
+        <div class="slider-row">
+          <button class="custom-lbl-btn" onclick="editCustomLabel(1)"><span id="lbl-custom1" style="border-bottom:1px dashed var(--accent)">項目を設定</span><span style="font-size:9px">✎</span></button>
+          <span class="scale-label">低</span><input type="range" id="sl-custom1" min="0" max="10" step="1" value="5" oninput="document.getElementById('v-custom1').textContent=this.value"><span class="scale-label">高</span><span class="slider-val" id="v-custom1">5</span>
+          <button class="custom-del-btn" onclick="removeCustomItem(1)" title="削除">✕</button>
+        </div>
+      </div>
+      <div id="custom2-wrap" class="custom-wrap" style="display:none">
+        <div class="slider-row">
+          <button class="custom-lbl-btn" onclick="editCustomLabel(2)"><span id="lbl-custom2" style="border-bottom:1px dashed var(--accent)">項目を設定</span><span style="font-size:9px">✎</span></button>
+          <span class="scale-label">低</span><input type="range" id="sl-custom2" min="0" max="10" step="1" value="5" oninput="document.getElementById('v-custom2').textContent=this.value"><span class="scale-label">高</span><span class="slider-val" id="v-custom2">5</span>
+          <button class="custom-del-btn" onclick="removeCustomItem(2)" title="削除">✕</button>
+        </div>
+      </div>
+      <div style="margin-top:4px">
+        <button id="add-custom-btn" onclick="addCustomItem()" style="font-size:var(--fs-xs);color:var(--accent);background:transparent;border:.5px dashed var(--accent);border-radius:var(--r-md);padding:6px 14px;cursor:pointer;display:flex;align-items:center;gap:4px"><span style="font-size:16px;line-height:1">＋</span>項目を追加</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">睡眠</div>
+      <div class="sleep-row">
+        <span class="sleep-label">昨夜の睡眠時間</span>
+        <div class="sleep-ctrl"><button onclick="adjSleep(-0.5)">−</button><button onclick="adjSleep(+0.5)">＋</button></div>
+        <span class="sleep-val" id="sleep-val">7.0h</span>
+      </div>
+      <div class="card-label" style="margin-bottom:8px">睡眠の状態（複数選択可）</div>
+      <div class="tag-row" id="sleep-tags">
+        <button class="tag" onclick="toggleTag(this)">すっきり</button>
+        <button class="tag" onclick="toggleTag(this)">寝不足</button>
+        <button class="tag" onclick="toggleTag(this)">中途覚醒</button>
+        <button class="tag" onclick="toggleTag(this)">過眠</button>
+        <button class="tag" onclick="toggleTag(this)">寝落ち</button>
+        <button class="tag" onclick="toggleTag(this)">早朝覚醒</button>
+        <button class="tag" onclick="toggleTag(this)">入眠困難</button>
+        <button class="tag" onclick="toggleTag(this)">悪夢</button>
+        <button class="tag" id="tag-sleep-other" onclick="toggleTagOther(this,'sleep-other-input')">その他</button>
+      </div>
+      <input type="text" id="sleep-other-input" placeholder="自由記入" style="display:none;width:100%;margin-top:8px;font-size:var(--fs-sm);border:.5px solid var(--bdr);border-radius:var(--r-md);padding:6px 10px;background:transparent;color:var(--txt)">
+    </div>
+    <div class="card">
+      <div class="card-label">身体データ</div>
+      <div class="input-row"><span class="input-label">体重</span><input class="num-input" type="number" id="inp-weight" step="0.1" placeholder="--"><span class="unit">kg</span></div>
+      <div class="input-row"><span class="input-label">体脂肪率</span><input class="num-input" type="number" id="inp-fat" step="0.1" placeholder="--"><span class="unit">%</span></div>
+      <div class="input-row" style="margin-bottom:0"><span class="input-label">歩数</span><input class="num-input" type="number" id="inp-steps" step="1" placeholder="--"><span class="unit">歩</span></div>
+    </div>
+    <div class="card">
+      <div class="card-label">こころの気になること</div>
+      <div class="tag-row" id="concern-tags">
+        <button class="tag" onclick="toggleTag(this)">食欲なし</button>
+        <button class="tag" onclick="toggleTag(this)">食欲増加</button>
+        <button class="tag" onclick="toggleTag(this)">集中できない</button>
+        <button class="tag" onclick="toggleTag(this)">話したい</button>
+        <button class="tag" onclick="toggleTag(this)">引きこもりたい</button>
+        <button class="tag" onclick="toggleTag(this)">イライラ</button>
+        <button class="tag" onclick="toggleTag(this)">落ち込み</button>
+        <button class="tag" id="tag-kokoro-other" onclick="toggleTagOther(this,'kokoro-other-input')">その他</button>
+      </div>
+      <input type="text" id="kokoro-other-input" placeholder="自由記入" style="display:none;width:100%;margin-top:8px;font-size:var(--fs-sm);border:.5px solid var(--bdr);border-radius:var(--r-md);padding:6px 10px;background:transparent;color:var(--txt)">
+    </div>
+    <div class="card">
+      <div class="card-label">からだの気になること</div>
+      <div class="tag-row" id="body-concern-tags">
+        <button class="tag" onclick="toggleTag(this)">頭痛</button>
+        <button class="tag" onclick="toggleTag(this)">腹痛</button>
+        <button class="tag" onclick="toggleTag(this)">肩こり</button>
+        <button class="tag" onclick="toggleTag(this)">眼精疲労</button>
+        <button class="tag" id="tag-karada-other" onclick="toggleTagOther(this,'karada-other-input')">その他</button>
+      </div>
+      <input type="text" id="karada-other-input" placeholder="自由記入" style="display:none;width:100%;margin-top:8px;font-size:var(--fs-sm);border:.5px solid var(--bdr);border-radius:var(--r-md);padding:6px 10px;background:transparent;color:var(--txt)">
+    </div>
+    <div class="card">
+      <div class="card-label">今日あったこと</div>
+      <div class="tag-row" id="event-tags">
+        <button class="tag" onclick="toggleTag(this)">通院</button>
+        <button class="tag" onclick="toggleTag(this)">生理</button>
+        <button class="tag" onclick="toggleTag(this)">お風呂</button>
+        <button class="tag" onclick="toggleTag(this)">トラブル</button>
+        <button class="tag" onclick="toggleTag(this)">お昼寝</button>
+        <button class="tag" onclick="toggleTag(this)">お出かけ</button>
+        <button class="tag" onclick="toggleTag(this)">運動</button>
+        <button class="tag" onclick="toggleTag(this)">間食</button>
+        <button class="tag" onclick="toggleTag(this)">アルコール多飲</button>
+        <button class="tag" onclick="toggleTag(this)">精力増進</button>
+        <button class="tag" onclick="toggleTag(this)">散財</button>
+        <button class="tag" onclick="toggleTag(this)">引きこもり</button>
+        <button class="tag" id="tag-event-other" onclick="toggleTagOther(this,'event-other-input')">その他</button>
+      </div>
+      <input type="text" id="event-other-input" placeholder="自由記入" style="display:none;width:100%;margin-top:8px;font-size:var(--fs-sm);border:.5px solid var(--bdr);border-radius:var(--r-md);padding:6px 10px;background:transparent;color:var(--txt)">
+    </div>
+    <div class="card">
+      <div class="card-label">日記</div>
+      <textarea id="note" placeholder="今日あった「ちょっと良いこと」を3つだけ、書き残してみませんか？ -3 good things-"></textarea>
+    </div>
+    <button class="save-btn" id="save-btn" onclick="saveRecord()">記録を保存</button>
+  </div>
+
+  <!-- 服薬 -->
+  <div id="tab-meds" class="section">
+    <div class="date-bar" id="med-date-bar"></div>
+
+    <!-- スロット選択 → 有無 → 薬追加 -->
+    <!-- 服薬管理（折りたたみ） -->
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div class="card-label" style="margin-bottom:0">服薬管理</div>
+        <button id="med-reg-toggle-btn" onclick="toggleMedRegPanel()" style="background:transparent;border:none;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);display:flex;align-items:center;gap:4px">
+          <span id="med-reg-toggle-icon">＋ 追加する</span>
+        </button>
+      </div>
+      <div id="med-reg-panel" style="display:none;margin-top:14px">
+        <!-- 定期薬タブ -->
+        <div style="display:flex;gap:6px;margin-bottom:10px">
+          <button class="slot-tab-btn active" id="reg-tab-regular" onclick="selectRegTab('regular')">定期薬</button>
+          <button class="slot-tab-btn" id="reg-tab-prn" onclick="selectRegTab('prn')">頓服・臨時</button>
+        </div>
+
+        <!-- 定期薬パネル -->
+        <div id="reg-panel-regular">
+          <div style="display:flex;gap:6px;margin-bottom:14px" id="slot-btns">
+            <button class="slot-tab-btn active" id="stb-morning" onclick="selectSlotTab('morning')">朝</button>
+            <button class="slot-tab-btn" id="stb-noon" onclick="selectSlotTab('noon')">昼</button>
+            <button class="slot-tab-btn" id="stb-evening" onclick="selectSlotTab('evening')">晩</button>
+            <button class="slot-tab-btn" id="stb-bedtime" onclick="selectSlotTab('bedtime')">就寝前</button>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:6px" id="slot-use-label">朝の服薬</div>
+            <div class="med-use-row" id="slot-use-row">
+              <button class="med-use-btn active" id="slot-yes" onclick="setSlotUse(true)">あり</button>
+              <button class="med-use-btn" id="slot-no" onclick="setSlotUse(false)">なし（スキップ）</button>
+            </div>
+          </div>
+          <div id="med-add-form">
+            <div class="med-add-block">
+              <label>薬の名前</label><input type="text" id="add-name" placeholder="例：バルプロ酸">
+              <label>量（mg）</label><input type="number" id="add-mg" placeholder="例：200">
+              <button class="med-add-btn" onclick="addMed()">追加する</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 頓服・臨時パネル -->
+        <div id="reg-panel-prn" style="display:none">
+          <p style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:12px">頓服・痛み止め・眠剤など。チェック制で記録できます。服薬率の計算には含まれません。</p>
+          <div id="prn-registered-list" style="margin-bottom:10px"></div>
+          <div class="med-add-block">
+            <label>薬の名前</label><input type="text" id="prn-reg-name" placeholder="例：ロキソニン、リスペリドン">
+            <label>量（mg）・メモ</label><input type="text" id="prn-reg-memo" placeholder="例：50mg">
+            <button class="med-add-btn" onclick="addPrnReg()" style="background:var(--bg3);color:var(--txt);border:.5px solid var(--bdr2)">登録する</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="med-check-card" class="card">
+      <div class="card-label" id="med-check-label" style="font-size:var(--fs-base)">服薬チェック</div>
+      <div id="med-today"><p style="font-size:var(--fs-sm);color:var(--txt2);text-align:center;padding:14px 0">薬を追加してください</p></div>
+    </div>
+
+    <button class="save-btn" id="med-save-btn" onclick="saveMedRecord()">服薬記録を保存</button>
+
+    <div class="card" style="margin-top:12px">
+      <div class="card-label">今日の服薬率</div>
+      <div id="adh-content"><p style="color:var(--txt2);text-align:center;padding:10px 0">データがありません</p></div>
+    </div>
+  </div>
+
+  <!-- 履歴 -->
+  <div id="tab-history" class="section">
+    <div class="card">
+      <div class="card-label">表示期間</div>
+      <select class="period-select" id="hist-period" onchange="onHistPeriodChange()">
+        <option value="sample">📊 サンプルデータ（5年分）</option>
+        <option value="0">全期間（自分のデータ）</option>
+        <option value="1825">5年</option><option value="365">1年</option>
+        <option value="180">6ヶ月</option><option value="90">3ヶ月</option>
+        <option value="30">1ヶ月</option><option value="7">1週間</option>
+      </select>
+      <p class="sample-note" id="sample-note">※ イメージ用のサンプルデータです。毎日記録するとこのようなグラフが作られます。</p>
+      <div class="stat-grid" id="hist-stats"></div>
+    </div>
+    <div class="card">
+      <div style="font-size:11px;color:var(--txt2);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">グラフ項目を選ぶ</div>
+      <div class="check-grid" id="chart-checks"></div>
+      <div class="legend" id="chart-legend"></div>
+      <div class="chart-wrap" style="height:260px"><canvas id="chart-main"></canvas></div>
+    </div>
+    <div class="card">
+      <div style="font-size:11px;color:var(--txt2);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">データのインポート</div>
+      <p style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:10px">ExcelやCSVで管理していた過去データを取り込めます。</p>
+      <div class="import-area" onclick="document.getElementById('import-file').click()">
+        <p style="font-size:var(--fs-xs)">CSVファイルをタップして選択</p>
+        <button class="import-btn" onclick="event.stopPropagation()">ファイルを選択</button>
+      </div>
+      <input type="file" id="import-file" accept=".csv" style="display:none" onchange="importCSV(event)">
+      <div id="import-result" style="margin-top:8px;font-size:var(--fs-xs);color:var(--txt2)"></div>
+      <button style="margin-top:10px;width:100%;padding:8px;font-size:var(--fs-xs);font-weight:500;border:.5px solid var(--bdr2);border-radius:var(--r-md);background:transparent;color:var(--txt);cursor:pointer;" onclick="downloadTemplate()">CSVテンプレートをダウンロード</button>
+    </div>
+    <div class="card">
+      <div style="font-size:11px;color:var(--txt2);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">エクスポート</div>
+      <p style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:10px">上の「表示期間」で選択した期間のデータを出力します</p>
+      <div id="export-period-label" style="font-size:var(--fs-xs);color:var(--accent);font-weight:600;margin-bottom:10px;padding:6px 10px;background:var(--bg3);border-radius:var(--r-md)"></div>
+      <div class="export-row" style="margin-bottom:8px">
+        <button class="export-btn" onclick="exportCSV()">CSV</button>
+        <button class="export-btn" onclick="exportPDF()">PDF（表）</button>
+      </div>
+      <button class="export-btn" style="width:100%" onclick="exportChartPDF()">📊 グラフをPDF出力（選択中の項目）</button>
+    </div>
+    <div class="card">
+      <div style="font-size:11px;color:var(--txt2);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">バックアップ・復元</div>
+      <p style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:10px">記録・服薬リスト・設定など全データを1つのファイルに書き出せます。機種変更の際は、新しい端末でこのファイルを読み込むとそのまま引き継げます。</p>
+      <button style="width:100%;padding:10px;font-size:var(--fs-sm);font-weight:600;border:none;border-radius:var(--r-md);background:var(--accent);color:#fff;cursor:pointer;margin-bottom:8px" onclick="exportBackup()">バックアップを書き出す</button>
+      <button style="width:100%;padding:10px;font-size:var(--fs-sm);font-weight:500;border:.5px solid var(--bdr2);border-radius:var(--r-md);background:transparent;color:var(--txt);cursor:pointer" onclick="document.getElementById('backup-file').click()">バックアップから復元する</button>
+      <input type="file" id="backup-file" accept="application/json,.json" style="display:none" onchange="importBackup(event)">
+      <p style="font-size:var(--fs-xs);color:var(--txt3);margin-top:8px">復元すると、今この端末にあるデータは上書きされます。</p>
+    </div>
+  </div>
+
+  <!-- 記事タブ -->
+  <div id="tab-articles" class="section" style="padding:4px 12px 12px">
+    <!-- 記事一覧（常に表示） -->
+    <div id="article-list-view">
+      <p style="font-size:var(--fs-xs);color:var(--txt3);margin-bottom:10px">なぎろぐの使い方・体調管理のヒントをまとめました</p>
+      <a class="article-card" style="text-decoration:none" href="articles/bipolar-basics.html">
+        <span class="article-tag">基礎知識</span>
+        <span class="article-title">双極症（双極性障害）とは</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/mood-tracking.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">気分の記録が役立つ理由――セルフモニタリングの意義</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/doctor-talk.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">通院時に体調をうまく伝えるコツ</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/medication-adherence.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">服薬を継続するための工夫――服薬アドヒアランスとは</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/weather-mood.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">気圧・気温と気分の関係――気象病・天気痛について</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/exercise-bipolar.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">運動と双極症――歩くことが気分に与える影響を研究から見る</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/gut-health-bipolar.html">
+        <span class="article-tag">コラム</span>
+        <span class="article-title">腸内環境と双極症――食生活でできることを研究から見る</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <div class="article-card" onclick="openArticleInline('about')">
+        <span class="article-tag">紹介</span>
+        <span class="article-title">なぎろぐとは――体調を、穏やかな凪に。</span>
+        <span class="article-arrow">›</span>
+      </div>
+      <div class="article-card" onclick="openArticleInline('howto')">
+        <span class="article-tag">使い方</span>
+        <span class="article-title">なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</span>
+        <span class="article-arrow">›</span>
+      </div>
+      <div class="article-card" onclick="openArticleInline('pwa')">
+        <span class="article-tag">使い方</span>
+        <span class="article-title">ホーム画面に追加する方法――iPhone・Android対応</span>
+        <span class="article-arrow">›</span>
+      </div>
+      <a class="article-card" style="text-decoration:none" href="articles/backup.html">
+        <span class="article-tag">使い方</span>
+        <span class="article-title">機種変更時のデータの引き継ぎ方――バックアップ・復元機能の使い方</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <a class="article-card" style="text-decoration:none" href="articles/ai-comment.html">
+        <span class="article-tag">使い方</span>
+        <span class="article-title">「一言コメント」機能について――仕組みとプライバシーの考え方</span>
+        <span class="article-arrow">›</span>
+      </a>
+      <div class="article-card" onclick="openArticleInline('story')">
+        <span class="article-tag">制作者より</span>
+        <span class="article-title">なぎろぐをつくった理由――双極症と、働き続けること</span>
+        <span class="article-arrow">›</span>
+      </div>
+      <div class="article-card" onclick="openArticleInline('making')">
+        <span class="article-tag">制作秘話</span>
+        <span class="article-title">なぎろぐはこうして生まれた――Xでヒアリング、AIと対話、主治医に確認</span>
+        <span class="article-arrow">›</span>
+      </div>
+    </div>
+    <!-- PC版：記事本文インライン表示エリア -->
+    <div id="article-inline-view" style="display:none">
+      <button onclick="closeArticleInline()" style="display:flex;align-items:center;gap:6px;background:transparent;border:none;font-size:var(--fs-xs);color:var(--accent);cursor:pointer;padding:0 0 12px;font-weight:600">
+        ‹ 記事一覧に戻る
+      </button>
+      <div id="article-inline-body" class="article-body" style="padding:0"></div>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- 記事モーダル：なぎろぐとは -->
+<div class="article-modal-overlay" id="article-about" onclick="if(event.target===this)closeArticle('about')">
+  <div class="article-modal-box">
+    <div class="article-modal-header">
+      <span style="font-size:var(--fs-base);font-weight:700">なぎろぐとは</span>
+      <button class="article-modal-close" onclick="closeArticle('about')">×</button>
+    </div>
+    <div class="article-body">
+      <p><strong>なぎろぐ</strong>は、メンタルヘルスの課題を抱える方が、毎日の体調を無理なく・続けやすく記録できる、無料の体調管理アプリです。</p>
+      <p>「凪（なぎ）」とは、風も波もない穏やかな海の状態のこと。気分の波が激しい日々の中でも、少しずつ自分の状態を把握し、穏やかな凪に近づいていく――そんな願いを込めました。</p>
+
+      <h2>こんな方におすすめ</h2>
+      <p>気分の波が気になる方、服薬管理を続けたい方、通院時に医師へ状態をうまく伝えられない方、自分の体調のパターンを知りたい方に特におすすめです。双極症・うつ病・不安障害など、さまざまなメンタルヘルスの課題を抱える方にご活用いただけます。</p>
+
+      <h2>記録できること</h2>
+      <p>気分・活動量・リカバリーを0〜10の10段階スライダーで毎日記録できます。スライダーの項目名は自分の言葉に変更でき、オリジナル項目を2つまで追加することもできます。</p>
+      <p>睡眠時間や睡眠の状態（すっきり・寝不足・中途覚醒・早朝覚醒・悪夢など）もタグで手軽に記録。体重・体脂肪率・歩数といった身体データ、気温・気圧（その日の12時のデータ）も記録できます。</p>
+      <p>服薬は朝・昼・晩・就寝前の時間帯ごとに薬を登録し、毎日チェックすることで服薬率を自動集計します。「今日あったこと」「気になること」はタグで選べ、日記として自由に文章も書き残せます。</p>
+
+      <h2>グラフで振り返る</h2>
+      <p>記録したデータは折れ線グラフで一覧表示できます。気分・活動量・睡眠・服薬率・気圧など複数の項目を重ねて表示でき、体調の波とできごとの関係を視覚的に把握できます。表示期間は1週間から5年まで選択可能です。</p>
+      <p>通院時に医師へ状態を伝える際の参考資料として、グラフや記録表をPDFで印刷することもできます。</p>
+
+      <h2>データはすべて端末内に保存</h2>
+      <p>入力したデータはすべてお使いのスマートフォン・タブレットのブラウザ内（ローカルストレージ）に保存されます。記録データの外部サーバーへの送信は一切なく、開発者を含む第三者がデータにアクセスすることはできません。なお、サイトの利用状況を把握するためのアクセス解析（Googleアナリティクス）を利用していますが、記録データが送られることはありません。詳しくは<a href="privacy.html" style="color:var(--accent)">プライバシーポリシー</a>をご覧ください。プライバシーを守りながら安心してご利用いただけます。</p>
+
+      <h2>完全無料・インターネット不要</h2>
+      <p>なぎろぐは完全無料でご利用いただけます。一度読み込んだ後はインターネット接続がなくても動作します（PWA対応）。ホーム画面に追加することで、アプリのように使うことができます。</p>
+      <div class="note">本アプリは医療行為・診断・治療の代替を目的とするものではありません。体調に不安がある場合は、必ず医療専門家にご相談ください。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 記事モーダル：使い方 -->
+<div class="article-modal-overlay" id="article-howto" onclick="if(event.target===this)closeArticle('howto')">
+  <div class="article-modal-box">
+    <div class="article-modal-header">
+      <span style="font-size:var(--fs-base);font-weight:700">使い方</span>
+      <button class="article-modal-close" onclick="closeArticle('howto')">×</button>
+    </div>
+    <div class="article-body">
+      <p>画面下部に<strong>「今日」「服薬」「履歴」「記事」</strong>の4つのタブがあります。毎日の記録は「今日」タブ、薬の管理は「服薬」タブ、過去の記録の確認は「履歴」タブから行います。</p>
+
+      <h2>今日タブ｜毎日の体調を記録する</h2>
+      <h3>日付を選ぶ</h3>
+      <p>画面上部のバーで<strong>今日・昨日・2日前・3日前</strong>を選べます。書き忘れた日も3日以内なら遡って入力できます。</p>
+
+      <h3>気分・活動量・リカバリーを入力する</h3>
+      <p>0〜10のスライダーで今の状態を入力します。項目名はタップして自分の言葉に変更できます（「やる気」「ポジティブ感」など）。オリジナル項目を2つまで追加することもできます。</p>
+
+      <h3>睡眠を記録する</h3>
+      <p>「＋」「−」ボタンで昨夜の睡眠時間を0.5時間単位で入力します。状態（すっきり・寝不足・中途覚醒・早朝覚醒・悪夢など）はタグで複数選択できます。</p>
+
+      <h3>身体データ・タグ・日記</h3>
+      <p>体重・歩数などの身体データ、「今日あったこと」「気になること」のタグ、自由記述の日記を入力できます。「記録を保存」ボタンをタップして完了です。</p>
+
+      <h2>服薬タブ｜服薬を管理する</h2>
+      <h3>薬を登録する</h3>
+      <p>「朝・昼・晩・就寝前」のボタンで時間帯を選び、薬の名前と量（mg）を登録します。</p>
+
+      <h3>毎日チェックする</h3>
+      <p>飲んだ薬にチェックを入れます。飲まない時間帯は「なし（スキップ）」に設定すると、服薬率の計算から除外されます。有効な時間帯だけで均等に計算されるため、例えば晩だけ服薬している方は晩の服薬状況で100%として扱われます。</p>
+      <p>後から薬が増えても、過去の服薬率は変わりません。その日の薬リストで計算するスナップショット方式を採用しています。「服薬記録を保存」ボタンで確定します。こちらも3日前まで遡って入力できます。</p>
+
+      <h2>履歴タブ｜グラフで振り返る</h2>
+      <h3>表示期間とグラフ項目を選ぶ</h3>
+      <p>1週間・1ヶ月・3ヶ月・6ヶ月・1年・5年・全期間から選べます。気分・活動量・睡眠・服薬率・気圧・気温など、表示する項目をチェックボックスで選択します。複数重ねて表示することで、「気圧が下がると気分も落ちる」といったパターンが見えてくることがあります。</p>
+
+      <h3>エクスポートする</h3>
+      <p>表示期間と同じ範囲のデータを出力できます。CSV（Excel用）・PDF（表形式）・PDF（グラフ）の3種類から選べます。通院時の参考資料としてもご活用ください。</p>
+
+      <h2>カレンダーで確認する</h2>
+      <p>右上のカレンダーアイコンをタップすると月表示のカレンダーが開きます。記録がある日には緑の丸が表示され、タップするとその日の記録の詳細（気分・睡眠・服薬・日記など）を確認できます。年・月のボタンで素早く移動できます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 記事モーダル：ホーム画面追加 -->
+<div class="article-modal-overlay" id="article-pwa" onclick="if(event.target===this)closeArticle('pwa')">
+  <div class="article-modal-box">
+    <div class="article-modal-header">
+      <span style="font-size:var(--fs-base);font-weight:700">ホーム画面に追加する方法</span>
+      <button class="article-modal-close" onclick="closeArticle('pwa')">×</button>
+    </div>
+    <div class="article-body">
+      <p>なぎろぐはブラウザで動くWebアプリですが、ホーム画面に追加することでまるでアプリのように起動できます。インストール不要・容量をほぼ使わない・アップデートも自動。しかもオフラインでも動きます。</p>
+
+      <h2>iPhoneの場合（Safari使用）</h2>
+      <div class="note">iPhoneはSafariからでないと追加できません。ChromeやLINEブラウザからは追加できないのでご注意ください。</div>
+
+      <h3>ステップ1｜Safariでなぎろぐを開く</h3>
+      <p>Safariを起動して <strong>nagilog.net</strong> にアクセスします。ページが完全に読み込まれるまで待ちましょう。</p>
+
+      <h3>ステップ2｜共有ボタンをタップ</h3>
+      <p>画面の一番下の中央にある「共有ボタン」をタップします。四角い枠の上に上向き矢印が出ているアイコンです。タップすると下から大きなメニューが出てきます。</p>
+
+      <h3>ステップ3｜「ホーム画面に追加」をタップ</h3>
+      <p>メニューをスクロールしていくと、「ホーム画面に追加」という項目があります。家のような形のアイコンが隣についています。</p>
+
+      <h3>ステップ4｜「追加」をタップ</h3>
+      <p>確認画面が出ます。名前（「なぎろぐ」と表示されているはずです）を確認して右上の「追加」をタップして完了です。</p>
+
+      <h2>Androidの場合（Chrome使用）</h2>
+
+      <h3>ステップ1｜Chromeでなぎろぐを開く</h3>
+      <p>Chromeを起動して <strong>nagilog.net</strong> にアクセスします。</p>
+
+      <h3>ステップ2｜メニューを開く</h3>
+      <p>画面右上の「︙（縦に3つの点）」をタップしてメニューを開きます。</p>
+
+      <h3>ステップ3｜「ホーム画面に追加」をタップ</h3>
+      <p>メニューの中に「ホーム画面に追加」または「アプリをインストール」という項目があります。タップして確認ダイアログで「追加」をタップすれば完了です。</p>
+
+      <h2>よくある質問</h2>
+      <h3>オフラインでも使えますか？</h3>
+      <p>はい、使えます。一度読み込んでしまえば、インターネット接続がなくても動作します。記録の入力・保存はオフラインでも可能です。ただし、気温・気圧データの取得にはインターネット接続が必要です。</p>
+
+      <h3>削除したいときはどうすればいいですか？</h3>
+      <p>通常のアプリと同じように削除できます。アイコンを長押しして削除してください。アイコンを削除してもブラウザに保存された記録データは消えません。データも完全に削除したい場合は、ブラウザのサイトデータをあわせて削除してください。</p>
+
+      <h3>アプリのアップデートはどうすればいいですか？</h3>
+      <p>自動で更新されます。なぎろぐが更新された際は、次回起動時に画面上部に「アプリが更新されました」というバナーが表示されます。「今すぐ反映」をタップするだけで最新版になります。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 記事モーダル：制作者より -->
+<div class="article-modal-overlay" id="article-story" onclick="if(event.target===this)closeArticle('story')">
+  <div class="article-modal-box">
+    <div class="article-modal-header">
+      <span style="font-size:var(--fs-base);font-weight:700">なぎろぐをつくった理由</span>
+      <button class="article-modal-close" onclick="closeArticle('story')">×</button>
+    </div>
+    <div class="article-body">
+      <p>突然ですが、少しだけ自分のことを話させてください。</p>
+
+      <h2>双極症があります</h2>
+      <p>わたしは双極症（双極性障害）があります。今は一般企業でフルタイムで働いていますが、過去には激しい躁状態と激うつを繰り返していた時期がありました。就労支援に通っていた時期もあります。</p>
+      <p>躁のときは眠れなくても平気で、頭が高速回転し続けて、自分でも止められない。かと思えば激うつに落ちて、布団から出られない日々が続く。その繰り返し。「この波は一生続くのか」と思ったこともありました。</p>
+
+      <h2>今は一般就労しています</h2>
+      <p>今は波とうまく付き合いながら、なんとか続けています。波がないわけではありません。今でも気分が沈む時期はあるし、調子に乗りすぎてしまうこともある。それでも続けられているのは、自分の状態を把握することを諦めていないからだと思っています。</p>
+      <p><strong>体調管理をしっかりして、働き続けたい。</strong>それがいまの目標です。</p>
+
+      <h2>なぎろぐをつくったきっかけ</h2>
+      <p>「自分が使いたい体調管理アプリがないな」という、ごく個人的な不満からはじまりました。通院のたびに「最近どうですか？」にうまく答えられないのが長年のモヤモヤで。記録が続けられて、グラフで振り返れて、データが外に漏れない――そういうシンプルなものが欲しかった。</p>
+      <p>AIを使っていろいろ作るのが好きなので、なぎろぐもAIと一緒につくりました。</p>
+
+      <h2>「凪」という言葉</h2>
+      <p>「凪（なぎ）」とは、風も波もない静かで穏やかな海の状態のこと。双極症の波の中にいると、そういう状態がどれほど貴重か、身に染みてわかります。</p>
+      <p>同じような波の中にいる誰かに届いてほしいと思っています。一緒に、穏やかな凪を目指しましょう。</p>
+      <div class="note">本アプリは医療行為・診断・治療の代替を目的とするものではありません。体調に不安がある場合は、必ず医療専門家にご相談ください。</div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-about" onclick="closeModal('about')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header"><span class="modal-title">なぎろぐとは</span><button class="modal-close" onclick="closeModal('about')">×</button></div>
+    <div class="modal-body">
+      <p><strong style="color:var(--txt)">なぎろぐ</strong>は、メンタルヘルスの課題を抱える方が、毎日の体調を無理なく・続けやすく記録できる、無料の体調管理アプリです。</p>
+      <p>「凪（なぎ）」とは、風も波もない穏やかな海の状態のこと。なぎろぐは、気分の波が激しい日々の中でも、少しずつ自分の状態を把握し、穏やかな凪に近づいていくためのお手伝いをしたいという想いから生まれました。</p>
+
+      <h3>こんな方におすすめ</h3>
+      <p>気分の波が気になる方、服薬管理を続けたい方、通院時に医師へ状態をうまく伝えられない方、自分の体調のパターンを知りたい方に特におすすめです。双極症・うつ病・不安障害など、さまざまなメンタルヘルスの課題を抱える方にご活用いただけます。</p>
+
+      <h3>記録できること</h3>
+      <p>気分・活動量・リカバリーを0〜10の10段階スライダーで毎日記録できます。睡眠時間や睡眠の状態（すっきり・寝不足・中途覚醒など）もタグで手軽に記録。体重・体脂肪率・歩数といった身体データ、気温・気圧（その日の12時のデータ）も自動または選択式で記録できます。</p>
+      <p>服薬は朝・昼・晩・就寝前の時間帯ごとに薬を登録し、毎日チェックすることで服薬率を自動集計。「今日あったこと」「気になること」はタグで選べ、日記として自由に文章も書き残せます。</p>
+
+      <h3>グラフで振り返り</h3>
+      <p>記録したデータは折れ線グラフで一覧表示できます。気分・活動量・睡眠・服薬率・気圧など複数の項目を重ねて表示でき、体調の波とできごとの関係を視覚的に把握できます。表示期間は1週間から5年まで選択可能です。</p>
+
+      <h3>データはすべて端末内に保存</h3>
+      <p>入力したデータはすべてお使いのスマートフォン・タブレットのブラウザ内（ローカルストレージ）に保存されます。記録データの外部サーバーへの送信は一切なく、開発者を含む第三者がデータにアクセスすることはできません。なお、サイトの利用状況を把握するためのアクセス解析（Googleアナリティクス）を利用していますが、記録データが送られることはありません。詳しくは<a href="privacy.html" style="color:var(--accent)">プライバシーポリシー</a>をご覧ください。プライバシーを守りながら安心してご利用いただけます。</p>
+
+      <h3>エクスポート機能</h3>
+      <p>記録データはCSV形式（Excel対応）とPDF形式でエクスポートできます。通院時に記録を印刷して医師にお見せする際にもご活用ください。グラフそのものをPDFで出力することもできます。</p>
+
+      <h3>完全無料・インターネット不要</h3>
+      <p>なぎろぐは完全無料でご利用いただけます。一度読み込んだ後はインターネット接続がなくても動作します（PWA対応）。ホーム画面に追加することで、アプリのように使うことができます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 使い方 -->
+<div class="modal-overlay" id="modal-howto" onclick="closeModal('howto')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header"><span class="modal-title">使い方</span><button class="modal-close" onclick="closeModal('howto')">×</button></div>
+    <div class="modal-body">
+      <h3>はじめに</h3>
+      <p>画面下部に「今日」「服薬」「履歴」の3つのタブがあります。毎日の記録は「今日」タブ、薬の管理は「服薬」タブ、過去の記録の確認は「履歴」タブから行います。</p>
+
+      <h3>今日タブ｜毎日の体調を記録する</h3>
+      <p>画面上部の日付バー（今日・昨日・2日前・3日前）で入力したい日付を選びます。過去3日分まで遡って入力できます。</p>
+      <p><strong style="color:var(--txt)">気分・活動量・リカバリー</strong>のスライダーを左右に動かして、現在の状態を0〜10で入力します。スライダーの項目名はタップすると変更でき、自分に合った言葉に置き換えられます。最大2つのカスタム項目も追加できます。</p>
+      <p><strong style="color:var(--txt)">睡眠</strong>は「＋」「−」ボタンで0.5時間単位で入力します。睡眠の状態（すっきり・寝不足・中途覚醒・早朝覚醒・悪夢など）はタグをタップして複数選択できます。</p>
+      <p><strong style="color:var(--txt)">身体データ</strong>（体重・体脂肪率・歩数）は任意で入力します。</p>
+      <p><strong style="color:var(--txt)">こころ・からだの気になること</strong>や<strong style="color:var(--txt)">今日あったこと</strong>はタグで選択。「日記」欄には自由に文章を書けます。</p>
+      <p>入力が終わったら「記録を保存」ボタンをタップして完了です。</p>
+
+      <h3>服薬タブ｜服薬を管理する</h3>
+      <p>まず「朝・昼・晩・就寝前」のボタンで時間帯を選び、薬の名前と量（mg）を登録します。登録した薬は毎日チェックすることで服薬記録になります。</p>
+      <p>その日に飲まない時間帯は「なし（スキップ）」を選ぶと、服薬率の計算から除外されます。服薬率は有効な時間帯だけで均等に計算されるため、たとえば晩だけ服薬している場合は晩の服薬状況が100%として扱われます。</p>
+      <p>「服薬記録を保存」ボタンで確定します。こちらも過去3日分まで遡って入力できます。</p>
+      <p>後から薬が増えても、過去の服薬率は変わりません。各日に薬を追加した時点のリストで計算されます（スナップショット方式）。</p>
+
+      <h3>履歴タブ｜グラフで振り返る</h3>
+      <p>「表示期間」のプルダウンから1週間・1ヶ月・3ヶ月・6ヶ月・1年・5年・全期間を選べます。グラフに表示する項目（気分・睡眠・服薬率・気圧など）はチェックボックスで自由に選択できます。</p>
+      <p>データが多い場合は週平均で自動的に集計して表示されます。</p>
+      <p><strong style="color:var(--txt)">エクスポート</strong>は「CSV」「PDF（表）」「グラフをPDF出力」の3種類。表示期間と同じ範囲のデータが出力されます。</p>
+
+      <h3>右上のカレンダー</h3>
+      <p>右上のカレンダーアイコンをタップすると、月表示のカレンダーが開きます。記録がある日には緑の丸が表示されます。日付をタップするとその日の記録の詳細（気分・睡眠・服薬・日記など）を確認できます。年・月のボタンで素早く移動できます。</p>
+
+      <h3>ホーム画面に追加する</h3>
+      <p>iPhoneの場合はSafariの共有ボタン→「ホーム画面に追加」、Androidの場合はChromeのメニュー→「ホーム画面に追加」でアプリのようにご利用いただけます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 記事モーダル：制作秘話 -->
+<div class="article-modal-overlay" id="article-making" onclick="if(event.target===this)closeArticle('making')">
+  <div class="article-modal-box">
+    <div class="article-modal-header">
+      <span style="font-size:var(--fs-base);font-weight:700">なぎろぐはこうして生まれた</span>
+      <button class="article-modal-close" onclick="closeArticle('making')">×</button>
+    </div>
+    <div class="article-body">
+      <p>なぎろぐは、「自分が使いたいアプリをつくる」という動機から生まれました。でも、自分一人の感覚だけでつくったわけではありません。Xのフォロワーのみなさん、主治医の先生、そしてAIとの対話――たくさんの力を借りながら少しずつ形になっていきました。その過程を少しだけ紹介させてください。</p>
+
+      <h2>睡眠状態の選択肢はXでヒアリングして決めた</h2>
+      <p>「睡眠の状態」に何を入れるかは、自分だけでは決められませんでした。すっきり・寝不足・中途覚醒・悪夢……どんな言葉が実際に使われているのか、当事者の方の声を聞きたくてXでヒアリングしました。</p>
+      <p>返ってきた言葉を見て、「早朝覚醒」「入眠困難」「寝落ち」など、自分では思いつかなかった項目がいくつもありました。現在の選択肢はそのやりとりがベースになっています。</p>
+
+      <h2>データの見せ方もXで試した</h2>
+      <p>グラフの表示方法や、エクスポートしたデータの見た目についても、実際に画面のスクリーンショットをXに投稿して意見をもらいました。「この項目が見たい」「このレイアウトは読みにくい」といったフィードバックが、今の形に繋がっています。</p>
+
+      <h2>アイコンは8案つくってX投票で決めた</h2>
+      <p>アプリのアイコンは最終的に今の「N」のロゴになりましたが、実はその前に8つのデザイン案をつくりました。Xで投票を実施して、フォロワーのみなさんに選んでもらいました。投票に参加してくださった方、本当にありがとうございました。</p>
+
+      <h2>主治医にも確認してもらった</h2>
+      <p>記録する項目については、主治医にも確認してもらいました。気分・活動量・睡眠・服薬……医療の観点から見て「これは記録しておくといい」という項目を一緒に検討しました。</p>
+      <p>その雑談の中で、「うつ病やADHDの方にも使えそうだね」という言葉をもらいました。双極症だけでなく、さまざまなメンタルヘルスの課題を抱える方にも使っていただけるよう意識するきっかけになりました。</p>
+
+      <h2>これからも育てていきたい</h2>
+      <p>なぎろぐはまだ発展途上です。「こんな機能があったらいい」「ここが使いにくい」という声があれば、ぜひXで教えてください。みなさんの声がそのまま次のアップデートに繋がります。</p>
+      <div class="note">本アプリは医療行為・診断・治療の代替を目的とするものではありません。体調に不安がある場合は、必ず医療専門家にご相談ください。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 免責事項 -->
+<div class="modal-overlay" id="modal-disclaimer" onclick="closeModal('disclaimer')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header"><span class="modal-title">免責事項</span><button class="modal-close" onclick="closeModal('disclaimer')">×</button></div>
+    <div class="modal-body">
+      <p>本アプリ「なぎろぐ」は、日々の気分・体調・服薬状況を自己記録するためのツールです。医療行為・診断・治療の代替を目的とするものではありません。</p>
+      <p>記録した内容は医療上のアドバイスではなく、体調の変化を自己管理する参考情報としてご利用ください。体調に不安がある場合は、必ず医療専門家にご相談ください。</p>
+      <p>本アプリの利用により生じたいかなる損害についても、開発者は責任を負いません。</p>
+      <p style="margin-top:1rem;font-size:11px;color:var(--txt3)">制定日：2026年4月6日</p>
+    </div>
+  </div>
+</div>
+<!-- プライバシーポリシー -->
+<div class="modal-overlay" id="modal-privacy" onclick="closeModal('privacy')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header"><span class="modal-title">プライバシーポリシー</span><button class="modal-close" onclick="closeModal('privacy')">×</button></div>
+    <div class="modal-body">
+      <h3>収集する情報</h3>
+      <p>本アプリに入力された気分・体調・服薬・身体データ・日記などの記録情報は、すべてお使いの端末内（ブラウザのローカルストレージ）に保存されます。外部サーバーに送信・共有されることはありません。</p>
+      <h3>アクセス解析</h3>
+      <p>サイトの利用状況を把握するため、Googleアナリティクスを利用しています。取得するのは閲覧ページやおおよその地域、端末の種類などの統計情報で、上記の記録データが送信されることはありません。詳しくは<a href="privacy.html" style="color:var(--accent)">プライバシーポリシー</a>をご覧ください。</p>
+      <h3>位置情報・個人情報</h3>
+      <p>本アプリは氏名・住所・メールアドレスなどの個人を特定できる情報を収集しません。</p>
+      <h3>データの管理</h3>
+      <p>記録データはお使いの端末にのみ保存されます。ブラウザのデータ消去により、すべてのデータが削除されます。開発者はいかなる記録データにもアクセスできません。</p>
+      <p style="margin-top:1rem;font-size:11px;color:var(--txt3)">制定日：2026年4月6日　最終更新：2026年9月21日</p>
+    </div>
+  </div>
+</div>
+
+<div class="cal-btn" onclick="openCal()">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="2" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="2" x2="6" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="2" x2="14" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="5.5" y="10.5" width="3" height="2.5" rx="0.5" fill="currentColor"/><rect x="8.5" y="10.5" width="3" height="2.5" rx="0.5" fill="currentColor"/><rect x="11.5" y="10.5" width="3" height="2.5" rx="0.5" fill="currentColor"/><rect x="5.5" y="14" width="3" height="2.5" rx="0.5" fill="currentColor"/><rect x="8.5" y="14" width="3" height="2.5" rx="0.5" fill="currentColor"/></svg>
+</div>
+<div class="cal-modal" id="cal-modal" onclick="if(event.target===this)closeCal()">
+  <div class="cal-box">
+    <div class="cal-header"><span class="cal-title">記録カレンダー</span><button class="cal-close" onclick="closeCal()">×</button></div>
+    <div class="cal-nav">
+      <button class="cal-nav-btn" onclick="calMove(-1)">‹</button>
+      <div class="cal-year-month">
+        <button class="cal-ym-btn" id="cal-year-btn" onclick="toggleCalPicker('year')"></button>
+        <button class="cal-ym-btn" id="cal-month-btn" onclick="toggleCalPicker('month')"></button>
+      </div>
+      <button class="cal-nav-btn" onclick="calMove(1)">›</button>
+    </div>
+    <div id="cal-picker-area"></div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div id="cal-detail"></div>
+  </div>
+</div>
+<!-- 都道府県選択モーダル -->
+<div class="modal-overlay" id="modal-pref" onclick="if(event.target===this)closePrefModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span class="modal-title">都道府県を選択</span>
+      <button class="modal-close" onclick="closePrefModal()">×</button>
+    </div>
+    <div style="padding:12px 14px">
+      <p style="font-size:var(--fs-xs);color:var(--txt2);margin-bottom:12px">選択した都道府県の県庁所在地の気温・気圧（12:00時点）を取得します。</p>
+      <div id="pref-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-height:60vh;overflow-y:auto;"></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<div id="ai-comment-popup" class="ai-comment-popup">
+  <div class="ai-comment-popup-inner">
+    <div class="ai-comment-popup-ic">🌱</div>
+    <p id="ai-comment-popup-text" class="ai-comment-popup-text"></p>
+  </div>
+</div>
+
+<script>
+// Chart.js は「履歴」タブを開いた時・PDF出力の時だけ読み込む（起動時にブロックしない）。
+// 起動直後は使わないので、ここで読み込んでしまうとアプリを開くたびに
+// ライブラリのダウンロード・実行が終わるまで表示が遅れてしまう。
+let _chartJsLoading=null;
+function ensureChartJs(){
+  if(window.Chart)return Promise.resolve();
+  if(_chartJsLoading)return _chartJsLoading;
+  _chartJsLoading=new Promise((resolve,reject)=>{
+    const s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js';
+    s.onload=()=>resolve();
+    s.onerror=()=>{_chartJsLoading=null;reject(new Error('Chart.js読み込み失敗'));};
+    document.head.appendChild(s);
+  });
+  return _chartJsLoading;
+}
+function ld(k,d){try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch{return d;}}
+function sd(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+let records=ld('tn_records',[]);
+let meds=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+let medUse=ld('tn_med_use',true);
+let moodLabels=ld('tn_mood_labels',{mood:'気分',energy:'活動量',recovery:'リカバリー'});
+let customLabels=ld('tn_custom_labels',{custom1:'',custom2:''});
+
+const dayN=['日','月','火','水','木','金','土'];
+// todayStr は毎回動的に取得する（定数にしない）
+// 日本時間（JST=UTC+9）で今日の日付を取得
+function getTodayStr(){
+  const now=new Date();
+  const jst=new Date(now.getTime()+9*60*60*1000);
+  return jst.toISOString().split('T')[0];
+}
+// 任意のDateオブジェクトをJST日付文字列に変換
+function toJSTDateStr(d){
+  const jst=new Date(d.getTime()+9*60*60*1000);
+  return jst.toISOString().split('T')[0];
+}
+let _todayStr=getTodayStr(); // 起動時の今日
+Object.defineProperty(window,'todayStr',{get:()=>getTodayStr()}); // 常に現在の日付を返す
+let currentInputDate=getTodayStr();
+let sleepHours=7.0;
+let weather=null;
+
+(()=>{const d=new Date();document.getElementById('today-str').textContent=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayN[d.getDay()]}）`;})();
+
+// FONT SIZE
+function setFontSize(sz){
+  document.body.classList.remove('fs-small','fs-large');
+  if(sz==='small')document.body.classList.add('fs-small');
+  if(sz==='large')document.body.classList.add('fs-large');
+  // IDが重複する可能性があるためquerySelectorAllで全ボタンを更新
+  document.querySelectorAll('.fs-btn').forEach(btn=>{
+    const btnSz=btn.id==='fs-s'?'small':btn.id==='fs-l'?'large':'medium';
+    btn.classList.toggle('active',btnSz===sz);
+  });
+  sd('tn_font_size',sz);
+}
+(()=>{setFontSize(ld('tn_font_size','medium'));})();
+
+// 日付文字列から n 日前の日付文字列を返す（タイムゾーン非依存）
+function subDays(dateStr, n){
+  const d=new Date(dateStr+'T00:00:00+09:00');
+  d.setDate(d.getDate()-n);
+  const jst=new Date(d.getTime()+9*60*60*1000);
+  return jst.toISOString().split('T')[0];
+}
+
+// DATE BAR (today + 3 days back)
+function buildDateBar(){
+  const bar=document.getElementById('date-bar');bar.innerHTML='';
+  const labels=['今日','昨日','2日前','3日前'];
+  const today=getTodayStr();
+  for(let i=0;i<=3;i++){
+    const ds=subDays(today,i);
+    const btn=document.createElement('button');
+    btn.className='date-bar-btn'+(ds===currentInputDate?' active':'');
+    btn.textContent=labels[i];
+    btn.onclick=()=>switchInputDate(ds);
+    bar.appendChild(btn);
+  }
+}
+function switchInputDate(ds){
+  saveCurrentToTemp();currentInputDate=ds;buildDateBar();loadDateToUI(ds);updateMood();
+  const d=new Date(ds);
+  document.getElementById('today-str').textContent=ds===todayStr?
+    (()=>{const _d=new Date();return `${_d.getFullYear()}年${_d.getMonth()+1}月${_d.getDate()}日（${dayN[_d.getDay()]}）`;})():
+    `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayN[d.getDay()]}）の記録`;
+  renderAiComment();
+}
+function saveCurrentToTemp(){
+  sd('tn_temp_'+currentInputDate,{
+    mood:+document.getElementById('sl-mood').value,energy:+document.getElementById('sl-energy').value,recovery:+document.getElementById('sl-recovery').value,
+    custom1:+(document.getElementById('sl-custom1')?.value||5),custom2:+(document.getElementById('sl-custom2')?.value||5),
+    sleep:sleepHours,
+    sleepTags:[...document.querySelectorAll('#sleep-tags .tag.selected')].map(t=>t.textContent),
+    sleepOther:document.getElementById('sleep-other-input')?.value||'',
+    weight:document.getElementById('inp-weight').value,fat:document.getElementById('inp-fat').value,steps:document.getElementById('inp-steps').value,
+    tags:[...document.querySelectorAll('#concern-tags .tag.selected')].map(t=>t.textContent),
+    tagsOther:document.getElementById('kokoro-other-input')?.value||'',
+    bodyTags:[...document.querySelectorAll('#body-concern-tags .tag.selected')].map(t=>t.textContent),
+    bodyTagsOther:document.getElementById('karada-other-input')?.value||'',
+    events:[...document.querySelectorAll('#event-tags .tag.selected')].map(t=>t.textContent),
+    eventsOther:document.getElementById('event-other-input')?.value||'',
+    note:document.getElementById('note').value
+  });
+}
+function loadDateToUI(ds){
+  const rec=records.find(r=>r.date===ds);
+  const tmp=ld('tn_temp_'+ds,null);
+  const src=tmp||rec||null;
+  ['mood','energy','recovery'].forEach(k=>{
+    const sl=document.getElementById('sl-'+k);const vl=document.getElementById('v-'+k);
+    const val=src?.[k]??5;if(sl)sl.value=val;if(vl)vl.textContent=val;
+  });
+  ['custom1','custom2'].forEach(k=>{
+    const sl=document.getElementById('sl-'+k);const vl=document.getElementById('v-'+k);
+    if(sl){sl.value=src?.[k]??5;if(vl)vl.textContent=sl.value;}
+  });
+  sleepHours=src?.sleep??7.0;
+  const sv=document.getElementById('sleep-val');if(sv)sv.textContent=sleepHours.toFixed(1)+'h';
+  document.querySelectorAll('#sleep-tags .tag').forEach(t=>t.classList.toggle('selected',(src?.sleepTags||[]).includes(t.textContent)));
+  const soi=document.getElementById('sleep-other-input');if(soi)soi.value=src?.sleepOther||'';
+  document.getElementById('inp-weight').value=src?.weight??'';
+  document.getElementById('inp-fat').value=src?.fat??'';
+  document.getElementById('inp-steps').value=src?.steps??'';
+  document.querySelectorAll('#concern-tags .tag').forEach(t=>t.classList.toggle('selected',(src?.tags||[]).includes(t.textContent)));
+  const koi=document.getElementById('kokoro-other-input');if(koi)koi.value=src?.tagsOther||'';
+  document.querySelectorAll('#body-concern-tags .tag').forEach(t=>t.classList.toggle('selected',(src?.bodyTags||[]).includes(t.textContent)));
+  const kai=document.getElementById('karada-other-input');if(kai)kai.value=src?.bodyTagsOther||'';
+  document.querySelectorAll('#event-tags .tag').forEach(t=>t.classList.toggle('selected',(src?.events||[]).includes(t.textContent)));
+  const eoi=document.getElementById('event-other-input');if(eoi)eoi.value=src?.eventsOther||'';
+  document.getElementById('note').value=src?.note||'';
+  const btn=document.getElementById('save-btn');if(btn){btn.textContent='記録を保存';btn.classList.remove('saved');}
+}
+
+// MOOD
+function toggleMoodPanel(id){
+  const panel=document.getElementById('panel-'+id);const caret=document.getElementById('caret-'+id);
+  const isOpen=panel.style.display!=='none';
+  ['mood','energy','recovery'].forEach(k=>{document.getElementById('panel-'+k).style.display='none';document.getElementById('caret-'+k).style.transform='';});
+  if(!isOpen){panel.style.display='block';caret.style.transform='rotate(180deg)';}
+}
+function selectMoodOpt(id,val,btn){
+  moodLabels[id]=val;sd('tn_mood_labels',moodLabels);document.getElementById('lbl-'+id).textContent=val;
+  document.getElementById('panel-'+id).querySelectorAll('.mood-opt').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');
+  document.getElementById('panel-'+id).style.display='none';document.getElementById('caret-'+id).style.transform='';
+}
+function customMoodOpt(id){const v=prompt('カスタム項目名を入力',moodLabels[id]||'');if(v&&v.trim()){moodLabels[id]=v.trim();sd('tn_mood_labels',moodLabels);document.getElementById('lbl-'+id).textContent=v.trim();document.getElementById('panel-'+id).style.display='none';document.getElementById('caret-'+id).style.transform='';}}
+function applyMoodLabels(){['mood','energy','recovery'].forEach(id=>{const lbl=document.getElementById('lbl-'+id);if(lbl)lbl.textContent=moodLabels[id]||'';});}
+
+const stateMap={'躁':{bg:'#FAEEDA',col:'#633806'},'軽躁':{bg:'#FEF3DC',col:'#854F0B'},'安定':{bg:'#EAF3DE',col:'#27500A'},'抑うつ':{bg:'#E6F1FB',col:'#0C447C'},'うつ':{bg:'#E1EEFA',col:'#042C53'}};
+function getState(m,e){
+  const a=(m+e)/2;
+  let st;
+  if(a>=9)st='躁';else if(a>=7)st='軽躁';else if(a<=2)st='うつ';else if(a<=4)st='抑うつ';else st='安定';
+  // 気分の数値が8以上のときは、活動量が低くて平均が下がっても「軽躁」の
+  // 可能性を見逃さないよう、少なくとも軽躁として扱う。
+  if(m>=8&&(st==='安定'||st==='抑うつ'||st==='うつ'))st='軽躁';
+  return st;
+}
+function updateMood(){
+  const m=+(document.getElementById('sl-mood')?.value||5);const e=+(document.getElementById('sl-energy')?.value||5);
+  const st=getState(m,e);const b=document.getElementById('state-banner');if(!b)return;
+  const cv=stateMap[st]||stateMap['安定'];b.textContent='現在の状態：'+st;b.style.background=cv.bg;b.style.color=cv.col;
+}
+
+function adjSleep(d){sleepHours=Math.max(0,Math.min(14,sleepHours+d));document.getElementById('sleep-val').textContent=sleepHours.toFixed(1)+'h';}
+
+// ===== WEATHER (都道府県選択方式) =====
+const PREFS=[
+  {name:'北海道',lat:43.0642,lon:141.3469},{name:'青森',lat:40.8244,lon:140.7400},
+  {name:'岩手',lat:39.7036,lon:141.1527},{name:'宮城',lat:38.2688,lon:140.8721},
+  {name:'秋田',lat:39.7186,lon:140.1024},{name:'山形',lat:38.2404,lon:140.3636},
+  {name:'福島',lat:37.7500,lon:140.4676},{name:'茨城',lat:36.3418,lon:140.4468},
+  {name:'栃木',lat:36.5657,lon:139.8836},{name:'群馬',lat:36.3911,lon:139.0608},
+  {name:'埼玉',lat:35.8575,lon:139.6489},{name:'千葉',lat:35.6047,lon:140.1233},
+  {name:'東京',lat:35.6895,lon:139.6917},{name:'神奈川',lat:35.4478,lon:139.6425},
+  {name:'新潟',lat:37.9026,lon:139.0232},{name:'富山',lat:36.6953,lon:137.2113},
+  {name:'石川',lat:36.5947,lon:136.6256},{name:'福井',lat:36.0652,lon:136.2216},
+  {name:'山梨',lat:35.6642,lon:138.5681},{name:'長野',lat:36.6513,lon:138.1810},
+  {name:'岐阜',lat:35.3912,lon:136.7223},{name:'静岡',lat:34.9769,lon:138.3831},
+  {name:'愛知',lat:35.1802,lon:136.9066},{name:'三重',lat:34.7303,lon:136.5086},
+  {name:'滋賀',lat:35.0045,lon:135.8686},{name:'京都',lat:35.0211,lon:135.7556},
+  {name:'大阪',lat:34.6937,lon:135.5023},{name:'兵庫',lat:34.6913,lon:135.1830},
+  {name:'奈良',lat:34.6851,lon:135.8325},{name:'和歌山',lat:34.2260,lon:135.1675},
+  {name:'鳥取',lat:35.5036,lon:134.2381},{name:'島根',lat:35.4723,lon:133.0505},
+  {name:'岡山',lat:34.6618,lon:133.9344},{name:'広島',lat:34.3853,lon:132.4553},
+  {name:'山口',lat:34.1860,lon:131.4705},{name:'徳島',lat:34.0658,lon:134.5593},
+  {name:'香川',lat:34.3401,lon:134.0434},{name:'愛媛',lat:33.8417,lon:132.7657},
+  {name:'高知',lat:33.5597,lon:133.5311},{name:'福岡',lat:33.6064,lon:130.4183},
+  {name:'佐賀',lat:33.2494,lon:130.2988},{name:'長崎',lat:32.7448,lon:129.8737},
+  {name:'熊本',lat:32.7898,lon:130.7417},{name:'大分',lat:33.2382,lon:131.6126},
+  {name:'宮崎',lat:31.9111,lon:131.4239},{name:'鹿児島',lat:31.5602,lon:130.5581},
+  {name:'沖縄',lat:26.2124,lon:127.6809}
+];
+const wCodes={0:'快晴',1:'晴れ',2:'晴れ時々曇',3:'曇り',45:'霧',48:'霧',51:'小雨',53:'雨',55:'雨',61:'小雨',63:'雨',65:'大雨',71:'小雪',73:'雪',75:'大雪',80:'にわか雨',81:'にわか雨',82:'激しい雨',95:'雷雨',96:'雷雨',99:'激しい雷雨'};
+const wIcons={0:'☀️',1:'☀️',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌧',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'❄️',73:'❄️',75:'❄️',80:'🌦',81:'🌦',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
+
+function openPrefModal(){
+  const saved=ld('tn_pref',null);
+  const grid=document.getElementById('pref-grid');grid.innerHTML='';
+  PREFS.forEach(p=>{
+    const btn=document.createElement('button');
+    btn.className='pref-btn'+(saved===p.name?' selected':'');
+    btn.textContent=p.name;
+    btn.onclick=()=>selectPref(p.name);
+    grid.appendChild(btn);
+  });
+  document.getElementById('modal-pref').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closePrefModal(){
+  document.getElementById('modal-pref').classList.remove('show');
+  document.body.style.overflow='';
+}
+function selectPref(name){
+  sd('tn_pref',name);
+  document.getElementById('pref-grid').querySelectorAll('.pref-btn').forEach(b=>{
+    b.classList.toggle('selected',b.textContent===name);
+  });
+  const cb=document.getElementById('pref-change-btn');if(cb)cb.textContent=name+'を変更';
+  closePrefModal();
+  localStorage.removeItem('tn_wx_cache');
+  fetchWeatherByPref();
+}
+function fetchWeatherByPref(){
+  const prefName=ld('tn_pref',null);
+  const el=document.getElementById('weather-auto');
+  if(!prefName){
+    if(el)el.textContent='都道府県を設定してください';
+    document.getElementById('wx-temp').textContent='';
+    document.getElementById('wx-pressure').textContent='';
+    return;
+  }
+  const cb=document.getElementById('pref-change-btn');if(cb)cb.textContent=prefName+'を変更';
+  const cached=ld('tn_wx_cache',null);
+  if(cached&&cached.date===todayStr&&cached.pref===prefName){applyWeatherCache(cached);return;}
+  const pref=PREFS.find(p=>p.name===prefName);if(!pref)return;
+  if(el)el.textContent=prefName+'の天気を取得中…';
+  doWeatherFetch(pref.lat,pref.lon,prefName);
+}
+function applyWeatherCache(c){
+  const el=document.getElementById('weather-auto');
+  if(el)el.textContent=c.desc||'';
+  const tempEl=document.getElementById('wx-temp');const presEl=document.getElementById('wx-pressure');
+  if(tempEl)tempEl.textContent=c.curTemp!=null?c.curTemp+'°C':'';
+  if(presEl)presEl.textContent=c.curPressure!=null?'気圧 '+c.curPressure+' hPa（現在）':'';
+  window._todayPressure=c.pressure??null;window._todayTemp=c.temp??null;weather=c.weather||null;
+}
+async function doWeatherFetch(lat,lon,prefName){
+  try{
+    const res=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat.toFixed(4)+'&longitude='+lon.toFixed(4)+'&current=temperature_2m,weather_code,surface_pressure&hourly=temperature_2m,surface_pressure&timezone=Asia%2FTokyo&forecast_days=1');
+    if(!res.ok)throw new Error('API error');
+    const d=await res.json();const cur=d.current;
+    const code=cur.weather_code;weather=code<=1?'sunny':code<=3?'cloudy':'rainy';
+    const curTemp=Math.round(cur.temperature_2m);const curPressure=Math.round(cur.surface_pressure);
+    let noonTemp=null,noonPressure=null;
+    if(d.hourly?.time){const ni=d.hourly.time.findIndex(t=>t.endsWith('T12:00'));if(ni>=0){noonTemp=Math.round(d.hourly.temperature_2m[ni]);noonPressure=Math.round(d.hourly.surface_pressure[ni]);}}
+    const icon=wIcons[code]||'🌡';const desc=wCodes[code]||'';
+    const el=document.getElementById('weather-auto');
+    if(el)el.textContent=icon+' '+desc+' ('+prefName+')';
+    document.getElementById('wx-temp').textContent=curTemp+'°C';
+    document.getElementById('wx-pressure').textContent='気圧 '+curPressure+' hPa（現在）';
+    window._todayPressure=noonPressure;window._todayTemp=noonTemp;
+    sd('tn_wx_cache',{ts:Date.now(),date:todayStr,pref:prefName,icon,desc:icon+' '+desc+' ('+prefName+')',temp:noonTemp,pressure:noonPressure,weather,curTemp,curPressure});
+  }catch{
+    const el=document.getElementById('weather-auto');
+    if(el)el.textContent='天気データを取得できませんでした';
+    document.getElementById('wx-temp').textContent='';
+    document.getElementById('wx-pressure').textContent='';
+    window._todayPressure=null;window._todayTemp=null;
+  }
+}
+function toggleTag(el){el.classList.toggle('selected');}
+function toggleTagOther(btn,inputId){btn.classList.toggle('selected');const inp=document.getElementById(inputId);if(inp)inp.style.display=btn.classList.contains('selected')?'block':'none';}
+
+function saveRecord(){
+  const rec={
+    date:currentInputDate,
+    mood:+document.getElementById('sl-mood').value,energy:+document.getElementById('sl-energy').value,recovery:+document.getElementById('sl-recovery').value,anxiety:null,
+    custom1:document.getElementById('custom1-wrap')?.style.display!=='none'?(+(document.getElementById('sl-custom1')?.value||5)):null,
+    custom2:document.getElementById('custom2-wrap')?.style.display!=='none'?(+(document.getElementById('sl-custom2')?.value||5)):null,
+    custom1Label:customLabels?.custom1||'',custom2Label:customLabels?.custom2||'',
+    moodLabel:moodLabels?.mood||'気分',energyLabel:moodLabels?.energy||'活動量',recoveryLabel:moodLabels?.recovery||'リカバリー',
+    sleep:sleepHours,
+    sleepTags:[...document.querySelectorAll('#sleep-tags .tag.selected')].map(t=>t.textContent),
+    sleepOther:document.getElementById('sleep-other-input')?.value||'',
+    weight:parseFloat(document.getElementById('inp-weight').value)||null,
+    fat:parseFloat(document.getElementById('inp-fat').value)||null,
+    steps:(()=>{const v=parseInt(document.getElementById('inp-steps').value);return isNaN(v)?null:v;})(),
+    weather,pressure:window._todayPressure||null,tempC:window._todayTemp||null,
+    tags:[...document.querySelectorAll('#concern-tags .tag.selected')].map(t=>t.textContent),
+    tagsOther:document.getElementById('kokoro-other-input')?.value||'',
+    bodyTags:[...document.querySelectorAll('#body-concern-tags .tag.selected')].map(t=>t.textContent),
+    bodyTagsOther:document.getElementById('karada-other-input')?.value||'',
+    events:[...document.querySelectorAll('#event-tags .tag.selected')].map(t=>t.textContent),
+    eventsOther:document.getElementById('event-other-input')?.value||'',
+    note:document.getElementById('note').value
+  };
+  const idx=records.findIndex(r=>r.date===currentInputDate);if(idx>=0)records[idx]={...records[idx],...rec};else records.push(rec);
+  sd('tn_records',records);sd('tn_temp_'+currentInputDate,rec);
+  const btn=document.getElementById('save-btn');if(btn){btn.textContent='✓ 記録しました';btn.classList.add('saved');setTimeout(()=>{btn.textContent='記録を保存';btn.classList.remove('saved');},2500);}
+  showToast('記録しました');
+  renderAiComment();
+  showAiCommentPopup();
+}
+
+// 一言コメント（ルールベース・非AI／データは一切外部送信しない）
+const AI_MSG_DAY={
+  up:[
+    '前回の記録より、気分の数値が上がっています。体調は大丈夫ですか？',
+    '前回の記録と比べて、気分の数値に上向きの変化がありました。体調は大丈夫ですか？'
+  ],
+  down:[
+    '前回の記録より、気分の数値が下がっています。体調は大丈夫ですか？',
+    '前回の記録と比べて、気分の数値に下向きの変化がありました。体調は大丈夫ですか？'
+  ],
+  same:[
+    '昨日とほぼ同じくらいの気分の数値でした。',
+    '前回の記録と近い水準が続いています。',
+    '気分の数値は、前回の記録と大きな差はないようです。'
+  ]
+};
+const AI_MSG_WEEK={
+  up:[
+    '直近1週間の気分の平均は、その前の週と比べてやや高めでした。',
+    'ここ1週間は、前の週よりも気分の平均値が少し高めに出ています。'
+  ],
+  down:[
+    '直近1週間の気分の平均は、その前の週と比べてやや低めでした。',
+    'ここ1週間は、前の週よりも気分の平均値が少し低めに出ています。'
+  ],
+  same:[
+    '直近1週間の気分の平均は、その前の週とほぼ同じ水準でした。',
+    'ここ1週間の気分の平均は、大きな変化なく推移しています。'
+  ],
+  noBase:[
+    '直近1週間は{n}日、記録がついています。',
+    'ここ1週間で{n}日分の記録が残っています。'
+  ]
+};
+const AI_MSG_MONTH=[
+  'この1ヶ月では{n}日、記録がついています。',
+  'この1ヶ月で{n}日分の記録が積み重なっています。',
+  '振り返ると、この1ヶ月で{n}日の記録があります。'
+];
+const AI_MSG_START=[
+  '記録ありがとうございます。続けていくと、ご自身の波のパターンが少しずつ見えてくるかもしれません。',
+  '記録が始まりました。続けることで、後から振り返りやすくなります。'
+];
+const AI_MSG_LOWACT=[
+  '今日は活動量が少なめのようです。無理のない範囲で、少し散歩でもしてみませんか？',
+  '活動量が低めでした。気分転換に、少しだけ外を歩いてみるのもおすすめです。',
+  '今日は体を動かす時間が少なかったようです。少し散歩に出てみるのもいいかもしれません。'
+];
+function aiPick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function aiAvg(list,key){const v=list.map(r=>r[key]).filter(x=>x!=null&&!isNaN(x));return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
+function aiDaysAgo(dateStr,n){const d=new Date(dateStr+'T00:00:00');d.setDate(d.getDate()-n);return d.toISOString().slice(0,10);}
+function buildAiComment(){
+  const all=(records||[]).filter(r=>r.mood!=null).slice().sort((a,b)=>a.date<b.date?-1:1);
+  // 選択中の日付（今日/昨日/2日前/3日前タブ）に記録が無ければ、コメントは出さない
+  const target=all.find(r=>r.date===currentInputDate);
+  if(!target)return null;
+  const before=all.filter(r=>r.date<currentInputDate);
+  const lines=[];
+  if(before.length===0){
+    lines.push(aiPick(AI_MSG_START));
+  }else{
+    const prev=before[before.length-1];
+    const dayDiff=target.mood-prev.mood;
+    lines.push(aiPick(dayDiff>=1?AI_MSG_DAY.up:dayDiff<=-1?AI_MSG_DAY.down:AI_MSG_DAY.same));
+  }
+  // 活動量が3以下の日は、軽く散歩を促す一言を添える（気分の状態にかかわらず表示）
+  if(lines.length<3&&target.energy!=null&&target.energy<=3){
+    lines.push(aiPick(AI_MSG_LOWACT));
+  }
+  if(before.length>0){
+    const last7=all.filter(r=>r.date>aiDaysAgo(currentInputDate,7)&&r.date<=currentInputDate);
+    const prev7=all.filter(r=>r.date>aiDaysAgo(currentInputDate,14)&&r.date<=aiDaysAgo(currentInputDate,7));
+    if(lines.length<3&&last7.length>=3){
+      const avg1=aiAvg(last7,'mood'),avg0=aiAvg(prev7,'mood');
+      if(prev7.length>=3&&avg0!=null){
+        const wDiff=avg1-avg0;
+        lines.push(aiPick(wDiff>=1?AI_MSG_WEEK.up:wDiff<=-1?AI_MSG_WEEK.down:AI_MSG_WEEK.same));
+      }else{
+        lines.push(aiPick(AI_MSG_WEEK.noBase).replace('{n}',last7.length));
+      }
+    }
+    const last30=all.filter(r=>r.date>aiDaysAgo(currentInputDate,30)&&r.date<=currentInputDate);
+    if(lines.length<3&&last30.length>=8){
+      lines.push(aiPick(AI_MSG_MONTH).replace('{n}',last30.length));
+    }
+  }
+  return lines.slice(0,3).join('\n');
+}
+function renderAiComment(){
+  const card=document.getElementById('ai-comment-card');
+  const reshow=document.getElementById('ai-comment-reshow');
+  if(!card)return;
+  let hidden=false;
+  try{hidden=localStorage.getItem('tn_ai_comment_hidden')==='1';}catch(e){}
+  if(hidden){card.style.display='none';if(reshow)reshow.style.display='flex';return;}
+  const msg=buildAiComment();
+  if(!msg){card.style.display='none';if(reshow)reshow.style.display='none';return;}
+  document.getElementById('ai-comment-text').textContent=msg;
+  card.style.display='block';
+  if(reshow)reshow.style.display='none';
+}
+function hideAiComment(){
+  try{localStorage.setItem('tn_ai_comment_hidden','1');}catch(e){}
+  const card=document.getElementById('ai-comment-card');if(card)card.style.display='none';
+  const reshow=document.getElementById('ai-comment-reshow');if(reshow)reshow.style.display='flex';
+}
+function showAiComment(){
+  try{localStorage.removeItem('tn_ai_comment_hidden');}catch(e){}
+  renderAiComment();
+}
+
+// 記録保存の直後だけ出す、一言コメントのポップアップ。
+// 背景はブロックしないので、閉じなくても服薬タブ等へそのまま移動できる。
+// 数秒で自動的に消え、他のタブに切り替えた時も即座に消える。
+let _aiPopupTimer=null;
+function showAiCommentPopup(){
+  let hidden=false;
+  try{hidden=localStorage.getItem('tn_ai_comment_hidden')==='1';}catch(e){}
+  if(hidden)return;
+  const msg=buildAiComment();
+  if(!msg)return;
+  const popup=document.getElementById('ai-comment-popup');
+  const textEl=document.getElementById('ai-comment-popup-text');
+  if(!popup||!textEl)return;
+  textEl.textContent=msg;
+  popup.classList.add('show');
+  clearTimeout(_aiPopupTimer);
+  _aiPopupTimer=setTimeout(hideAiCommentPopup,6000);
+}
+function hideAiCommentPopup(){
+  clearTimeout(_aiPopupTimer);
+  const popup=document.getElementById('ai-comment-popup');
+  if(popup)popup.classList.remove('show');
+}
+
+function checkDateRollover(){
+  const today=getTodayStr();
+  const last=ld('tn_last_date',null);
+  if(last&&last!==today){
+    // 日付が変わったら今日分の一時キャッシュを削除してUIをリセット
+    resetTodayUI(today);
+  }
+  sd('tn_last_date',today);
+}
+function resetTodayUI(today){
+  today=today||getTodayStr();
+  currentInputDate=today;
+  // 今日分の一時キャッシュを削除（昨日のデータが引き継がれないよう）
+  try{localStorage.removeItem('tn_temp_'+today);}catch(e){}
+  ['mood','energy','recovery'].forEach(k=>{const sl=document.getElementById('sl-'+k);const vl=document.getElementById('v-'+k);if(sl)sl.value=5;if(vl)vl.textContent='5';});
+  sleepHours=7.0;const sv=document.getElementById('sleep-val');if(sv)sv.textContent='7.0h';
+  document.getElementById('inp-weight').value='';document.getElementById('inp-fat').value='';document.getElementById('inp-steps').value='';
+  document.querySelectorAll('.tag.selected').forEach(t=>t.classList.remove('selected'));
+  document.getElementById('note').value='';
+  const btn=document.getElementById('save-btn');if(btn){btn.textContent='記録を保存';btn.classList.remove('saved');}
+  // 日付ラベル更新
+  const d=new Date();
+  document.getElementById('today-str').textContent=`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${dayN[d.getDay()]}）`;
+  updateMood();buildDateBar();
+}
+// 30秒ごとに日付チェック → 変わったら即リセット（location.reloadは不要）
+setInterval(()=>{
+  const today=getTodayStr();
+  const last=ld('tn_last_date',null);
+  if(last&&last!==today){
+    resetTodayUI(today);
+    sd('tn_last_date',today);
+    // 服薬タブも今日にリセット
+    currentMedDate=today;
+    buildMedDateBar();
+    renderMedToday();
+    showToast('日付が変わりました。新しい1日の記録をはじめましょう');
+  }
+},30000);
+
+// MEDS
+const slotN={morning:'朝',noon:'昼',evening:'晩',bedtime:'就寝前'};
+let currentMedDate=todayStr;
+let currentSlot='morning'; // 現在選択中のスロット
+
+// スロットごとの「なし」設定: tn_slot_skip_{date} = {morning:true,...}
+function getSlotSkips(ds){return ld('tn_slot_skip_'+ds,{});}
+function saveSlotSkips(ds,v){sd('tn_slot_skip_'+ds,v);}
+
+function buildMedDateBar(){
+  const bar=document.getElementById('med-date-bar');if(!bar)return;bar.innerHTML='';
+  const labels=['今日','昨日','2日前','3日前'];
+  const today=getTodayStr();
+  for(let i=0;i<=3;i++){
+    const ds=subDays(today,i);
+    const btn=document.createElement('button');
+    btn.className='date-bar-btn'+(ds===currentMedDate?' active':'');
+    btn.textContent=labels[i];
+    btn.onclick=()=>switchMedDate(ds);
+    bar.appendChild(btn);
+  }
+}
+function switchMedDate(ds){
+  currentMedDate=ds;
+  if(!ld('tn_med_snap_'+ds,null))saveMedSnapshot(ds);
+  buildMedDateBar();
+  selectSlotTab(currentSlot);
+  renderMedToday();
+  renderPrnList();
+  renderAdherence();
+  const lbl=document.getElementById('med-check-label');
+  if(lbl){const d=new Date(ds);lbl.textContent=ds===getTodayStr()?'今日の服薬チェック':`${d.getMonth()+1}/${d.getDate()}の服薬チェック`;}
+}
+
+function selectSlotTab(slot){
+  currentSlot=slot;
+  // ボタン見た目更新
+  Object.keys(slotN).forEach(s=>{
+    const btn=document.getElementById('stb-'+s);if(!btn)return;
+    const skips=getSlotSkips(currentMedDate);
+    btn.classList.toggle('active',s===slot);
+    btn.classList.toggle('skipped',!!skips[s]&&s!==slot);
+    // スキップ表示
+    let skipEl=btn.querySelector('.slot-skip');
+    if(skips[s]){if(!skipEl){skipEl=document.createElement('span');skipEl.className='slot-skip';btn.appendChild(skipEl);}skipEl.textContent='なし';}
+    else{if(skipEl)skipEl.remove();}
+  });
+  // ラベル更新
+  const lbl=document.getElementById('slot-use-label');
+  if(lbl)lbl.textContent=slotN[slot]+'の服薬';
+  // 有無ボタン状態
+  const skips=getSlotSkips(currentMedDate);
+  const isSkipped=!!skips[slot];
+  document.getElementById('slot-yes')?.classList.toggle('active',!isSkipped);
+  document.getElementById('slot-no')?.classList.toggle('active',isSkipped);
+  // 追加フォーム表示切替
+  const form=document.getElementById('med-add-form');
+  if(form)form.style.display=isSkipped?'none':'block';
+}
+
+function setSlotUse(hasmed){
+  const skips=getSlotSkips(currentMedDate);
+  if(hasmed){delete skips[currentSlot];}else{skips[currentSlot]=true;}
+  saveSlotSkips(currentMedDate,skips);
+  selectSlotTab(currentSlot);
+  renderMedToday();
+  records=ld('tn_records',[]);
+  calcAndShowAdh(currentMedDate);
+}
+
+// 旧API互換（全体あり/なし）
+function setMedUse(v){medUse=v;sd('tn_med_use',medUse);}
+function applyMedUseUI(){
+  const saveBtn=document.getElementById('med-save-btn');if(saveBtn)saveBtn.style.display='block';
+}
+
+function addMed(){
+  const name=document.getElementById('add-name').value.trim();const mg=document.getElementById('add-mg').value.trim();
+  if(!name){showToast('薬の名前を入力してください');return;}
+  meds[currentSlot].push({id:Date.now(),name,mg});sd('tn_meds',meds);
+  document.getElementById('add-name').value='';document.getElementById('add-mg').value='';
+  renderMedToday();showToast(`${slotN[currentSlot]}に「${name}」を登録しました`);
+}
+function delMed(slot,id){meds[slot]=meds[slot].filter(m=>m.id!==id);sd('tn_meds',meds);renderMedToday();}
+function getChecks(ds){return ld('tn_checks_'+ds,{});}
+function saveChecks(ds,c){sd('tn_checks_'+ds,c);}
+function getTodayChecks(){return getChecks(todayStr);}
+function saveTodayChecks(c){saveChecks(todayStr,c);}
+
+function renderMedToday(){
+  const el=document.getElementById('med-today');el.innerHTML='';
+  const checks=getChecks(currentMedDate);
+  const skips=getSlotSkips(currentMedDate);
+  let hasAny=false;
+  ['morning','noon','evening','bedtime'].forEach(slot=>{
+    const slotMeds=meds[slot]||[];
+    if(!slotMeds.length&&!skips[slot])return;
+    hasAny=true;
+    const sec=document.createElement('div');
+    const skipBadge=skips[slot]?'<span style="font-size:10px;color:var(--txt3);background:var(--bg3);border-radius:6px;padding:1px 6px;margin-left:6px">なし</span>':'';
+    sec.innerHTML=`<div class="meal-title">${slotN[slot]}${skipBadge}</div>`;
+    if(!skips[slot]){
+      slotMeds.forEach(m=>{
+        const key=slot+'_'+m.id,done=!!checks[key];
+        const div=document.createElement('div');div.className='med-item';
+        div.innerHTML=`<div class="med-check${done?' done':''}" onclick="toggleCheck('${slot}',${m.id})"></div><div class="med-info"><div class="med-nm">${m.name}</div><div class="med-sub">${m.mg?m.mg+'mg':''} · ${slotN[slot]}</div></div><span class="med-del" onclick="delMed('${slot}',${m.id})">×</span>`;
+        sec.appendChild(div);
+      });
+    }
+    el.appendChild(sec);
+  });
+  if(!hasAny)el.innerHTML='<p style="font-size:var(--fs-sm);color:var(--txt2);text-align:center;padding:14px 0">薬を追加してください</p>';
+
+  // 頓服・臨時薬のチェックリスト
+  const prnMeds=getPrnMeds();
+  if(prnMeds.length>0){
+    const prnChecks=getPrnChecks(currentMedDate);
+    const sec=document.createElement('div');
+    sec.innerHTML=`<div class="meal-title" style="margin-top:10px">頓服・臨時</div>`;
+    prnMeds.forEach(p=>{
+      const done=!!prnChecks[p.id];
+      const div=document.createElement('div');div.className='med-item';
+      div.innerHTML=`<div class="med-check${done?' done':''}" onclick="togglePrnCheck(${p.id})"></div>
+        <div class="med-info" style="flex:1"><div class="med-nm">${p.name}</div>${p.memo?`<div class="med-sub">${p.memo}</div>`:''}</div>`;
+      sec.appendChild(div);
+    });
+    el.appendChild(sec);
+  }
+
+  calcAndShowAdh(currentMedDate);
+  renderAdherence();
+}
+
+function toggleCheck(slot,id){
+  // スナップショットがなければ先に保存
+  if(!ld('tn_med_snap_'+currentMedDate,null))saveMedSnapshot(currentMedDate);
+  const c=getChecks(currentMedDate);
+  c[slot+'_'+id]=!c[slot+'_'+id];
+  saveChecks(currentMedDate,c);
+  // recordsを最新に読み直してから服薬率を即時計算・保存
+  records=ld('tn_records',[]);
+  calcAndShowAdh(currentMedDate);
+  renderMedToday();
+}
+function saveMedSnapshot(ds){
+  // 常に最新の薬リストをlocalStorageから読んでスナップショット作成
+  const freshMeds=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+  const snapshot=[];
+  ['morning','noon','evening','bedtime'].forEach(slot=>{
+    (freshMeds[slot]||[]).forEach(m=>snapshot.push({slot,id:m.id}));
+  });
+  sd('tn_med_snap_'+ds,snapshot);
+}
+
+// 服薬率：登録薬の総数ベースで計算
+function calcAndShowAdh(ds){
+  const checks=getChecks(ds);
+  const skips=getSlotSkips(ds);
+  // その日にチェック・スキップ操作が一度もない（＝CSVインポート等で服薬率だけが
+  // 入っている日）は、タブを開いただけで0%を上書き保存しないようにする
+  const hasInteraction=Object.keys(checks).length>0||Object.keys(skips).length>0;
+  if(!hasInteraction){records=ld('tn_records',[]);return;}
+  // スナップショットがあればそれを使う、なければ現在の薬リスト
+  const snap=ld('tn_med_snap_'+ds,null);
+  const latestMeds=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+
+  let total=0,done=0;
+  ['morning','noon','evening','bedtime'].forEach(slot=>{
+    if(skips[slot]===true)return;
+    const slotMeds=snap
+      ?snap.filter(x=>x.slot===slot)
+      :(latestMeds[slot]||[]);
+    if(!slotMeds.length)return;
+    slotMeds.forEach(m=>{
+      const id=m.id??m;
+      total++;
+      if(checks[slot+'_'+id])done++;
+    });
+  });
+
+  const recs=ld('tn_records',[]);
+  if(total===0){
+    const idx=recs.findIndex(r=>r.date===ds);
+    if(idx>=0){recs[idx].adherence=null;sd('tn_records',recs);}
+    records=recs;
+    return;
+  }
+  const rate=Math.round(done/total*100);
+  const idx=recs.findIndex(r=>r.date===ds);
+  if(idx>=0){recs[idx].adherence=rate;}
+  else{recs.push({date:ds,adherence:rate});}
+  sd('tn_records',recs);
+  records=recs;
+}
+function updateTodayAdh(){calcAndShowAdh(getTodayStr());}
+
+// 服薬管理パネルの折りたたみ
+function toggleMedRegPanel(){
+  const panel=document.getElementById('med-reg-panel');
+  const icon=document.getElementById('med-reg-toggle-icon');
+  const open=panel.style.display==='none';
+  panel.style.display=open?'block':'none';
+  icon.textContent=open?'× 閉じる':'＋ 追加する';
+}
+
+// 定期薬 / 頓服 登録タブ切替
+function selectRegTab(tab){
+  document.getElementById('reg-tab-regular').classList.toggle('active',tab==='regular');
+  document.getElementById('reg-tab-prn').classList.toggle('active',tab==='prn');
+  document.getElementById('reg-panel-regular').style.display=tab==='regular'?'block':'none';
+  document.getElementById('reg-panel-prn').style.display=tab==='prn'?'block':'none';
+  if(tab==='prn')renderPrnRegistered();
+}
+
+// ===== 頓服・臨時薬（事前登録制） =====
+// 登録リスト: tn_prn_meds = [{id, name, memo}]
+function getPrnMeds(){return ld('tn_prn_meds',[]);}
+function savePrnMeds(list){sd('tn_prn_meds',list);}
+// その日のチェック: tn_prn_checks_{date} = {id: true/false}
+function getPrnChecks(ds){return ld('tn_prn_checks_'+ds,{});}
+function savePrnChecks(ds,c){sd('tn_prn_checks_'+ds,c);}
+
+function addPrnReg(){
+  const name=document.getElementById('prn-reg-name').value.trim();
+  const memo=document.getElementById('prn-reg-memo').value.trim();
+  if(!name){showToast('薬の名前を入力してください');return;}
+  const list=getPrnMeds();
+  list.push({id:Date.now(),name,memo});
+  savePrnMeds(list);
+  document.getElementById('prn-reg-name').value='';
+  document.getElementById('prn-reg-memo').value='';
+  renderPrnRegistered();
+  renderMedToday(); // チェックリストにも反映
+  showToast(`「${name}」を登録しました`);
+}
+function delPrnReg(id){
+  const list=getPrnMeds().filter(p=>p.id!==id);
+  savePrnMeds(list);
+  renderPrnRegistered();
+  renderMedToday();
+}
+function renderPrnRegistered(){
+  const el=document.getElementById('prn-registered-list');if(!el)return;
+  const list=getPrnMeds();
+  if(!list.length){el.innerHTML='<p style="font-size:var(--fs-xs);color:var(--txt3);margin-bottom:8px">登録された頓服・臨時薬はありません</p>';return;}
+  el.innerHTML=list.map(p=>`
+    <div class="med-item">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--txt3);flex-shrink:0;margin-top:6px"></div>
+      <div class="med-info" style="flex:1">
+        <div class="med-nm">${p.name}</div>
+        ${p.memo?`<div class="med-sub">${p.memo}</div>`:''}
+      </div>
+      <span class="med-del" onclick="delPrnReg(${p.id})">×</span>
+    </div>`).join('');
+}
+function togglePrnCheck(id){
+  const c=getPrnChecks(currentMedDate);
+  c[id]=!c[id];
+  savePrnChecks(currentMedDate,c);
+  renderMedToday();
+}
+function renderPrnList(){
+  // 旧関数との互換性のため残す（何もしない）
+}
+
+function saveMedRecord(){
+  const ds=currentMedDate;
+  // スナップショットが未作成なら今の薬リストで作成
+  if(!ld('tn_med_snap_'+ds,null)){
+    saveMedSnapshot(ds);
+  }
+  // 計算して records に保存
+  calcAndShowAdh(ds);
+  // 画面を更新
+  renderAdherence();
+  const d=new Date(ds);
+  const label=ds===getTodayStr()?'今日':`${d.getMonth()+1}/${d.getDate()}`;
+  const btn=document.getElementById('med-save-btn');
+  if(btn){btn.textContent='✓ 保存しました';btn.classList.add('saved');setTimeout(()=>{btn.textContent='服薬記録を保存';btn.classList.remove('saved');},2500);}
+  showToast(`${label}の服薬記録を保存しました`);
+}
+
+function renderAdherence(){
+  const el=document.getElementById('adh-content');if(!el)return;
+  const ds=currentMedDate||getTodayStr();
+  const latestMeds=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+  const allMeds=[...(latestMeds.morning||[]),...(latestMeds.noon||[]),...(latestMeds.evening||[]),...(latestMeds.bedtime||[])];
+
+  // 薬が1つも登録されていない
+  if(allMeds.length===0){
+    el.innerHTML='<p style="color:var(--txt2);text-align:center;padding:10px 0">薬を登録してください</p>';
+    return;
+  }
+
+  // calcAndShowAdh が records に保存した adherence 値を使う
+  const recs=ld('tn_records',[]);
+  const rec=recs.find(r=>r.date===ds);
+
+  if(!rec||rec.adherence==null){
+    // まだチェック・保存していない → 0%として表示
+    const snap=ld('tn_med_snap_'+ds,null);
+    const latestMeds2=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+    const skips=getSlotSkips(ds);
+    let total=0;
+    ['morning','noon','evening','bedtime'].forEach(slot=>{
+      if(skips[slot]===true)return;
+      const slotMeds=snap?snap.filter(x=>x.slot===slot):(latestMeds2[slot]||[]);
+      total+=slotMeds.length;
+    });
+    if(total===0){total=allMeds.length;} // スキップなしの場合は全薬数
+    const d=new Date(ds);
+    const label=ds===getTodayStr()?'今日':`${d.getMonth()+1}/${d.getDate()}`;
+    el.innerHTML=`
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+        <span style="font-size:40px;font-weight:700;color:var(--txt)">0%</span>
+        <span style="font-size:var(--fs-xs);color:var(--txt2)">${label}の服薬率（0/${total}錠）</span>
+      </div>
+      <div class="adh-bar-bg"><div class="adh-bar-fill" style="width:0%"></div></div>
+      <div class="adh-label"><span>0%</span><span>100%</span></div>`;
+    return;
+  }
+
+  const rate=rec.adherence;
+  const d=new Date(ds);
+  const label=ds===getTodayStr()?'今日':`${d.getMonth()+1}/${d.getDate()}`;
+  // done/total を再計算して表示
+  const checks=getChecks(ds);
+  const skips=getSlotSkips(ds);
+  const snap=ld('tn_med_snap_'+ds,null);
+  const latestMeds3=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+  let total=0,done=0;
+  ['morning','noon','evening','bedtime'].forEach(slot=>{
+    if(skips[slot]===true)return;
+    const slotMeds=snap?snap.filter(x=>x.slot===slot):(latestMeds3[slot]||[]);
+    slotMeds.forEach(({id})=>{total++;if(checks[slot+'_'+id])done++;});
+  });
+  el.innerHTML=`
+    <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+      <span style="font-size:40px;font-weight:700;color:${rate===100?'var(--accent)':'var(--txt)'}">${rate}%</span>
+      <span style="font-size:var(--fs-xs);color:var(--txt2)">${label}の服薬率（${done}/${total}錠）</span>
+    </div>
+    <div class="adh-bar-bg"><div class="adh-bar-fill" style="width:${rate}%"></div></div>
+    <div class="adh-label"><span>0%</span><span>100%</span></div>`;
+}
+
+// SAMPLE DATA
+function genSample(){
+  const data=[];const end=new Date();const start=new Date();start.setFullYear(start.getFullYear()-5);
+  let d=new Date(start);let el=0,em=0;
+  while(d<=end){
+    const ds=toJSTDateStr(d);
+    const doy=(d-new Date(d.getFullYear(),0,0))/86400000;const yr=(d-start)/(365.25*86400000);
+    const seas=Math.sin((doy/365)*2*Math.PI-Math.PI/2)*1.8;const trend=yr*0.8;
+    if(el<=0){const r=Math.random();if(r<0.04){em=3.5;el=Math.round(7+Math.random()*14);}else if(r<0.10){em=-3;el=Math.round(10+Math.random()*20);}else if(r<0.18){em=1.8;el=Math.round(4+Math.random()*10);}else{em=0;el=Math.round(3+Math.random()*7);}}el--;
+    const base=5+seas+trend+em;const noise=(Math.random()-.5)*1.4;
+    const mood=Math.min(10,Math.max(1,Math.round(base+noise)));
+    const energy=Math.min(10,Math.max(1,Math.round(base*.9+noise*.8+(Math.random()-.5))));
+    const recovery=Math.min(10,Math.max(1,Math.round(5-em*.4+trend+(Math.random()-.5)*1.5)));
+    const sleep=Math.max(3,Math.min(12,parseFloat((7+trend*.2-em*.25+(Math.random()-.5)*1.5).toFixed(1))));
+    const weight=parseFloat((63-trend*.3+(em<-1?.3:0)+(Math.random()-.5)*.6).toFixed(1));
+    const adherence=Math.random()>(0.15-trend*.02)?100:Math.random()>.5?50:0;
+    const steps=Math.max(0,Math.round(4000+em*400+(Math.random()-.5)*3000));
+    data.push({date:ds,mood,energy,recovery,sleep,weight,fat:parseFloat((22+(Math.random()-.5)*.5).toFixed(1)),steps,adherence,tempC:Math.round(15+seas*5+(Math.random()-.5)*3),pressure:Math.round(1013+(Math.random()-.5)*20)});
+    d.setDate(d.getDate()+1);
+  }
+  return data;
+}
+let _sc=null;function getSample(){if(!_sc)_sc=genSample();return _sc;}
+
+// CHART
+const chartItems=[
+  {key:'mood',label:'気分',color:'#639922'},{key:'energy',label:'活動量',color:'#378ADD'},
+  {key:'recovery',label:'リカバリー',color:'#1D9E75'},{key:'sleep',label:'睡眠(h)',color:'#B4B2A9'},
+  {key:'weight',label:'体重(kg)',color:'#D4537E'},{key:'adherence',label:'服薬率(%)',color:'#EF9F27'},
+  {key:'steps',label:'歩数(百)',color:'#7F77DD'},{key:'pressure',label:'気圧(hPa)',color:'#AFA9EC'},
+  {key:'tempC',label:'気温(°C)',color:'#F0997B'},{key:'custom1',label:'カスタム1',color:'#D85A30'},{key:'custom2',label:'カスタム2',color:'#534AB7'},
+];
+const rightAxisKeys=['mood','energy','recovery','sleep','custom1','custom2'];
+const pressureKeys=['pressure'];
+let selectedItems=['mood','energy','recovery'];
+let mainChart=null;
+
+function buildChartChecks(){
+  const el=document.getElementById('chart-checks');el.innerHTML='';
+  chartItems.forEach(item=>{
+    if(item.key==='custom1'){if(!customLabels?.custom1)return;item.label=customLabels.custom1;}
+    if(item.key==='custom2'){if(!customLabels?.custom2)return;item.label=customLabels.custom2;}
+    const label=document.createElement('label');label.className='check-item';
+    const cb=document.createElement('input');cb.type='checkbox';cb.checked=selectedItems.includes(item.key);
+    cb.onchange=()=>{if(cb.checked){if(!selectedItems.includes(item.key))selectedItems.push(item.key);}else{selectedItems=selectedItems.filter(k=>k!==item.key);}renderMainChart(getDisplayData(document.getElementById('hist-period')?.value));buildLegend();};
+    const dot=document.createElement('span');dot.style.cssText=`width:10px;height:10px;border-radius:2px;background:${item.color};flex-shrink:0`;
+    label.appendChild(cb);label.appendChild(dot);label.appendChild(document.createTextNode(item.label));el.appendChild(label);
+  });
+}
+function buildLegend(){
+  const el=document.getElementById('chart-legend');el.innerHTML='';
+  selectedItems.forEach(key=>{const item=chartItems.find(i=>i.key===key);if(!item)return;const s=document.createElement('span');s.innerHTML=`<span class="ld" style="background:${item.color}"></span>${item.label}`;el.appendChild(s);});
+}
+function filterReal(days){
+  if(!days||days===0)return[...records].sort((a,b)=>a.date>b.date?1:-1);
+  const cutStr=toJSTDateStr(new Date(Date.now()-days*86400000));
+  return records.filter(r=>r.date>=cutStr).sort((a,b)=>a.date>b.date?1:-1);
+}
+function getDisplayData(val){if(val==='sample')return getSample();return filterReal(parseInt(val)||0);}
+
+let _histInited=false;
+function onHistPeriodChange(){sd('tn_hist_period',document.getElementById('hist-period').value);renderHistory();updateExportPeriodLabel();}
+function renderHistory(){
+  records=ld('tn_records',[]);buildChartChecks();buildLegend();
+  const sel=document.getElementById('hist-period');
+  if(!_histInited){sel.value=ld('tn_hist_period','sample');_histInited=true;}
+  const val=sel.value;const data=getDisplayData(val);
+  const isSample=val==='sample';document.getElementById('sample-note').style.display=isSample?'block':'none';
+  const statsEl=document.getElementById('hist-stats');
+  if(!data.length){statsEl.innerHTML='<p style="color:var(--txt2);grid-column:1/-1;text-align:center;padding:10px 0">データがありません。「サンプルデータ」でグラフのイメージを確認できます。</p>';}
+  else{
+    const avg=k=>{const v=data.map(r=>r[k]).filter(v=>v!=null);return v.length?(v.reduce((a,b)=>a+b,0)/v.length).toFixed(1):'--';};
+    statsEl.innerHTML=`<div class="stat-card"><div class="stat-lbl">平均気分</div><div class="stat-val">${avg('mood')}</div><div class="stat-sub">/ 10</div></div><div class="stat-card"><div class="stat-lbl">平均睡眠</div><div class="stat-val">${avg('sleep')}h</div><div class="stat-sub">${data.length}日分</div></div><div class="stat-card"><div class="stat-lbl">服薬率</div><div class="stat-val">${avg('adherence')}%</div><div class="stat-sub">記録期間</div></div>`;
+  }
+  renderMainChart(data);
+}
+async function renderMainChart(data){
+  await ensureChartJs();
+  let plotData=data;
+  if(data.length>180){
+    const weeks={};
+    data.forEach(r=>{const d=new Date(r.date);d.setDate(d.getDate()-d.getDay());const wk=toJSTDateStr(d);if(!weeks[wk])weeks[wk]={date:wk,_c:{}};chartItems.forEach(item=>{if(r[item.key]!=null){weeks[wk][item.key]=(weeks[wk][item.key]||0)+r[item.key];weeks[wk]._c[item.key]=(weeks[wk]._c[item.key]||0)+1;}});});
+    plotData=Object.values(weeks).sort((a,b)=>a.date>b.date?1:-1).map(w=>{const out={date:w.date};chartItems.forEach(item=>{if(w._c[item.key])out[item.key]=parseFloat((w[item.key]/w._c[item.key]).toFixed(1));});return out;});
+  }
+  // 横軸ラベル：月が変わる最初の点に年を表示、それ以外は月/日
+  const labels=plotData.map((r,i)=>{
+    const p=r.date.split('-');
+    const y=p[0],mo=p[1],d=p[2];
+    const prev=plotData[i-1];
+    const prevMo=prev?prev.date.split('-')[1]:null;
+    const prevY=prev?prev.date.split('-')[0]:null;
+    // 最初の点 or 年が変わった点 or 月が変わった点 → 年を含める
+    if(i===0||prevY!==y) return`${y}/${mo}/${d}`;
+    if(prevMo!==mo) return`${mo}/${d}`;
+    return`${mo}/${d}`;
+  });
+  const isDark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const gc=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.05)';const tc=isDark?'#6e6e6c':'#999';
+  const needsRight=selectedItems.some(k=>rightAxisKeys.includes(k));
+  const needsLeft=selectedItems.some(k=>!rightAxisKeys.includes(k)&&!pressureKeys.includes(k));
+  const needsP=selectedItems.includes('pressure');
+  const datasets=selectedItems.map(key=>{
+    const item=chartItems.find(i=>i.key===key);if(!item)return null;
+    const isRight=rightAxisKeys.includes(key);const isP=key==='pressure';
+    let vals=plotData.map(r=>r[key]??null);
+    if(key==='steps')vals=vals.map(v=>v!=null?+(v/100).toFixed(1):null);
+    return{label:item.label,data:vals,borderColor:item.color,backgroundColor:item.color+'18',tension:0,fill:false,pointRadius:plotData.length>60?0:3,pointHoverRadius:5,borderWidth:2,spanGaps:true,yAxisID:isP?'yP':isRight?'yR':'yL'};
+  }).filter(Boolean);
+  if(mainChart)mainChart.destroy();
+  const ctx=document.getElementById('chart-main');if(!ctx)return;
+  if(!datasets.length||!plotData.length){ctx.getContext('2d')?.clearRect(0,0,ctx.width,ctx.height);return;}
+  mainChart=new Chart(ctx,{type:'line',data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{backgroundColor:isDark?'rgba(40,40,42,0.97)':'rgba(255,255,255,0.97)',titleColor:isDark?'#f2f2f0':'#2C2C2A',bodyColor:isDark?'#aeaead':'#5F5E5A',borderColor:isDark?'rgba(255,255,255,0.12)':'rgba(0,0,0,0.1)',borderWidth:1,cornerRadius:10,padding:10,callbacks:{label:ctx=>{const raw=ctx.raw;if(raw==null)return null;if(ctx.dataset.label==='歩数(百)')return`歩数: ${Math.round(raw*100)}歩`;return`${ctx.dataset.label}: ${raw}`;}}}},scales:{x:{grid:{color:gc},ticks:{color:tc,font:{size:11},maxTicksLimit:8,autoSkip:true}},yR:{display:needsRight,position:'right',min:0,max:10,grid:{color:gc},ticks:{color:tc,font:{size:11},stepSize:2}},yL:{display:needsLeft,position:'left',min:0,grid:{color:needsRight?'transparent':gc},ticks:{color:tc,font:{size:11}}},yP:{display:needsP,position:needsLeft?'right':'left',min:950,max:1050,grid:{color:needsRight?'transparent':gc},ticks:{color:tc,font:{size:10},stepSize:10}}}}});
+}
+
+function switchTab(t){
+  ['record','meds','history','articles'].forEach(s=>{const el=document.getElementById('tab-'+s);if(el)el.classList.toggle('active',s===t);});
+  document.querySelectorAll('.nav button').forEach((b,i)=>b.classList.toggle('active',['record','meds','history','articles'][i]===t));
+  hideAiCommentPopup();
+  if(t==='meds'){
+    currentMedDate=getTodayStr();currentSlot='morning';
+    // 今日のスナップショットを必ず作成（なければ）
+    saveMedSnapshot(getTodayStr());
+    applyMedUseUI();buildMedDateBar();selectSlotTab('morning');renderMedToday();renderPrnList();renderAdherence();
+    const lbl=document.getElementById('med-check-label');if(lbl)lbl.textContent='今日の服薬チェック';
+    fetchWeatherByPref();
+  }
+  if(t==='history'){records=ld('tn_records',[]);buildChartChecks();buildLegend();renderHistory();}
+}
+
+// CUSTOM ITEMS
+function addCustomItem(){
+  const w1=document.getElementById('custom1-wrap');const btn=document.getElementById('add-custom-btn');
+  if(w1.style.display==='none'){w1.style.display='block';editCustomLabel(1);btn.onclick=()=>addCustomItem2();return;}
+}
+function addCustomItem2(){
+  const w2=document.getElementById('custom2-wrap');const btn=document.getElementById('add-custom-btn');
+  if(w2.style.display==='none'){w2.style.display='block';editCustomLabel(2);btn.style.display='none';}
+}
+function removeCustomItem(n){
+  if(!confirm(`カスタム項目${n}を削除しますか？`))return;
+  customLabels['custom'+n]='';sd('tn_custom_labels',customLabels);
+  document.getElementById('custom'+n+'-wrap').style.display='none';document.getElementById('lbl-custom'+n).textContent='項目を設定';
+  const item=chartItems.find(i=>i.key==='custom'+n);if(item)item.label='カスタム'+n;
+  selectedItems=selectedItems.filter(k=>k!=='custom'+n);
+  const btn=document.getElementById('add-custom-btn');if(btn){btn.style.display='flex';btn.onclick=()=>addCustomItem();}
+  buildChartChecks();showToast('削除しました');
+}
+function editCustomLabel(n){
+  const wrap=document.getElementById('custom'+n+'-wrap');if(!wrap)return;wrap.style.display='block';
+  const existing=document.getElementById('custom'+n+'-input-row');if(existing){existing.remove();return;}
+  const row=document.createElement('div');row.id='custom'+n+'-input-row';row.style.marginTop='8px';
+  const inp=document.createElement('input');inp.type='text';inp.placeholder='例：体の痛み、集中力';inp.value=customLabels?.['custom'+n]||'';
+  inp.style.cssText='width:100%;font-size:var(--fs-base);border:1px solid var(--bdr2);border-radius:var(--r-md);padding:10px 12px;background:var(--bg);color:var(--txt);display:block;margin-bottom:8px;box-sizing:border-box;';
+  const saveBtn=document.createElement('button');saveBtn.type='button';saveBtn.textContent='保存する';saveBtn.style.cssText='width:100%;font-size:var(--fs-base);padding:10px;border:none;border-radius:var(--r-md);background:var(--accent);color:#fff;cursor:pointer;';
+  const doSave=()=>{const v=inp.value.trim();if(!v){showToast('項目名を入力してください');inp.focus();return;}customLabels['custom'+n]=v;sd('tn_custom_labels',customLabels);document.getElementById('lbl-custom'+n).textContent=v;const item=chartItems.find(i=>i.key==='custom'+n);if(item)item.label=v;row.remove();buildChartChecks();showToast('「'+v+'」を設定しました');};
+  saveBtn.addEventListener('click',doSave);inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();doSave();}});
+  row.appendChild(inp);row.appendChild(saveBtn);wrap.appendChild(row);setTimeout(()=>inp.focus(),150);
+}
+function applyCustomLabels(){
+  ['custom1','custom2'].forEach(k=>{
+    const stored=customLabels?.[k];if(!stored)return;
+    const wrap=document.getElementById(k+'-wrap');if(wrap)wrap.style.display='block';
+    const lbl=document.getElementById('lbl-'+k);if(lbl)lbl.textContent=stored;
+    const item=chartItems.find(ci=>ci.key===k);if(item)item.label=stored;
+  });
+  const btn=document.getElementById('add-custom-btn');if(btn){const has1=!!(customLabels?.custom1);const has2=!!(customLabels?.custom2);if(has1&&has2)btn.style.display='none';else if(has1)btn.onclick=()=>addCustomItem2();}
+}
+
+// IMPORT/EXPORT
+function importCSV(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      let text=e.target.result;if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+      const lines=text.split(/\r?\n/).filter(l=>l.trim());if(lines.length<2){showImportResult('データが見つかりませんでした',false);return;}
+      const startIdx=isNaN(parseFloat(lines[0].split(',')[1]))?1:0;let imported=0,skipped=0;
+      const pf=v=>{const n=parseFloat(v);return isNaN(n)?null:n;};
+      for(let i=startIdx;i<lines.length;i++){const cols=lines[i].split(',').map(c=>c.replace(/^"|"$/g,'').trim());const date=cols[0];if(!/^\d{4}-\d{2}-\d{2}$/.test(date)){skipped++;continue;}const rec={date,mood:pf(cols[1]),energy:pf(cols[2]),anxiety:pf(cols[3]),recovery:pf(cols[4]),sleep:pf(cols[5]),weight:pf(cols[6]),fat:pf(cols[7]),steps:pf(cols[8]),adherence:pf(cols[9]),tempC:pf(cols[10]),pressure:pf(cols[11]),weather:cols[12]||null,tags:[],note:cols[14]||''};const idx=records.findIndex(r=>r.date===date);if(idx>=0)records[idx]={...records[idx],...rec};else records.push(rec);imported++;}
+      sd('tn_records',records);showImportResult(`${imported}件取り込みました${skipped?`（${skipped}件スキップ）`:''}`,true);renderHistory();
+    }catch{showImportResult('読み込みエラー：ファイル形式を確認してください',false);}
+  };reader.readAsText(file,'UTF-8');event.target.value='';
+}
+function showImportResult(msg,ok){const el=document.getElementById('import-result');el.textContent=msg;el.style.color=ok?'var(--accent)':'#a32d2d';}
+function downloadTemplate(){const h='日付,気分(0-10),活動量(0-10),焦り(0-10),リカバリー(0-10),睡眠(h),体重(kg),体脂肪(%),歩数,服薬率(%),気温(°C),気圧(hPa),天気,タグ,日記\n';const r='2025-01-01,6,5,3,7,7.0,63.0,22.0,8000,100,18,1013,sunny,,\n';const blob=new Blob(['\uFEFF'+h+r],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='なぎろぐ_テンプレート.csv';a.click();URL.revokeObjectURL(url);showToast('テンプレートをダウンロードしました');}
+
+// バックアップ書き出し・復元（記録・服薬・設定など tn_ で始まる全データが対象）
+function exportBackup(){
+  const data={};
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const key=localStorage.key(i);
+      if(key&&key.startsWith('tn_'))data[key]=localStorage.getItem(key);
+    }
+  }catch(err){showToast('バックアップを書き出せませんでした');return;}
+  const backup={app:'nagilog',version:1,exportedAt:new Date().toISOString(),data};
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`なぎろぐ_バックアップ_${todayStr}.json`;a.click();
+  URL.revokeObjectURL(url);
+  showToast('バックアップファイルを書き出しました');
+}
+function importBackup(event){
+  const file=event.target.files[0];
+  event.target.value='';
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    let backup;
+    try{backup=JSON.parse(e.target.result);}catch(err){showToast('バックアップファイルを読み込めませんでした');return;}
+    if(!backup||backup.app!=='nagilog'||!backup.data){showToast('このファイルはなぎろぐのバックアップファイルではないようです');return;}
+    const keys=Object.keys(backup.data);
+    if(!keys.length){showToast('バックアップファイルにデータがありません');return;}
+    if(!confirm(`${keys.length}件のデータを復元します。今この端末にあるなぎろぐのデータは上書きされます。よろしいですか？`))return;
+    keys.forEach(k=>{try{localStorage.setItem(k,backup.data[k]);}catch(err){}});
+    showToast('復元しました。再読み込みします');
+    setTimeout(()=>location.reload(),1000);
+  };
+  reader.readAsText(file);
+}
+
+// エクスポート年月ピッカー初期化
+// エクスポートは表示期間と連動（年月ピッカー廃止）
+function initExportMonthPicker(){
+  // 履歴タブが開かれるたびにラベルを更新
+  updateExportPeriodLabel();
+}
+function updateExportPeriodLabel(){
+  const lbl=document.getElementById('export-period-label');if(!lbl)return;
+  const val=document.getElementById('hist-period')?.value||'sample';
+  const periodNames={
+    'sample':'サンプルデータ（5年分）',
+    '0':'全期間',
+    '1825':'過去5年',
+    '365':'過去1年',
+    '180':'過去6ヶ月',
+    '90':'過去3ヶ月',
+    '30':'過去1ヶ月',
+    '7':'過去1週間'
+  };
+  const data=getExportData();
+  const name=periodNames[val]||val;
+  lbl.textContent=`対象：${name}　${data.length}件`;
+}
+function getExportData(){
+  const val=document.getElementById('hist-period')?.value||'sample';
+  return getDisplayData(val);
+}
+function getExportPeriodName(){
+  const val=document.getElementById('hist-period')?.value||'sample';
+  const periodNames={
+    'sample':'sample','0':'全期間','1825':'5年','365':'1年',
+    '180':'6ヶ月','90':'3ヶ月','30':'1ヶ月','7':'1週間'
+  };
+  return periodNames[val]||val;
+}
+
+// エクスポート用：その日の服薬率を実際のチェック状態から再計算
+function calcAdhForExport(dateStr){
+  const checks=ld('tn_checks_'+dateStr,{});
+  const skips=ld('tn_slot_skip_'+dateStr,{});
+  const snap=ld('tn_med_snap_'+dateStr,null);
+  const latestMeds=ld('tn_meds',{morning:[],noon:[],evening:[],bedtime:[]});
+  let total=0,done=0;
+  ['morning','noon','evening','bedtime'].forEach(slot=>{
+    if(skips[slot]===true)return;
+    const slotMeds=snap?snap.filter(x=>x.slot===slot):(latestMeds[slot]||[]);
+    slotMeds.forEach(({id})=>{total++;if(checks[slot+'_'+id])done++;});
+  });
+  if(total===0)return null;
+  return Math.round(done/total*100);
+}
+function exportCSV(){
+  const data=getExportData();
+  const period=getExportPeriodName();
+  if(!data.length){showToast('この期間のデータがありません');return;}
+  const prnMeds=getPrnMeds();
+  const hd=['日付','気分','活動量','焦り','リカバリー','睡眠(h)','体重(kg)','体脂肪(%)','歩数','服薬率(%)','気温(°C)','気圧(hPa)','天気','睡眠状態','気になること','からだ','イベント','頓服・臨時','日記'];
+  const rows=data.map(r=>{
+    const prnChecks=ld('tn_prn_checks_'+r.date,{});
+    const prnTaken=prnMeds.filter(p=>prnChecks[p.id]).map(p=>p.name+(p.memo?'('+p.memo+')':'')).join('|');
+    return [r.date,r.mood??'',r.energy??'',r.anxiety??'',r.recovery??'',r.sleep??'',r.weight??'',r.fat??'',r.steps??'',r.adherence!=null?r.adherence+'%':'',r.tempC??'',r.pressure??'',r.weather??'',(r.sleepTags||[]).join('|'),(r.tags||[]).join('|'),(r.bodyTags||[]).join('|'),(r.events||[]).join('|'),prnTaken,(r.note||'').replace(/\n/g,' ')];
+  });
+  const csv=[hd,...rows].map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`なぎろぐ_${period}_${todayStr}.csv`;a.click();URL.revokeObjectURL(url);
+  showToast(`CSVをダウンロードしました（${data.length}件）`);
+}
+function exportPDF(){
+  const data=getExportData();
+  const period=getExportPeriodName();
+  if(!data.length){showToast('この期間のデータがありません');return;}
+  const prnMeds=getPrnMeds();
+  const stateLabel=r=>(r.mood!=null&&r.energy!=null)?getState(r.mood,r.energy):'';
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  let html=`<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><title>なぎろぐ ${period}</title>
+<style>*{box-sizing:border-box;}@page{size:A4 landscape;margin:8mm 6mm;}body{font-family:'Hiragino Sans','Yu Gothic UI',sans-serif;font-size:8px;color:#222;margin:0;}h2{font-size:12px;margin-bottom:3px;}p.meta{font-size:7.5px;color:#666;margin-bottom:5px;}table{border-collapse:collapse;width:100%;table-layout:fixed;}th{background:#1D9E75;color:#fff;padding:4px 2px;text-align:center;font-size:7.5px;font-weight:600;border:1px solid #15805e;line-height:1.3;}td{padding:3px 2px;border:1px solid #ddd;text-align:center;font-size:7.5px;vertical-align:middle;word-break:break-word;line-height:1.3;}tr:nth-child(even) td{background:#f7f7f5;}.s躁{color:#633806;font-weight:700;}.s軽躁{color:#854F0B;}.s安定{color:#27500A;}.s抑うつ{color:#0C447C;}.sうつ{color:#042C53;font-weight:700;}.td-note{text-align:left;font-size:7px;}.td-tags{text-align:left;font-size:7px;}</style></head><body>
+<h2>なぎろぐ ${period}</h2>
+<p class="meta">出力日：${todayStr}　${data.length}件　※気温・気圧は12:00のデータ</p>
+<table><colgroup><col style="width:7%"><col style="width:4%"><col style="width:3%"><col style="width:3%"><col style="width:3.5%"><col style="width:3%"><col style="width:8%"><col style="width:3.5%"><col style="width:3.5%"><col style="width:4.5%"><col style="width:4.5%"><col style="width:3.5%"><col style="width:10%"><col style="width:32%"></colgroup>
+<thead><tr><th>日付</th><th>状態</th><th>気分</th><th>活動量</th><th>リカバリー</th><th>睡眠</th><th>睡眠の状態</th><th>体重</th><th>服薬率</th><th>歩数</th><th>気圧(12:00)</th><th>気温(12:00)</th><th>頓服・臨時</th><th>日記</th></tr></thead><tbody>`;
+  data.forEach(r=>{
+    const st=stateLabel(r);
+    const prnChecks=ld('tn_prn_checks_'+r.date,{});
+    const prnTaken=prnMeds.filter(p=>prnChecks[p.id]).map(p=>esc(p.name)).join('、');
+    html+=`<tr><td>${esc(r.date)}</td><td class="s${esc(st)}">${esc(st)}</td><td>${r.mood??''}</td><td>${r.energy??''}</td><td>${r.recovery??''}</td><td>${r.sleep!=null?r.sleep+'h':''}</td><td class="td-tags">${esc((r.sleepTags||[]).join(' '))}</td><td>${r.weight!=null?r.weight+'kg':''}</td><td>${r.adherence!=null?r.adherence+'%':''}</td><td>${r.steps!=null?r.steps.toLocaleString():''}</td><td>${r.pressure!=null?r.pressure+' hPa':''}</td><td>${r.tempC!=null?r.tempC+'°C':''}</td><td class="td-tags">${prnTaken}</td><td class="td-note">${esc(r.note||'').replace(/\n/g,'<br>')}</td></tr>`;
+  });
+  html+=`</tbody></table></body></html>`;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const win=window.open(url,'_blank');
+  if(win){win.onload=()=>{win.print();setTimeout(()=>URL.revokeObjectURL(url),2000);}}
+  showToast('PDF印刷画面を開きました');
+}
+function exportChartPDF(){
+  if(!mainChart){showToast('グラフが表示されていません');return;}
+  const period=getExportPeriodName();
+  const itemLabels=selectedItems.map(k=>{const i=chartItems.find(x=>x.key===k);return i?i.label:k;}).join('・');
+  // 現在表示中のグラフ（表示期間と同一）をキャプチャ。
+  // ホバー／タップ中の日付ポップアップ（ツールチップ）が画像に写り込んで
+  // グラフを隠さないよう、キャプチャの間だけ無効化して線グラフのみにする。
+  // （tooltip.enabled を切るだけでは表示中のものが消えないため、ホバー状態を解除して
+  //  再描画し、ツールチップの透明度も0にしてから描画する。次にホバーすれば通常どおり出る）
+  mainChart.tooltip.setActiveElements([],{x:0,y:0});
+  mainChart.setActiveElements([]);
+  mainChart.update('none');
+  mainChart.tooltip.opacity=0;
+  mainChart.draw();
+  const imgData=mainChart.toBase64Image('image/png',1.0);
+  const html=`<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><title>なぎろぐ グラフ ${period}</title><style>@page{size:A4 landscape;margin:10mm;}body{font-family:sans-serif;margin:0;}h2{font-size:14px;margin-bottom:4px;color:#1D9E75;}p{font-size:10px;color:#666;margin-bottom:8px;}img{width:100%;height:auto;border:0.5px solid #eee;}</style></head><body><h2>なぎろぐ グラフ　${period}</h2><p>項目：${itemLabels}　出力日：${todayStr}</p><img src="${imgData}"></body></html>`;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const win=window.open(url,'_blank');
+  if(win){win.onload=()=>{win.print();setTimeout(()=>URL.revokeObjectURL(url),2000);}}
+  showToast('グラフPDFを出力しました');
+}
+
+function openModal(id){document.getElementById('modal-'+id).classList.add('show');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('show');document.body.style.overflow='';}
+function openArticle(id){document.getElementById('article-'+id).classList.add('show');document.body.style.overflow='hidden';}
+function closeArticle(id){document.getElementById('article-'+id).classList.remove('show');document.body.style.overflow='';}
+
+// PC右サイドバー：記事表示
+function openPcArticle(id){
+  const src=document.getElementById('article-'+id);
+  if(!src)return;
+  const body=src.querySelector('.article-body');
+  if(!body)return;
+  document.getElementById('pc-article-list').style.display='none';
+  document.getElementById('pc-article-panel-body').innerHTML=body.innerHTML;
+  document.getElementById('pc-article-panel').style.display='block';
+  const sb=document.getElementById('pc-article-sidebar');
+  if(sb)sb.scrollTop=0;
+}
+function closePcArticle(){
+  document.getElementById('pc-article-panel').style.display='none';
+  document.getElementById('pc-article-list').style.display='block';
+}
+// スマホ：モーダル / PC：右サイドバー
+function openArticleInline(id){
+  if(window.innerWidth>=768){openPcArticle(id);}
+  else{openArticle(id);}
+}
+
+// CALENDAR
+let calYear=new Date().getFullYear(),calMonth=new Date().getMonth(),calSelected=null,calPickerMode=null;
+function openCal(){
+  calYear=new Date().getFullYear();calMonth=new Date().getMonth();calSelected=todayStr;calPickerMode=null;
+  document.getElementById('cal-modal').classList.add('show');document.body.style.overflow='hidden';
+  renderCal();showCalDetail(todayStr);
+}
+function closeCal(){document.getElementById('cal-modal').classList.remove('show');document.body.style.overflow='';calPickerMode=null;}
+function calMove(d){
+  if(calPickerMode==='year'){calYear+=d;renderCal();return;}
+  calMonth+=d;if(calMonth<0){calMonth=11;calYear--;}if(calMonth>11){calMonth=0;calYear++;}renderCal();
+}
+function toggleCalPicker(mode){calPickerMode=calPickerMode===mode?null:mode;renderCal();}
+function renderCal(){
+  document.getElementById('cal-year-btn').textContent=`${calYear}年`;document.getElementById('cal-month-btn').textContent=`${calMonth+1}月`;
+  document.getElementById('cal-year-btn').classList.toggle('active',calPickerMode==='year');document.getElementById('cal-month-btn').classList.toggle('active',calPickerMode==='month');
+  const pArea=document.getElementById('cal-picker-area');
+  if(calPickerMode==='year'){
+    const sy=calYear-5;let html='<div class="cal-picker year-picker">';
+    for(let y=sy;y<=sy+11;y++)html+=`<div class="cal-pick-item${y===calYear?' selected':''}" onclick="calYear=${y};calPickerMode=null;renderCal()">${y}年</div>`;
+    html+='</div>';pArea.innerHTML=html;document.getElementById('cal-grid').innerHTML='';document.getElementById('cal-detail').innerHTML='';return;
+  }
+  if(calPickerMode==='month'){
+    let html='<div class="cal-picker">';for(let m=0;m<12;m++)html+=`<div class="cal-pick-item${m===calMonth?' selected':''}" onclick="calMonth=${m};calPickerMode=null;renderCal()">${m+1}月</div>`;
+    html+='</div>';pArea.innerHTML=html;document.getElementById('cal-grid').innerHTML='';document.getElementById('cal-detail').innerHTML='';return;
+  }
+  pArea.innerHTML='';
+  const grid=document.getElementById('cal-grid');grid.innerHTML='';
+  ['日','月','火','水','木','金','土'].forEach(d=>{const el=document.createElement('div');el.className='cal-day-name';el.textContent=d;grid.appendChild(el);});
+  const firstDay=new Date(calYear,calMonth,1).getDay();const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  for(let i=0;i<firstDay;i++){const el=document.createElement('div');el.className='cal-day empty';grid.appendChild(el);}
+  for(let d=1;d<=daysInMonth;d++){
+    const dateStr=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const hasData=records.some(r=>r.date===dateStr);
+    const el=document.createElement('div');
+    el.className='cal-day'+(hasData?' has-data':'')+(dateStr===todayStr?' today':'')+(dateStr===calSelected?' selected':'');
+    el.textContent=d;el.onclick=()=>{calSelected=dateStr;document.querySelectorAll('.cal-day').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');showCalDetail(dateStr);};
+    grid.appendChild(el);
+  }
+  if(calSelected)showCalDetail(calSelected);
+}
+function showCalDetail(dateStr){
+  const det=document.getElementById('cal-detail');const rec=records.find(r=>r.date===dateStr);
+  if(!rec){det.innerHTML=`<div class="cal-detail"><div class="cal-no-data">この日の記録はありません</div></div>`;return;}
+  const stateColors={'躁':'#633806','軽躁':'#854F0B','安定':'#27500A','抑うつ':'#0C447C','うつ':'#042C53'};
+  const state=(rec.mood!=null&&rec.energy!=null)?getState(rec.mood,rec.energy):null;
+  const sc=state?(stateColors[state]||'var(--txt)'):'var(--txt2)';
+  const row=(key,val)=>val!=null&&val!==''?`<div class="cal-detail-row"><span class="cal-detail-key">${key}</span><span class="cal-detail-val">${val}</span></div>`:'';
+  const checks=ld('tn_checks_'+dateStr,{});const medLines=[];
+  ['morning','noon','evening','bedtime'].forEach(slot=>{(meds[slot]||[]).forEach(m=>{const done=!!checks[slot+'_'+m.id];medLines.push(`${slotN[slot]}：${m.name}${m.mg?' '+m.mg+'mg':''} ${done?'✓':'✗'}`);});});
+  det.innerHTML=`<div class="cal-detail">
+    <div class="cal-detail-date">${dateStr}</div>
+    ${state?`<div class="cal-detail-row"><span class="cal-detail-key">状態</span><span class="cal-detail-val" style="color:${sc}">${state}</span></div>`:''}
+    ${row('気分',rec.mood!=null?rec.mood+' / 10':null)}${row('活動量',rec.energy!=null?rec.energy+' / 10':null)}
+    ${row('リカバリー',rec.recovery!=null?rec.recovery+' / 10':null)}${row('睡眠',rec.sleep!=null?rec.sleep+'h':null)}
+    ${(rec.sleepTags||[]).length?`<div class="cal-detail-row"><span class="cal-detail-key">睡眠状態</span><span class="cal-detail-val" style="text-align:right;max-width:60%;line-height:1.5">${rec.sleepTags.join(', ')}</span></div>`:''}
+    ${row('体重',rec.weight!=null?rec.weight+'kg':null)}${row('体脂肪',rec.fat!=null?rec.fat+'%':null)}
+    ${row('歩数',rec.steps!=null?rec.steps.toLocaleString()+'歩':null)}
+    ${row('気温',rec.tempC!=null?rec.tempC+'°C':null)}${row('気圧',rec.pressure!=null?rec.pressure+' hPa（12:00）':null)}
+    ${(rec.tags||[]).length?`<div class="cal-detail-row"><span class="cal-detail-key">気になること</span><span class="cal-detail-val" style="text-align:right;max-width:60%;line-height:1.5">${rec.tags.join(', ')}</span></div>`:''}
+    ${(rec.events||[]).length?`<div class="cal-detail-row"><span class="cal-detail-key">イベント</span><span class="cal-detail-val" style="text-align:right;max-width:60%;line-height:1.5">${rec.events.join(', ')}</span></div>`:''}
+    ${medLines.length?`<div class="cal-detail-row"><span class="cal-detail-key">服薬</span><span class="cal-detail-val" style="text-align:right;max-width:65%;font-size:12px;line-height:1.6">${medLines.join('<br>')}</span></div>`:''}
+    ${rec.note?`<div class="cal-detail-note">📝 ${rec.note.replace(/\n/g,'<br>')}</div>`:''}
+  </div>`;
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';setTimeout(()=>t.style.opacity='0',1800);}
+
+// INIT
+applyMedUseUI();applyMoodLabels();applyCustomLabels();checkDateRollover();
+buildDateBar();buildMedDateBar();renderAiComment();
+// 記事ページの「なぎろぐに戻る」（#articles付きリンク）から来た場合は記事タブを開く
+if(location.hash==='#articles'){switchTab('articles');pcNavActivate('articles');}
+// 今日のキャッシュがあればUIに反映、なければ空白（昨日のデータを引き継がない）
+const _initToday=getTodayStr();
+const _todayTmp=ld('tn_temp_'+_initToday,null);
+const _todayRec=records.find(r=>r.date===_initToday);
+if(_todayTmp||_todayRec){loadDateToUI(_initToday);}
+// loadDateToUI の後に updateMood を呼ぶ（スライダー値が復元された後にバナーを更新）
+updateMood();
+// 服薬：今日のスナップショット作成
+if(!ld('tn_med_snap_'+_initToday,null))saveMedSnapshot(_initToday);
+// 履歴タブのグラフ（buildChartChecks/buildLegend/renderHistory）は、
+// 起動直後は不要なので、実際に履歴タブを開いた時にだけ作る（switchTab側で実行）。
+// ここで毎回作っていると、Chart.jsの読み込み・描画が終わるまで起動が遅くなる。
+renderMedToday();fetchWeatherByPref();initExportMonthPicker();
+// ===== テーマ切替（ライト/ダークのみ） =====
+function setTheme(mode){
+  document.body.classList.remove('dark-mode','light-mode');
+  if(mode==='dark')document.body.classList.add('dark-mode');
+  else{document.body.classList.add('light-mode');mode='light';}
+  sd('tn_theme',mode);
+  ['light','dark'].forEach(m=>{
+    ['sp','pc'].forEach(t=>{
+      const el=document.getElementById(`tt-${m}-${t}`);
+      if(el)el.classList.toggle('active',m===mode);
+    });
+  });
+}
+(()=>{
+  const saved=ld('tn_theme','light');
+  setTheme(saved);
+})();
+
+// PC用サイドナビのアクティブ切替
+function pcNavActivate(tab){
+  ['record','meds','history','articles'].forEach(t=>{
+    const el=document.getElementById('pcnav-'+t);
+    if(el)el.classList.toggle('active',t===tab);
+  });
+}
+
+// PC版：.appをpc-contentに移動（1回だけ）、ヘッダーはPC版で非表示
+(()=>{
+  const isPc=()=>window.innerWidth>=768;
+  function mountPcApp(){
+    const pc=document.getElementById('pc-content');
+    const appEl=document.querySelector('.app');
+    if(!pc||!appEl||pc.dataset.mounted)return;
+    pc.appendChild(appEl);
+    pc.dataset.mounted='1';
+    // アプリのヘッダー（テーマ・フォント・日付）はPC版では非表示
+    const appHeader=appEl.querySelector('.header');
+    if(appHeader)appHeader.style.display='none';
+  }
+  if(isPc()){
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',mountPcApp);
+    }else{
+      mountPcApp();
+    }
+  }
+  window.addEventListener('resize',()=>{
+    const appEl=document.querySelector('.app');
+    const appHeader=appEl?.querySelector('.header');
+    if(isPc()){
+      mountPcApp();
+      if(appHeader)appHeader.style.display='none';
+    }else{
+      if(appHeader)appHeader.style.display='';
+    }
+  });
+})();
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register('./service-worker.js');
+
+      // 新しい SW が waiting 状態になったら通知
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            showUpdateBanner();
+          }
+        });
+      });
+
+      // SW からの SW_UPDATED メッセージを受信
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data?.type === 'SW_UPDATED') {
+          console.log('[App] SW 更新完了 version:', event.data.version);
+        }
+      });
+
+      // ページ表示時に既に waiting があればすぐ通知
+      if (reg.waiting && navigator.serviceWorker.controller) {
+        showUpdateBanner();
+      }
+    } catch (e) {
+      console.warn('[App] SW 登録失敗:', e);
+    }
+  });
+}
+
+function showUpdateBanner() {
+  // 既存のオーバーレイがあれば重複表示しない
+  if (document.getElementById('sw-update-overlay')) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'sw-update-overlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;z-index:9999;
+    background:rgba(0,0,0,.55);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  `;
+  overlay.innerHTML = `
+    <div style="
+      background:var(--bg);color:var(--txt);
+      border-radius:var(--r-lg);padding:30px 24px;
+      max-width:320px;width:100%;text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+    ">
+      <div style="font-size:32px;margin-bottom:10px">🔄</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">新しいバージョンがあります</div>
+      <div style="font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:22px">
+        最新の状態に更新すると、なぎろぐを引き続きご利用いただけます。<br>記録データはそのまま保持されます。
+      </div>
+      <button onclick="applyUpdate()" style="
+        width:100%;padding:13px;background:var(--accent);color:#fff;
+        border:none;border-radius:var(--r-md);font-size:15px;font-weight:700;
+        cursor:pointer;
+      ">今すぐ反映</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+}
+
+async function applyUpdate() {
+  const overlay = document.getElementById('sw-update-overlay');
+  if (overlay) overlay.remove();
+  document.body.style.overflow = '';
+  const reg = await navigator.serviceWorker.getRegistration();
+  if (reg?.waiting) {
+    reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }
+  // SW が制御を引き継いだらリロード
+  navigator.serviceWorker.addEventListener('controllerchange', () => location.reload());
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D9E75">
+<title>「一言コメント」機能について｜仕組みとプライバシーの考え方</title>
+<meta name="description" content="なぎろぐの「今日」タブに表示される一言コメント機能の仕組みを解説します。外部のAIには一切データを送信せず、アプリ内で完結するルールベースの計算で言葉を選んでいます。">
+<link rel="canonical" href="https://nagilog.net/articles/ai-comment.html">
+<meta property="og:title" content="「一言コメント」機能について｜仕組みとプライバシーの考え方">
+<meta property="og:description" content="なぎろぐの一言コメント機能の仕組みを解説。外部AIには送信せず、端末内で完結する計算で言葉を選んでいます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nagilog.net/articles/ai-comment.html">
+<meta property="og:image" content="https://nagilog.net/icons/icon-512.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6019865973723882" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJRJFQ84RC"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+// 本番ドメインのときだけ計測。広告向けの機能（Googleシグナル・広告パーソナライズ）は使わない。
+if(location.hostname==='nagilog.net'){gtag('js',new Date());gtag('config','G-VJRJFQ84RC',{allow_google_signals:false,allow_ad_personalization_signals:false});}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F5F3;--bg2:#EBEBEA;--txt:#2C2C2A;--txt2:#6E6E6C;--txt3:#AAAAAA;
+  --accent:#1D9E75;--bdr:rgba(0,0,0,0.08);--r-md:12px;--r-lg:18px;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#1C1C1E;--bg2:#2C2C2E;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);}
+}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.85;padding-bottom:40px;}
+.header{background:var(--bg);border-bottom:.5px solid var(--bdr);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 16px;position:sticky;top:0;z-index:10;}
+.header a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--txt);font-size:15px;font-weight:300;letter-spacing:.08em;}
+.header a span{color:var(--accent);font-size:13px;}
+.container{max-width:680px;margin:0 auto;padding:32px 20px;}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--accent);color:#fff;letter-spacing:.04em;margin-bottom:12px;}
+h1{font-size:24px;font-weight:600;margin-bottom:24px;color:var(--txt);line-height:1.5;}
+article h2{font-size:17px;font-weight:700;color:var(--accent);margin:28px 0 10px;padding-bottom:6px;border-bottom:1.5px solid var(--accent);}
+article h3{font-size:15px;font-weight:700;color:var(--txt);margin:18px 0 8px;}
+article p{font-size:15px;color:var(--txt2);margin-bottom:14px;}
+article ul,article ol{padding-left:20px;margin-bottom:14px;}
+article li{font-size:15px;color:var(--txt2);margin-bottom:8px;}
+article strong{color:var(--txt);font-weight:600;}
+.note{font-size:13px;color:var(--txt3);border-left:2px solid var(--bdr);padding:8px 12px;margin:16px 0;background:var(--bg2);border-radius:0 var(--r-md) var(--r-md) 0;}
+.related{margin-top:40px;padding-top:24px;border-top:.5px solid var(--bdr);}
+.related h2{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:12px;}
+.related-list{list-style:none;}
+.related-list li{margin-bottom:8px;}
+.related-list a{display:block;font-size:14px;color:var(--accent);text-decoration:none;padding:12px 14px;background:var(--bg2);border-radius:var(--r-md);border:.5px solid var(--bdr);}
+footer{text-align:center;padding:24px 20px 0;font-size:12px;color:var(--txt3);}
+footer a{color:var(--txt3);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="../index.html#articles">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <span>&#9664;</span>なぎろぐ に戻る
+  </a>
+</div>
+
+<div class="container">
+  <span class="tag">使い方</span>
+  <h1>「一言コメント」機能について――仕組みとプライバシーの考え方</h1>
+
+  <article>
+    <p>「今日」タブの上部に表示される🌱の一言コメントについて、その仕組みをご説明します。</p>
+
+    <h2>外部のAIには一切送信していません</h2>
+    <p>「AIっぽい一言」という見た目ですが、ChatGPTやClaudeのような外部のAIサービスにデータを送って生成しているわけではありません。<strong>気分・睡眠などの記録データは、これまでどおり一切外部に送信されず、すべてお使いの端末内だけで計算・表示しています。</strong>なぎろぐの「データを外部に送らない」という方針は、この機能でも変わりません。</p>
+
+    <h2>コメントはどう決まるのか</h2>
+    <p>あらかじめ用意した文章の中から、記録データの傾向に応じて選んで表示する仕組みです。使っているのは主に「気分」の数値で、以下の3つの観点を計算しています。</p>
+
+    <h3>1. 昨日との比較</h3>
+    <p>直近2件の記録の気分の数値を比べて、差が<strong>+1.5以上なら「やや高め」</strong>、<strong>-1.5以下なら「やや低め」</strong>、それ以外は「昨日とほぼ同じ」という言葉を選びます。</p>
+
+    <h3>2. 直近1週間の平均</h3>
+    <p>直近7日間の気分の数値を単純平均し、その前の7日間（8〜14日前）の平均と比較します。差が<strong>+1以上なら「やや高め」</strong>、<strong>-1以下なら「やや低め」</strong>、それ以外は「ほぼ同じ水準」という言葉を選びます。比較する前の週のデータが少ない場合は、平均の比較はせず「直近1週間で○日記録がついています」という文言になります。</p>
+
+    <h3>3. 1ヶ月の振り返り</h3>
+    <p>数値の増減ではなく、直近30日間で記録がついた日数を伝えるだけの、事実ベースの一言です。</p>
+
+    <p>記録が1件しかない場合や、記録がまだない場合は、比較のしようがないため、簡単な一言またはコメント自体を非表示にしています。</p>
+
+    <h2>「良い・悪い」を判定するものではありません</h2>
+    <p>コメントの文言は、数値が高いことを褒めたり、低いことを心配したりしないよう、<strong>できるだけ事実を淡々と伝える表現</strong>を選んでいます。気分の波は、高ければ良い・低ければ悪いと単純に言えるものではないためです。何かを評価されている感覚が苦手な方は、次でご紹介する方法でいつでも非表示にできます。</p>
+
+    <h2>非表示にする方法</h2>
+    <p>コメントの右上にある「×」をタップすると非表示になります。<strong>一度非表示にすると、再表示するボタンを自分でタップしない限り、ずっと表示されません。</strong>「他人（あるいはAIらしきもの）から評価されたくない」という方にも配慮した仕様です。</p>
+    <p>非表示にした後は、同じ場所に「一言コメントを表示する」という小さなリンクが残ります。気が向いたときにいつでも再表示できます。</p>
+
+    <div class="note">この機能は体調に関する評価・診断を行うものではありません。記録の振り返りの参考程度にご利用ください。</div>
+  </article>
+
+  <div class="related">
+    <h2>関連記事</h2>
+    <ul class="related-list">
+      <li><a href="howto.html">なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</a></li>
+      <li><a href="mood-tracking.html">気分の記録が役立つ理由――セルフモニタリングの意義</a></li>
+      <li><a href="about.html">なぎろぐとは――体調を、穏やかな凪に。</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 なぎろぐ　<a href="https://nagilog.net">nagilog.net</a>　<a href="../privacy.html">プライバシーポリシー</a>　<a href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">お問い合わせ</a></p>
+</footer>
+
+</body>
+</html>

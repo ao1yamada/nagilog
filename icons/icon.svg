@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="white"/>
+  <circle cx="256" cy="185" r="138" fill="none" stroke="#0d0d0d" stroke-width="11"/>
+  <rect x="210" y="40" width="20" height="18" fill="white"/>
+  <rect x="282" y="40" width="20" height="18" fill="white"/>
+  <line x1="218" y1="48" x2="218" y2="325" stroke="#0d0d0d" stroke-width="11" stroke-linecap="square"/>
+  <line x1="294" y1="48" x2="294" y2="325" stroke="#0d0d0d" stroke-width="11" stroke-linecap="square"/>
+  <line x1="218" y1="48" x2="294" y2="268" stroke="#0d0d0d" stroke-width="11" stroke-linecap="square"/>
+  <text x="256" y="445"
+    font-family="'Noto Sans JP',sans-serif"
+    font-weight="300"
+    font-size="78"
+    text-anchor="middle"
+    fill="#0d0d0d"
+    letter-spacing="8">なぎろぐ</text>
+</svg>

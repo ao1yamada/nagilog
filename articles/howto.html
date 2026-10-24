@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D9E75">
+<title>なぎろぐの使い方｜今日・服薬・履歴タブを使いこなす</title>
+<meta name="description" content="なぎろぐの使い方を解説します。今日タブでの気分・睡眠の記録方法、服薬タブでの服薬率の管理、履歴タブでのグラフの見方・エクスポート方法まで詳しく紹介します。">
+<link rel="canonical" href="https://nagilog.net/articles/howto.html">
+<meta property="og:title" content="なぎろぐの使い方｜今日・服薬・履歴タブを使いこなす">
+<meta property="og:description" content="なぎろぐの使い方を解説。気分・睡眠の記録、服薬管理、グラフでの振り返り方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nagilog.net/articles/howto.html">
+<meta property="og:image" content="https://nagilog.net/icons/icon-512.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6019865973723882" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VJRJFQ84RC"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+// 本番ドメインのときだけ計測。広告向けの機能（Googleシグナル・広告パーソナライズ）は使わない。
+if(location.hostname==='nagilog.net'){gtag('js',new Date());gtag('config','G-VJRJFQ84RC',{allow_google_signals:false,allow_ad_personalization_signals:false});}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F5F3;--bg2:#EBEBEA;--txt:#2C2C2A;--txt2:#6E6E6C;--txt3:#AAAAAA;
+  --accent:#1D9E75;--bdr:rgba(0,0,0,0.08);--r-md:12px;--r-lg:18px;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#1C1C1E;--bg2:#2C2C2E;--txt:#F2F2F0;--txt2:#AEAEAD;--txt3:#6E6E6C;--bdr:rgba(255,255,255,0.08);}
+}
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.85;padding-bottom:40px;}
+.header{background:var(--bg);border-bottom:.5px solid var(--bdr);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 16px;position:sticky;top:0;z-index:10;}
+.header a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--txt);font-size:15px;font-weight:300;letter-spacing:.08em;}
+.header a span{color:var(--accent);font-size:13px;}
+.container{max-width:680px;margin:0 auto;padding:32px 20px;}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--accent);color:#fff;letter-spacing:.04em;margin-bottom:12px;}
+h1{font-size:24px;font-weight:600;margin-bottom:24px;color:var(--txt);line-height:1.5;}
+article h2{font-size:17px;font-weight:700;color:var(--accent);margin:28px 0 10px;padding-bottom:6px;border-bottom:1.5px solid var(--accent);}
+article h3{font-size:15px;font-weight:700;color:var(--txt);margin:18px 0 8px;}
+article p{font-size:15px;color:var(--txt2);margin-bottom:14px;}
+article strong{color:var(--txt);font-weight:600;}
+.note{font-size:13px;color:var(--txt3);border-left:2px solid var(--bdr);padding:8px 12px;margin:16px 0;background:var(--bg2);border-radius:0 var(--r-md) var(--r-md) 0;}
+.related{margin-top:40px;padding-top:24px;border-top:.5px solid var(--bdr);}
+.related h2{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:12px;}
+.related-list{list-style:none;}
+.related-list li{margin-bottom:8px;}
+.related-list a{display:block;font-size:14px;color:var(--accent);text-decoration:none;padding:12px 14px;background:var(--bg2);border-radius:var(--r-md);border:.5px solid var(--bdr);}
+footer{text-align:center;padding:24px 20px 0;font-size:12px;color:var(--txt3);}
+footer a{color:var(--txt3);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="../index.html#articles">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <span>&#9664;</span>なぎろぐ に戻る
+  </a>
+</div>
+
+<div class="container">
+  <span class="tag">使い方</span>
+  <h1>なぎろぐの使い方――今日・服薬・履歴タブを使いこなす</h1>
+
+  <article>
+    <p>画面下部に<strong>「今日」「服薬」「履歴」「記事」</strong>の4つのタブがあります。毎日の記録は「今日」タブ、薬の管理は「服薬」タブ、過去の記録の確認は「履歴」タブから行います。</p>
+
+    <h2>今日タブ｜毎日の体調を記録する</h2>
+    <h3>日付を選ぶ</h3>
+    <p>画面上部のバーで<strong>今日・昨日・2日前・3日前</strong>を選べます。書き忘れた日も3日以内なら遡って入力できます。</p>
+
+    <h3>気分・活動量・リカバリーを入力する</h3>
+    <p>0〜10のスライダーで今の状態を入力します。項目名はタップして自分の言葉に変更できます（「やる気」「ポジティブ感」など）。オリジナル項目を2つまで追加することもできます。</p>
+
+    <h3>睡眠を記録する</h3>
+    <p>「＋」「−」ボタンで昨夜の睡眠時間を0.5時間単位で入力します。状態（すっきり・寝不足・中途覚醒・早朝覚醒・悪夢など）はタグで複数選択できます。</p>
+
+    <h3>身体データ・タグ・日記</h3>
+    <p>体重・歩数などの身体データ、「今日あったこと」「気になること」のタグ、自由記述の日記を入力できます。「記録を保存」ボタンをタップして完了です。</p>
+
+    <h2>服薬タブ｜服薬を管理する</h2>
+    <h3>薬を登録する</h3>
+    <p>「朝・昼・晩・就寝前」のボタンで時間帯を選び、薬の名前と量（mg）を登録します。</p>
+
+    <h3>毎日チェックする</h3>
+    <p>飲んだ薬にチェックを入れます。飲まない時間帯は「なし（スキップ）」に設定すると、服薬率の計算から除外されます。有効な時間帯だけで均等に計算されるため、例えば晩だけ服薬している方は晩の服薬状況で100%として扱われます。</p>
+    <p>後から薬が増えても、過去の服薬率は変わりません。その日の薬リストで計算するスナップショット方式を採用しています。「服薬記録を保存」ボタンで確定します。こちらも3日前まで遡って入力できます。</p>
+
+    <h2>履歴タブ｜グラフで振り返る</h2>
+    <h3>表示期間とグラフ項目を選ぶ</h3>
+    <p>1週間・1ヶ月・3ヶ月・6ヶ月・1年・5年・全期間から選べます。気分・活動量・睡眠・服薬率・気圧・気温など、表示する項目をチェックボックスで選択します。複数重ねて表示することで、「気圧が下がると気分も落ちる」といったパターンが見えてくることがあります。</p>
+
+    <h3>エクスポートする</h3>
+    <p>表示期間と同じ範囲のデータを出力できます。CSV（Excel用）・PDF（表形式）・PDF（グラフ）の3種類から選べます。通院時の参考資料としてもご活用ください。</p>
+
+    <h2>カレンダーで確認する</h2>
+    <p>右上のカレンダーアイコンをタップすると月表示のカレンダーが開きます。記録がある日には緑の丸が表示され、タップするとその日の記録の詳細（気分・睡眠・服薬・日記など）を確認できます。年・月のボタンで素早く移動できます。</p>
+
+    <div class="note">本アプリは医療行為・診断・治療の代替を目的とするものではありません。体調に不安がある場合は、必ず医療専門家にご相談ください。</div>
+  </article>
+
+  <div class="related">
+    <h2>関連記事</h2>
+    <ul class="related-list">
+      <li><a href="about.html">なぎろぐとは――体調を、穏やかな凪に。</a></li>
+      <li><a href="pwa.html">ホーム画面に追加する方法</a></li>
+      <li><a href="story.html">なぎろぐをつくった理由――双極症と、働き続けること</a></li>
+      <li><a href="making.html">なぎろぐはこうして生まれた</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 なぎろぐ　<a href="https://nagilog.net">nagilog.net</a>　<a href="../privacy.html">プライバシーポリシー</a>　<a href="https://docs.google.com/forms/d/e/1FAIpQLSc65iohIUB1IjFtdzS1OOdkTW678uHA3ziHfzDTjDToZVW-kw/viewform?usp=header" target="_blank" rel="noopener">お問い合わせ</a></p>
+</footer>
+
+</body>
+</html>
